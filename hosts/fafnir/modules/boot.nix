@@ -4,4 +4,7 @@
 	# Configure systemd-boot
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+
+	# Configure the Linux kernel
+	boot.kernelPackages = pkgs.linuxPackages_zen;
 }
