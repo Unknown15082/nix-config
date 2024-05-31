@@ -2,16 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, ... }:
 
 {
 	imports =
 	[
 		# Include the results of the hardware scan.
 		./hardware-configuration.nix
-	
-		# Boot configs
-		./modules/boot.nix
+
+		# Include systemd-boot configs
+		outputs.nixosModules.systemd-boot
 	];
 
 	networking.hostName = "fafnir"; # Define your hostname.
