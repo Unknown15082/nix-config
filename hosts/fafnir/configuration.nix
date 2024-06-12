@@ -12,6 +12,9 @@
 
 		# Include systemd-boot configs
 		outputs.nixosModules.systemd-boot
+
+		# Configure local printer
+		./canon-lbp2900.nix
 	];
 
 	networking.hostName = "fafnir"; # Define your hostname.
@@ -54,10 +57,6 @@
 		layout = "us";
 		xkbVariant = "";
 	};
-
-	# Enable CUPS to print documents.
-	services.printing.enable = true;
-	services.printing.drivers = [ pkgs.canon-capt ];
 
 	# Enable sound with pipewire.
 	sound.enable = true;
