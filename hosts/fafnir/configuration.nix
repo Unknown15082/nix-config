@@ -15,6 +15,9 @@
 
 		# Configure local printer
 		./canon-lbp2900.nix
+
+		# Include games (osu!)
+		outputs.nixosModules.osu-lazer
 	];
 
 	networking.hostName = "fafnir"; # Define your hostname.
