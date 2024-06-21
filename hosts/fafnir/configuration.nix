@@ -22,6 +22,9 @@
 		
 		# Include discord
 		discord
+
+		# Include AAGL
+		aagl
 	]
 	);
 
