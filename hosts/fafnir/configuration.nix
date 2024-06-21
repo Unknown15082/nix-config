@@ -10,15 +10,20 @@
 		# Include the results of the hardware scan.
 		./hardware-configuration.nix
 
-		# Include systemd-boot configs
-		outputs.nixosModules.systemd-boot
-
 		# Configure local printer
 		./canon-lbp2900.nix
+	] ++ (
+	with outputs.nixosModules; [
+		# Include systemd-boot configs
+		systemd-boot
 
 		# Include games (osu!)
-		outputs.nixosModules.osu-lazer
-	];
+		osu-lazer
+		
+		# Include discord
+		discord
+	]
+	);
 
 	networking.hostName = "fafnir"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
