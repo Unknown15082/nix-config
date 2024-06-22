@@ -14,6 +14,9 @@
 		./canon-lbp2900.nix
 	] ++ (
 	with outputs.nixosModules; [
+		# Include NVIDIA configs
+		nvidia
+
 		# Include systemd-boot configs
 		systemd-boot
 
@@ -27,6 +30,17 @@
 		aagl
 	]
 	);
+
+	# Enable PRIME offloading
+	hardware.nvidia.prime = {
+		offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};
+
+		amdgpuBusId = "PCI:5:0:0";
+		nvidiaBusId = "PCI:1:0:0";
+	};
 
 	networking.hostName = "fafnir"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

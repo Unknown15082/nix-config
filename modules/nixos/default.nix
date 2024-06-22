@@ -3,4 +3,5 @@
 	osu-lazer = import ./osu-lazer.nix;
 	discord = import ./discord.nix;
 	aagl = import ./aagl.nix;
+	nvidia = import ./nvidia.nix;
 }
