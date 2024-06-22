@@ -25,5 +25,11 @@
 
 		# Enable the Nvidia settings menu with nvidia-settings
 		nvidiaSettings = true;
+
+		# Enable PRIME offload
+		prime.offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};
 	};
 }

@@ -37,14 +37,6 @@
 	# Set the kernel version
 	boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
 
-	# Enable PRIME offloading
-	hardware.nvidia.prime = {
-		offload = {
-			enable = true;
-			enableOffloadCmd = true;
-		};
-	};
-
 	# Enable networking
 	networking.networkmanager.enable = true;
 
