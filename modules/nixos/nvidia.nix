@@ -11,7 +11,6 @@
 		# Choose the Nvidia driver version
 
 		package = config.boot.kernelPackages.nvidiaPackages.beta; # Nvidia driver 555
-		# package = config.boot.kernelPackages.nvidiaPackages.stable; # Nvidia driver 550
 	
 		# Enable modesetting
 		modesetting.enable = true;
