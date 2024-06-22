@@ -14,6 +14,7 @@
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
 		aagl = {
 			url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
@@ -21,14 +22,20 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, ...}@inputs : let
+	outputs = { self, nixpkgs, nixpkgs-unstable, ... } @ inputs : let
 		inherit (self) outputs;
 	in {
 		nixosModules = import ./modules/nixos;
 
-		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
 			system = "x86_64-linux";
-			specialArgs = { inherit inputs outputs; };
+			specialArgs = {
+				inherit inputs outputs;
+
+				pkgs-unstable = import nixpkgs-unstable {
+					inherit system;
+				};
+			};
 			modules = [
 				./hosts/fafnir/configuration.nix
 
