@@ -2,42 +2,56 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
 {
 	imports =
 		[ (modulesPath + "/installer/scan/not-detected.nix")
 		];
+
+	# List of kernel modules
 
 	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [ "kvm-amd" ];
 	boot.extraModulePackages = [ ];
 
+	# Declare the filesystem
+
 	fileSystems."/" =
-		{ device = "/dev/disk/by-uuid/c98f7040-8367-409c-b5a3-e2f6d525afce";
-			fsType = "btrfs";
-			options = [ "subvol=@" ];
-		};
+	{ device = "/dev/disk/by-uuid/c98f7040-8367-409c-b5a3-e2f6d525afce";
+		fsType = "btrfs";
+		options = [ "subvol=@" ];
+	};
 
 	fileSystems."/boot" =
-		{ device = "/dev/disk/by-uuid/D05C-3895";
-			fsType = "vfat";
-			options = [ "fmask=0022" "dmask=0022" ];
-		};
+	{ device = "/dev/disk/by-uuid/D05C-3895";
+		fsType = "vfat";
+		options = [ "fmask=0022" "dmask=0022" ];
+	};
+
+	# Add a 8GB swapfile
 
 	swapDevices = [ {
 		device = "/swapfile";
-		size = 8*1024; # 8GB
+		size = 8 * 1024; # 8GB
 	} ];
 
-	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-	# (the default) this is the recommended approach. When using systemd-networkd it's
-	# still possible to use this option, but it's recommended to use it in conjunction
-	# with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-	networking.useDHCP = lib.mkDefault true;
-	# networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
-	# networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+	# Other hardware values
 
+	networking.useDHCP = lib.mkDefault true;
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+	# Enable microcode update
+
 	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+
+	# The PCI IDs of the GPUs, in order to effectively offload the dGPU
+	hardware.nvidia.prime = {
+		amdgpuBusId = "PCI:5:0:0";
+		nvidiaBusId = "PCI:1:0:0";
+	};
+
+	# Define the hostname
+	networking.hostName = "fafnir";
+
 }

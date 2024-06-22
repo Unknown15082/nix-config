@@ -9,9 +9,6 @@
 	[
 		# Include the results of the hardware scan.
 		./hardware-configuration.nix
-
-		# Configure local printer
-		./canon-lbp2900.nix
 	] ++ (
 	with outputs.nixosModules; [
 		# Include NVIDIA configs
@@ -31,6 +28,12 @@
 	]
 	);
 
+	# Enable printing using CUPS
+	services.printing.enable = true;
+
+	# Add additional printing drivers for a Canon LBP2900 printer
+	services.printing.drivers = with pkgs; [ canon-capt ];
+
 	# Set the kernel version
 	boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
 
@@ -40,17 +43,7 @@
 			enable = true;
 			enableOffloadCmd = true;
 		};
-
-		amdgpuBusId = "PCI:5:0:0";
-		nvidiaBusId = "PCI:1:0:0";
 	};
-
-	networking.hostName = "fafnir"; # Define your hostname.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 	# Enable networking
 	networking.networkmanager.enable = true;
