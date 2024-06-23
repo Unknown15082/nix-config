@@ -9,6 +9,9 @@
 	[
 		# Include the results of the hardware scan.
 		./hardware-configuration.nix
+
+		# Include laptop-specific configs
+		./laptop.nix
 	] ++ (
 	with outputs.nixosModules; [
 		# Include NVIDIA configs
