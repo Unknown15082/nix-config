@@ -12,8 +12,7 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
-	] ++ (
-	with outputs.nixosModules; [
+	] ++ ( with outputs.nixosModules; [
 		# Include NVIDIA configs
 		nvidia
 
@@ -28,8 +27,10 @@
 
 		# Include AAGL
 		aagl
-	]
-	);
+
+		# Include keyd configs
+		keyd
+	]);
 
 	# Enable printing using CUPS
 	services.printing.enable = true;

@@ -4,4 +4,5 @@
 	discord = import ./discord.nix;
 	aagl = import ./aagl.nix;
 	nvidia = import ./nvidia.nix;
+	keyd = import ./keyd.nix;
 }
