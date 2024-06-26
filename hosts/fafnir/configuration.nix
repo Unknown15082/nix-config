@@ -30,6 +30,9 @@
 
 		# Include keyd configs
 		keyd
+
+		# Add docker
+		docker
 	]);
 
 	# Enable printing using CUPS
@@ -105,7 +108,7 @@
 	users.users.unknown = {
 		isNormalUser = true;
 		description = "Unknown";
-		extraGroups = [ "networkmanager" "wheel" ];
+		extraGroups = [ "networkmanager" "wheel" "docker" ];
 		packages = with pkgs; [
 		#  thunderbird
 		];

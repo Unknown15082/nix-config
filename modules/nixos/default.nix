@@ -5,4 +5,5 @@
 	aagl = import ./aagl.nix;
 	nvidia = import ./nvidia.nix;
 	keyd = import ./keyd.nix;
+	docker = import ./docker.nix;
 }
