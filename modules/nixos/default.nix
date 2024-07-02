@@ -6,4 +6,6 @@
 	nvidia = import ./nvidia.nix;
 	keyd = import ./keyd.nix;
 	docker = import ./docker.nix;
+	locale = import ./locale.nix;
+	sound = import ./sound.nix;
 }
