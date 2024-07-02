@@ -16,13 +16,18 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+		home-manager = {
+			url = "github:nix-community/home-manager/release-24.05";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		aagl = {
 			url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable, ... } @ inputs : let
+	outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
 	in {
 		nixosModules = import ./modules/nixos;
@@ -43,6 +48,16 @@
 				# Allow the following users to add binary cache servers:
 				{
 					nix.settings.trusted-users = [ "unknown" ];
+				}
+
+				# Home-manager
+				home-manager.nixosModules.home-manager
+
+				{
+					home-manager.useGlobalPkgs = true;
+					home-manager.useUserPackages = true;
+					
+					home-manager.users.unknown = import ./home/unknown.nix;
 				}
 			];
 		};
