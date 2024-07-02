@@ -8,4 +8,5 @@
 	docker = import ./docker.nix;
 	locale = import ./locale.nix;
 	sound = import ./sound.nix;
+	bluetooth = import ./bluetooth.nix;
 }
