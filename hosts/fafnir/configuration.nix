@@ -127,7 +127,6 @@
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
 		git
-		neovim
 	];
 
 	# Enable Gamemode
