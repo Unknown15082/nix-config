@@ -15,10 +15,6 @@
 		# Enable modesetting
 		modesetting.enable = true;
 
-		# Power management settings (see the wiki for information)
-		powerManagement.enable = true;
-		powerManagement.finegrained = true;
-
 		# Disable the open source kernel module (not nouveau)
 		# This is alpha-quality/buggy
 		open = false;
