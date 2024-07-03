@@ -12,7 +12,11 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
-	] ++ ( with outputs.nixosModules; [
+
+		# Add configs for Canon LBP2900 printer
+		outputs.devices.LBP2900
+	]
+	++ ( with outputs.nixosModules; [
 		# Include NVIDIA configs
 		nvidia
 
@@ -43,12 +47,6 @@
 		# Bluetooth settings
 		bluetooth
 	]);
-
-	# Enable printing using CUPS
-	services.printing.enable = true;
-
-	# Add additional printing drivers for a Canon LBP2900 printer
-	services.printing.drivers = with pkgs; [ canon-capt ];
 
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;

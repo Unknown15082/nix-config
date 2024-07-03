@@ -31,6 +31,7 @@
 		inherit (self) outputs;
 	in {
 		nixosModules = import ./modules/nixos;
+		devices = import ./modules/devices;
 
 		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
 			system = "x86_64-linux";
