@@ -13,21 +13,21 @@
 	};
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
 		home-manager = {
-			url = "github:nix-community/home-manager/release-24.05";
+			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		aagl = {
-			url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
+			url = "github:ezKEa/aagl-gtk-on-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs : let
+	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
 	in {
 		nixosModules = import ./modules/nixos;
@@ -37,7 +37,7 @@
 			specialArgs = {
 				inherit inputs outputs;
 
-				pkgs-unstable = import nixpkgs-unstable {
+				pkgs-stable = import nixpkgs-stable {
 					inherit system;
 					config.allowUnfree = true;
 				};

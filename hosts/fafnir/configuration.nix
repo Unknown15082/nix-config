@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, config, pkgs, pkgs-unstable, ... }:
+{ inputs, outputs, config, pkgs, pkgs-stable, ... }:
 
 {
 	imports =
@@ -51,7 +51,7 @@
 	services.printing.drivers = with pkgs; [ canon-capt ];
 
 	# Set the kernel version
-	boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
+	boot.kernelPackages = pkgs.linuxPackages_zen;
 
 	# Enable networking
 	networking.networkmanager.enable = true;
