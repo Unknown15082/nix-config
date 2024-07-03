@@ -25,12 +25,18 @@
 			url = "github:ezKEa/aagl-gtk-on-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nixvim = {
+			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
 	in {
 		nixosModules = import ./modules/nixos;
+		hmModules = import ./modules/hm;
 		devices = import ./modules/devices;
 
 		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
@@ -57,7 +63,8 @@
 				{
 					home-manager.useGlobalPkgs = true;
 					home-manager.useUserPackages = true;
-					
+					home-manager.extraSpecialArgs = specialArgs;
+
 					home-manager.users.unknown = import ./home/unknown.nix;
 				}
 			];
