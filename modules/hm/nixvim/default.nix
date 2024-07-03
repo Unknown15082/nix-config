@@ -4,6 +4,7 @@
 		inputs.nixvim.homeManagerModules.nixvim
 	] ++ [
 		# Add config files here
+		./colorscheme.nix
 	];
 
 	programs.nixvim = {
