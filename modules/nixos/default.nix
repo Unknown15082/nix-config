@@ -1,4 +1,9 @@
+{ lib, ... }:
 {
+	imports = [
+		./bluetooth.nix
+	];
+
 	systemd-boot = import ./systemd-boot.nix;
 	osu-lazer = import ./osu-lazer.nix;
 	discord = import ./discord.nix;
@@ -8,5 +13,6 @@
 	docker = import ./docker.nix;
 	locale = import ./locale.nix;
 	sound = import ./sound.nix;
-	bluetooth = import ./bluetooth.nix;
+
+	modules.bluetooth.enable = true;
 }
