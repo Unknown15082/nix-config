@@ -7,10 +7,10 @@
 	};
 
 	# Enable Vietnamese input method
-	i18n.inputMethod = {
+	/*i18n.inputMethod = {
 		enabled = "ibus";
 		ibus.engines = with pkgs.ibus-engines; [ bamboo ];
-	};
+	};*/
 
 	# Automatically setup timezone
 	services.automatic-timezoned.enable = true;
