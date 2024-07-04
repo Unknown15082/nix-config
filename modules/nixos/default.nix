@@ -2,6 +2,7 @@
 {
 	imports = [
 		./bluetooth.nix
+		./sound.nix
 	];
 
 	systemd-boot = import ./systemd-boot.nix;
@@ -12,7 +13,9 @@
 	keyd = import ./keyd.nix;
 	docker = import ./docker.nix;
 	locale = import ./locale.nix;
-	sound = import ./sound.nix;
 
-	modules.bluetooth.enable = true;
+	modules.bluetooth.enable = lib.mkDefault true;
+
+	modules.sound.enable = lib.mkDefault true;
+	modules.sound.low-latency.enable = lib.mkDefault true;
 }

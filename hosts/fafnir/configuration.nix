@@ -38,14 +38,8 @@
 		# Add docker
 		docker
 
-		# Sound settings
-		sound
-
 		# Locale settings
 		locale
-
-		# Bluetooth settings
-		bluetooth
 	]);
 
 	# Set the kernel version
