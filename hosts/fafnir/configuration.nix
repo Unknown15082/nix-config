@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, config, pkgs, pkgs-stable, ... }:
+{ inputs, outputs, lib, config, pkgs, pkgs-stable, ... }:
 
 {
 	imports =
@@ -40,7 +40,15 @@
 
 		# Locale settings
 		locale
-	]);
+	]) ++ [
+		../../modules/nixos/bluetooth.nix
+		../../modules/nixos/sound.nix
+	];
+
+	modules.bluetooth.enable = lib.mkDefault true;
+
+	modules.sound.enable = lib.mkDefault true;
+	modules.sound.low-latency.enable = lib.mkDefault true;
 
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;

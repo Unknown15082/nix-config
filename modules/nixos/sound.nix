@@ -9,7 +9,7 @@ in
 			low-latency = {
 				enable = lib.mkEnableOption "Enable PipeWire's low-latency setup";
 				quant = lib.mkOption {
-					type = types.int;
+					type = lib.types.int;
 					default = 32;
 					description = "The quant value for PipeWire (see https://nixos.wiki/wiki/PipeWire#Low-latency_setup)";
 				};

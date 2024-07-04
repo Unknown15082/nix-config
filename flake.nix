@@ -34,9 +34,8 @@
 
 	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
-		inherit (nixpkgs) lib;
 	in {
-		nixosModules = import ./modules/nixos { inherit lib; };
+		nixosModules = import ./modules/nixos;
 		hmModules = import ./modules/hm;
 		devices = import ./modules/devices;
 
