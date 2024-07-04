@@ -6,6 +6,7 @@
 		LC_TIME = "en_DK.UTF-8";
 	};
 
+	# TODO: Move to home-manager
 	# Enable Vietnamese input method
 	i18n.inputMethod = {
 		enabled = "fcitx5";
@@ -24,6 +25,11 @@
 			};
 		};
 	};
+
+	# Add kimpanel for Gnome to indicate current layout
+	# TODO: Enable this only if config.locale.languages.vietnamese and config.DE.gnome is both enabled
+
+	environment.systemPackages = with pkgs.gnomeExtensions; [ kimpanel ];
 
 	# Automatically setup timezone
 	services.automatic-timezoned.enable = true;
