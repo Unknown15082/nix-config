@@ -1,7 +1,9 @@
+{ pkgs, ... }:
 {
 	programs.nixvim = {
 		editorconfig.enable = true;
 		clipboard.register = "unnamedplus";
+		clipboard.providers.wl-copy.enable = true;
 
 		opts = {
 			# General

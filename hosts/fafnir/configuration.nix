@@ -95,6 +95,7 @@
 	environment.systemPackages = with pkgs; [
 		git
 		gcc
+		wl-clipboard
 	];
 
 	# Enable Gamemode
