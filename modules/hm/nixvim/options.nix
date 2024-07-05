@@ -11,6 +11,7 @@
 			termguicolors = true;
 		
 			# UI
+			shortmess = "ltToOCFsI";
 			cursorline = true;
 			signcolumn = "yes";
 			showmode = false;
