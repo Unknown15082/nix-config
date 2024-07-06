@@ -17,7 +17,10 @@
 			cursorline = true;
 			signcolumn = "yes";
 			showmode = false;
+
+			# UX
 			number = true;
+			relativenumber = true;
 			numberwidth = 4;
 			cmdheight = 1;
 			laststatus = 3;
