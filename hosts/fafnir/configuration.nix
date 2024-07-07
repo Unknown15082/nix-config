@@ -40,12 +40,15 @@
 	]) ++ [
 		../../modules/nixos/bluetooth.nix
 		../../modules/nixos/sound.nix
+		../../modules/nixos/steam.nix
 	];
 
-	modules.bluetooth.enable = lib.mkDefault true;
+	modules.bluetooth.enable = true;
 
-	modules.sound.enable = lib.mkDefault true;
-	modules.sound.low-latency.enable = lib.mkDefault true;
+	modules.sound.enable = true;
+	modules.sound.low-latency.enable = true;
+
+	modules.steam.enable = true;
 
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;
