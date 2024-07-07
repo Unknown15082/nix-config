@@ -29,9 +29,6 @@
 		# Include discord
 		discord
 
-		# Include AAGL
-		aagl
-
 		# Include keyd configs
 		keyd
 
@@ -83,9 +80,6 @@
 
 	# Install firefox.
 	programs.firefox.enable = true;
-
-	# Allow unfree packages
-	nixpkgs.config.allowUnfree = true;
 
 	# Enable flakes and the new Nix CLI
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];

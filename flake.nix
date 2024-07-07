@@ -4,11 +4,9 @@
 	nixConfig = {
 		extra-substituters = [
 			"https://nix-community.cachix.org"
-			"https://ezkea.cachix.org"
 		];
 		extra-trusted-public-keys = [
 			"nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-			"ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
 		];
 	};
 
@@ -18,11 +16,6 @@
 
 		home-manager = {
 			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		aagl = {
-			url = "github:ezKEa/aagl-gtk-on-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -43,6 +36,11 @@
 			system = "x86_64-linux";
 			specialArgs = {
 				inherit inputs outputs;
+
+				pkgs = import nixpkgs {
+					inherit system;
+					config.allowUnfree = true;
+				};
 
 				pkgs-stable = import nixpkgs-stable {
 					inherit system;
