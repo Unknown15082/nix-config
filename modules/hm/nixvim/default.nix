@@ -6,6 +6,7 @@
 		# Add config files here
 		./colorscheme.nix
 		./options.nix
+		./lsp
 	];
 
 	programs.nixvim = {
