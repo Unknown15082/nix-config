@@ -93,8 +93,6 @@
 		git
 		gcc
 		wl-clipboard
-
-		logseq
 	];
 
 	# Enable Gamemode

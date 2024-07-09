@@ -40,11 +40,6 @@
 				pkgs = import nixpkgs {
 					inherit system;
 					config.allowUnfree = true;
-
-					# Explicitly allow Logseq's version of EOL Electron
-					config.permittedInsecurePackages = [
-						"electron-27.3.11"
-					];
 				};
 
 				pkgs-stable = import nixpkgs-stable {
