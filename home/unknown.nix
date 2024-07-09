@@ -8,6 +8,7 @@
 
 	# Add NixVim
 	imports = [ outputs.hmModules.nixvim ];
+	programs.nixvim.defaultEditor = true;
 
 	# Add packages
 	home.packages = with pkgs; [
