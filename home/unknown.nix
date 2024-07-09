@@ -9,9 +9,12 @@
 	# Add NixVim
 	imports = [ outputs.hmModules.nixvim ];
 
-	# Add fastfetch
+	# Add packages
 	home.packages = with pkgs; [
 		fastfetch
+		btop
+		dust
+		duf
 	];
 
 	# Enable kimpanel
