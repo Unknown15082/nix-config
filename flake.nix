@@ -48,6 +48,7 @@
 				};
 			};
 			modules = [
+				./modules
 				./hosts/fafnir/configuration.nix
 
 				# Allow the following users to add binary cache servers:

@@ -1,3 +1,5 @@
 {
-	LBP2900 = import ./LBP2900.nix;
+	imports = [
+		./LBP2900.nix
+	];
 }

@@ -12,9 +12,6 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
-
-		# Add configs for Canon LBP2900 printer
-		outputs.devices.LBP2900
 	]
 	++ ( with outputs.nixosModules; [
 		# Include NVIDIA configs
@@ -37,18 +34,7 @@
 
 		# Locale settings
 		locale
-	]) ++ [
-		../../modules/nixos/bluetooth.nix
-		../../modules/nixos/sound.nix
-		../../modules/nixos/steam.nix
-	];
-
-	modules.bluetooth.enable = true;
-
-	modules.sound.enable = true;
-	modules.sound.low-latency.enable = true;
-
-	modules.steam.enable = true;
+	]);
 
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;
