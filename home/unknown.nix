@@ -24,6 +24,7 @@
 		settings."org/gnome/shell" = {
 			disable-user-extensions = false;
 			enabled-extensions = with pkgs.gnomeExtensions; [
+				hide-top-bar.extensionUuid
 				kimpanel.extensionUuid
 			];
 		};
