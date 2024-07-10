@@ -22,9 +22,6 @@
 
 		# Include games (osu!)
 		osu-lazer
-		
-		# Include discord
-		discord
 
 		# Include keyd configs
 		keyd
