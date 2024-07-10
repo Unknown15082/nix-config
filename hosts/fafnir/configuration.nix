@@ -14,9 +14,6 @@
 		./laptop.nix
 	]
 	++ ( with outputs.nixosModules; [
-		# Include systemd-boot configs
-		systemd-boot
-
 		# Include games (osu!)
 		osu-lazer
 
