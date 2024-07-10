@@ -14,9 +14,6 @@
 		./laptop.nix
 	]
 	++ ( with outputs.nixosModules; [
-		# Include NVIDIA configs
-		nvidia
-
 		# Include systemd-boot configs
 		systemd-boot
 
