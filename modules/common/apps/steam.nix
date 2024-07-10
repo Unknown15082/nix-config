@@ -2,10 +2,8 @@
 let
 	cfg = config.modules.steam;
 in {
-	options = {
-		modules.steam = {
-			enable = lib.mkEnableOption "Steam";
-		};
+	options.modules.steam = {
+		enable = lib.mkEnableOption "Steam";
 	};
 
 	config = lib.mkIf cfg.enable {

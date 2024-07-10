@@ -36,6 +36,9 @@
 		locale
 	]);
 
+	# Enable specific configs for local devices
+	modules.devices.LBP2900.enable = true;
+
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 

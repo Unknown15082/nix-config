@@ -3,16 +3,14 @@ let
 	cfg = config.modules.sound;
 in
 {
-	options = {
-		modules.sound = {
-			enable = lib.mkEnableOption "Enable PipeWire sound server";
-			low-latency = {
-				enable = lib.mkEnableOption "Enable PipeWire's low-latency setup";
-				quant = lib.mkOption {
-					type = lib.types.int;
-					default = 32;
-					description = "The quant value for PipeWire (see https://nixos.wiki/wiki/PipeWire#Low-latency_setup)";
-				};
+	options.modules.sound = {
+		enable = lib.mkEnableOption "Enable PipeWire sound server";
+		low-latency = {
+			enable = lib.mkEnableOption "Enable PipeWire's low-latency setup";
+			quant = lib.mkOption {
+				type = lib.types.int;
+				default = 32;
+				description = "The quant value for PipeWire (see https://nixos.wiki/wiki/PipeWire#Low-latency_setup)";
 			};
 		};
 	};
