@@ -1,14 +1,14 @@
 { outputs, config, pkgs, ... }:
 {
+	imports = [
+		../modules/home
+	];
+
 	home.username = "unknown";
 	home.homeDirectory = "/home/unknown";
 
 	home.stateVersion = "23.11";
 	programs.home-manager.enable = true;
-
-	# Add NixVim
-	imports = [ outputs.hmModules.nixvim ];
-	programs.nixvim.defaultEditor = true;
 
 	# Add packages
 	home.packages = with pkgs; [

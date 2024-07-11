@@ -1,7 +1,6 @@
 {
-	systemd-boot = import ./systemd-boot.nix;
-	osu-lazer = import ./osu-lazer.nix;
-	keyd = import ./keyd.nix;
-	docker = import ./docker.nix;
-	locale = import ./locale.nix;
+	imports = [
+		./system # System configs
+		./apps # Specific application's configs
+	];
 }

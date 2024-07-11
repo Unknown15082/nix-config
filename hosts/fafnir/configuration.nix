@@ -12,20 +12,7 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
-	]
-	++ ( with outputs.nixosModules; [
-		# Include games (osu!)
-		osu-lazer
-
-		# Include keyd configs
-		keyd
-
-		# Add docker
-		docker
-
-		# Locale settings
-		locale
-	]);
+	];
 
 	# Enable specific configs for local devices
 	modules.devices.LBP2900.enable = true;

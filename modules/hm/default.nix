@@ -1,3 +1,0 @@
-{
-	nixvim = import ./nixvim;
-}

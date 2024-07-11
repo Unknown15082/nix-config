@@ -28,10 +28,6 @@
 	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
 	in {
-		nixosModules = import ./modules/nixos;
-		hmModules = import ./modules/hm;
-		devices = import ./modules/devices;
-
 		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
 			system = "x86_64-linux";
 			specialArgs = {
@@ -48,7 +44,8 @@
 				};
 			};
 			modules = [
-				./modules
+				./modules/nixos
+				./modules/devices
 				./hosts/fafnir/configuration.nix
 
 				# Allow the following users to add binary cache servers:
