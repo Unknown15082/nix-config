@@ -5,6 +5,7 @@
 		./sound.nix
 		./nvidia.nix
 		./systemd-boot.nix
+		./nh.nix
 	];
 
 	modules.bluetooth.enable = lib.mkDefault true;
@@ -24,4 +25,6 @@
 	modules.systemd-boot = {
 		enable = lib.mkDefault true;
 	};
+
+	modules.nh.enable = lib.mkDefault true;
 }
