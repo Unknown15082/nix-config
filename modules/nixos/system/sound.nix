@@ -16,9 +16,6 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		# Disable sound.enable, as it is only used for ALSA
-		sound.enable = false;
-
 		# Disable pulseaudio
 		hardware.pulseaudio.enable = false;
 
