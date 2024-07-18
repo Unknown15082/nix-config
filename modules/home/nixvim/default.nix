@@ -11,8 +11,10 @@ in
 		inputs.nixvim.homeManagerModules.nixvim
 
 		./colorscheme.nix
+		./cmp.nix
 		./options.nix
 		./lsp
+		./treesitter
 	];
 
 	config = lib.mkIf cfg.enable {

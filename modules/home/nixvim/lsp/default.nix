@@ -1,6 +1,7 @@
 {
 	imports = [
 		./web.nix
+		./rust.nix
 	];
 
 	programs.nixvim = {
