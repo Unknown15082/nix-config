@@ -16,6 +16,8 @@
 		btop
 		dust
 		duf
+
+		openfortivpn
 	];
 
 	# Enable kimpanel
