@@ -18,6 +18,8 @@
 		duf
 
 		openfortivpn
+
+		hugo
 	];
 
 	# Enable kimpanel
