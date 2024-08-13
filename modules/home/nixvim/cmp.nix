@@ -3,9 +3,16 @@
 	programs.nixvim.plugins = {
 		luasnip = {
 			enable = pkgs.lib.mkDefault true;
-			extraConfig = {
-				enable_autosnippets = pkgs.lib.mkDefault true;
+			settings = {
+				enable_autosnippets = true;
+				store_selection_keys = "<Tab>";
 			};
+			fromVsCode = [
+				{
+					lazyLoad = true;
+					paths = "${pkgs.vimPlugins.friendly-snippets}";
+				}
+			];
 		};
 
 		cmp = {
