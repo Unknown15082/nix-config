@@ -7,7 +7,7 @@
 				enable_autosnippets = true;
 				store_selection_keys = "<Tab>";
 			};
-			fromVsCode = [
+			fromVscode = [
 				{
 					lazyLoad = true;
 					paths = "${pkgs.vimPlugins.friendly-snippets}";
@@ -34,14 +34,21 @@
 					"<C-e>" = "cmp.mapping.abort()";
 					"<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
 					"<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-					"<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-					"<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
 					"<Up>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
 					"<Down>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
 					"<C-Space>" = "cmp.mapping.complete()";
 					"<C-f>" = "cmp.mapping.scroll_docs(4)";
 					"<C-b>" = "cmp.mapping.scroll_docs(-4)";
 					"<CR>" = "cmp.mapping.confirm({ select = true })";
+
+					"<Tab>" = ''
+					cmp.mapping(function(fallback)
+						if require('luasnip').expand_or_jumpable() then
+							require('luasnip').expand_or_jump()
+						else
+							fallback()
+						end
+					end, {'i', 's'})'';
 				};
 			};
 		};
