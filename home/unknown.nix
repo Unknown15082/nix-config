@@ -20,6 +20,10 @@
 		openfortivpn
 
 		hugo
+
+		zoom-us
+
+		zathura
 	];
 
 	# Enable kimpanel

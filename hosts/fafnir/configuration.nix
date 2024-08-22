@@ -60,6 +60,9 @@
 		git
 		gcc
 		wl-clipboard
+
+		# Install TexLive
+		texlive.combined.scheme-medium
 	];
 
 	# Enable Gamemode
