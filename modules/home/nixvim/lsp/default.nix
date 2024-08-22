@@ -3,6 +3,7 @@
 		./web.nix
 		./rust.nix
 		./cp.nix
+		./markdown.nix
 	];
 
 	programs.nixvim = {
