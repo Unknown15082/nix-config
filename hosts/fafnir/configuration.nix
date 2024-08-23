@@ -60,6 +60,7 @@
 		git
 		gcc
 		wl-clipboard
+		gnupg
 
 		# Install TexLive
 		texlive.combined.scheme-medium
@@ -84,4 +85,14 @@
 		jetbrains-mono
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 	];
+
+	# Enable GPG
+	programs.gnupg = {
+		agent = {
+			enable = true;
+			enableSSHSupport = true;
+			enableBrowserSocket = true;
+			enableExtraSocket = true;
+		};
+	};
 }
