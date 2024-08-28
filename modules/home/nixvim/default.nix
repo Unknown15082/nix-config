@@ -13,6 +13,7 @@ in
 		./colorscheme.nix
 		./cmp.nix
 		./options.nix
+		./vimtex.nix
 		./lsp
 		./treesitter
 	];

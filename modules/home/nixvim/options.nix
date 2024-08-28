@@ -5,6 +5,10 @@
 		clipboard.register = "unnamedplus";
 		clipboard.providers.wl-copy.enable = true;
 
+		globals = {
+			maplocalleader = " ";
+		};
+
 		opts = {
 			# General
 			mouse = "a";
