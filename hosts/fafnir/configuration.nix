@@ -66,7 +66,7 @@
 		wtype
 
 		# Install TexLive
-		texlive.combined.scheme-medium
+		texlive.combined.scheme-full
 	];
 
 	# Enable Gamemode
