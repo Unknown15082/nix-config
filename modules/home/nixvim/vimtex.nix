@@ -4,7 +4,7 @@
 		vimtex = {
 			enable = true;
 			settings = {
-				view_method = "zathura";
+				view_method = "zathura_simple";
 
 				compiler_latexmk = {
 					aux_dir = "aux/";
