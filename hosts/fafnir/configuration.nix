@@ -62,6 +62,9 @@
 		wl-clipboard
 		gnupg
 
+		xdotool
+		wtype
+
 		# Install TexLive
 		texlive.combined.scheme-medium
 	];
