@@ -61,12 +61,6 @@
 		gcc
 		wl-clipboard
 		gnupg
-
-		xdotool
-		wtype
-
-		# Install TexLive
-		texlive.combined.scheme-full
 	];
 
 	# Enable Gamemode
