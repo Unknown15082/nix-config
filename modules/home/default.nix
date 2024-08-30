@@ -5,4 +5,5 @@
 	];
 
 	modules.nixvim.enable = true;
+	modules.shell-utils.enable = true;
 }
