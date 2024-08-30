@@ -6,7 +6,7 @@ in
 	options.modules.keyd = {
 		enable = lib.mkEnableOption "KeyD";
 		keyboardIds = lib.mkOption {
-			type = lib.types.listOf lib.types.string;
+			type = lib.types.listOf lib.types.str;
 			default = [ "*" ];
 			description = "The list of keyboard ids, following keyd(1)";
 		};
