@@ -17,6 +17,9 @@
 	# Enable specific configs for local devices
 	modules.devices.LBP2900.enable = true;
 
+	# Include the laptop keyboard ID for KeyD
+	modules.keyd.keyboardIds = [ "048d:c966" ];
+
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 
