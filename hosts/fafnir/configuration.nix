@@ -42,13 +42,15 @@
 	# Enable touchpad support (enabled default in most desktopManager).
 	# services.xserver.libinput.enable = true;
 
+	# Enable fish shell
+	programs.fish.enable = true;
+	users.defaultUserShell = pkgs.fish;
+
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.unknown = {
 		isNormalUser = true;
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
-		packages = with pkgs; [
-		];
 	};
 
 	# Install firefox.
