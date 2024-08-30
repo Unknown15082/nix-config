@@ -5,5 +5,7 @@
 	];
 
 	modules.nixvim.enable = true;
+	
 	modules.shell-utils.enable = true;
+	modules.shell-utils.enableFishFunctions = true;
 }

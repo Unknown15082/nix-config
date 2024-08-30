@@ -5,7 +5,12 @@ in
 {
 	options.modules.shell-utils = {
 		enable = lib.mkEnableOption "all shell utils";
+		enableFishFunctions = lib.mkEnableOption "fish functions";
 	};
+
+	imports = [
+		./fish_functions.nix
+	];
 
 	config = lib.mkIf cfg.enable {
 		programs = {
