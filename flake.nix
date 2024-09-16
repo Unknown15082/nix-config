@@ -29,23 +29,29 @@
 
 	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
 		inherit (self) outputs;
+
+		system = "x86_64-linux";
+		overlay-stable = final: prev: {
+			stable = import nixpkgs-stable {
+				inherit system;
+				config.allowUnfree = true;
+			};
+		};
 	in {
 		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
-			system = "x86_64-linux";
+			inherit system;
 			specialArgs = {
 				inherit inputs outputs;
-
-				pkgs = import nixpkgs {
-					inherit system;
-					config.allowUnfree = true;
-				};
-
-				pkgs-stable = import nixpkgs-stable {
-					inherit system;
-					config.allowUnfree = true;
-				};
 			};
 			modules = [
+				# Make pkgs.stable available in configuration.nix and other files
+				({
+					nixpkgs = {
+						overlays = [ overlay-stable ]; 
+						config.allowUnfree = true;
+					};
+				})
+
 				./modules/nixos
 				./modules/devices
 				./hosts/fafnir/configuration.nix
