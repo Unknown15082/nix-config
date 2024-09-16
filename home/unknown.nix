@@ -1,4 +1,4 @@
-{ outputs, config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, ... }:
 {
 	imports = [
 		../modules/home
@@ -18,12 +18,12 @@
 		duf
 
 		openfortivpn
-
 		hugo
-
 		zoom-us
-
 		zathura
+
+		# Personal NixVim config
+		inputs.nixvim-config.packages.${system}.default
 	];
 
 	# Enable kimpanel

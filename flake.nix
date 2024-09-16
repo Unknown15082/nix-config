@@ -19,11 +19,9 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		nixvim = {
-			url = "github:nix-community/nixvim";
-
+		nixvim-config = {
+			url = "github:Unknown15082/nixvim-config";
 			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.home-manager.follows = "home-manager";
 		};
 	};
 
@@ -41,7 +39,7 @@
 		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
 			inherit system;
 			specialArgs = {
-				inherit inputs outputs;
+				inherit inputs outputs system;
 			};
 			modules = [
 				# Make pkgs.stable available in configuration.nix and other files
