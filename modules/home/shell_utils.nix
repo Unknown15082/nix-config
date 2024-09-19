@@ -16,6 +16,9 @@ in
 		programs = {
 			fish = {
 				enable = true;
+				interactiveShellInit = ''
+					set fish_gretting
+				'';
 			};
 
 			eza = {
