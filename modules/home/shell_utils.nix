@@ -46,19 +46,6 @@ in
 				nix-direnv.enable = true;
 				silent = true;
 			};
-
-			starship = {
-				enable = false;
-				enableFishIntegration = true;
-				settings = {
-					add_newline = true;
-
-					format = lib.concatStrings [
-						"$directory \n"
-						"[└─> ](bold green)"
-					];
-				};
-			};
 		};
 	};
 }
