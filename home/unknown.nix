@@ -21,6 +21,7 @@
 		hugo
 		zoom-us
 		zathura
+		xournalpp
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
