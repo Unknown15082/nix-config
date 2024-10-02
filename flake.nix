@@ -23,6 +23,11 @@
 			url = "github:Unknown15082/nixvim-config";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nix-index-database = {
+			url = "github:nix-community/nix-index-database";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let

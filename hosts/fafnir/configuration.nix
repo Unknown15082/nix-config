@@ -12,6 +12,9 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
+
+		# Add nix-index-database
+		inputs.nix-index-database.nixosModules.nix-index
 	];
 
 	# Enable specific configs for local devices
@@ -100,4 +103,7 @@
 			enableExtraSocket = true;
 		};
 	};
+
+	# Disable command-not-found
+	programs.command-not-found.enable = false;
 }
