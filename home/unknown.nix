@@ -17,6 +17,7 @@
 		dust
 		duf
 		ripgrep
+		lazygit
 
 		openfortivpn
 		hugo
