@@ -16,6 +16,7 @@
 		btop
 		dust
 		duf
+		ripgrep
 
 		openfortivpn
 		hugo
