@@ -24,6 +24,7 @@
 		zoom-us
 		zathura
 		xournalpp
+		obsidian
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
