@@ -27,8 +27,6 @@
 		xournalpp			# Tablet sketching
 		obsidian			# Note-taking and tasks tracking
 
-		qmk					# QMK programming
-
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
 	];
