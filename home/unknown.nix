@@ -12,6 +12,7 @@
 
 	# Add packages
 	home.packages = with pkgs; [
+		# Modern Unix tools
 		fastfetch
 		btop
 		dust
@@ -19,12 +20,14 @@
 		ripgrep
 		lazygit
 
-		openfortivpn
-		hugo
-		zoom-us
-		zathura
-		xournalpp
-		obsidian
+		openfortivpn		# Connecting with SoC VPN (NUS)
+		hugo				# Blog sites
+		zoom-us				# Zoom meetings
+		zathura				# Viewing PDFs with VimTex
+		xournalpp			# Tablet sketching
+		obsidian			# Note-taking and tasks tracking
+
+		qmk					# QMK programming
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
