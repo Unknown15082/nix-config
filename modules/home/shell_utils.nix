@@ -6,10 +6,12 @@ in
 	options.modules.shell-utils = {
 		enable = lib.mkEnableOption "all shell utils";
 		enableFishFunctions = lib.mkEnableOption "fish functions";
+		enableTmux = lib.mkEnableOption "tmux";
 	};
 
 	imports = [
 		./fish_functions.nix
+		./tmux.nix
 	];
 
 	config = lib.mkIf cfg.enable {
