@@ -20,7 +20,7 @@
 		};
 
 		nixvim-config = {
-			url = "github:Unknown15082/nixvim-config/4658814bf839a11d6d07a1eeed46d94318d37d4e";
+			url = "github:Unknown15082/nixvim-config";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
