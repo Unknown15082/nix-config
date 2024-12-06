@@ -55,6 +55,7 @@
 					};
 				})
 
+				./modules/customs
 				./modules/nixos
 				./modules/devices
 				./hosts/fafnir/configuration.nix
