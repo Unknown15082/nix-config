@@ -68,6 +68,9 @@
 	# Set Nix PATH for nixd
 	nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
+	# Auto-optimize Nix store
+	nix.settings.auto-optimise-store = true;
+
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [

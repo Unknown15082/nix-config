@@ -47,12 +47,12 @@
 			};
 			modules = [
 				# Make pkgs.stable available in configuration.nix and other files
-				({
+				{
 					nixpkgs = {
 						overlays = [ overlay-stable ]; 
 						config.allowUnfree = true;
 					};
-				})
+				}
 
 				./modules/customs
 				./modules/nixos
