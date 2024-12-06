@@ -21,7 +21,6 @@
 
 		nixvim-config = {
 			url = "github:Unknown15082/nixvim-config";
-			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-index-database = {
