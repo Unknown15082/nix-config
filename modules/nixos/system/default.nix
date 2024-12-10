@@ -32,5 +32,5 @@
 
 	modules.input-method.vietnamese.enable = lib.mkDefault true;
 
-	modules.gnome.enable = true;
+	modules.gnome.enable = false;
 }

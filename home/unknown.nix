@@ -1,4 +1,4 @@
-{ inputs, outputs, osConfig, lib, pkgs, ... }:
+{ inputs, outputs, system, osConfig, lib, pkgs, ... }:
 {
 	imports = [
 		../modules/home
@@ -50,4 +50,7 @@
 			];
 		};
 	};
+
+	# Set hyprland version to flake inputs
+	modules.hyprland.package = inputs.hyprland.package.${system}.hyprland;
 }
