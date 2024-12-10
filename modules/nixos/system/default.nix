@@ -7,6 +7,7 @@
 		./systemd-boot.nix
 		./nh.nix
 		./input_method.nix
+		./gnome.nix
 	];
 
 	modules.bluetooth.enable = lib.mkDefault true;
@@ -30,4 +31,6 @@
 	modules.nh.enable = lib.mkDefault true;
 
 	modules.input-method.vietnamese.enable = lib.mkDefault true;
+
+	modules.gnome.enable = true;
 }

@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, ... }:
+{ inputs, outputs, osConfig, lib, pkgs, ... }:
 {
 	imports = [
 		../modules/home
@@ -12,6 +12,13 @@
 
 	# Add packages
 	home.packages = with pkgs; [
+		# Essential tools
+		firefox
+		git
+		gcc
+		wl-clipboard
+		gnupg
+
 		# Modern Unix tools
 		fastfetch
 		btop
@@ -20,6 +27,7 @@
 		ripgrep
 		lazygit
 
+		# Other tools
 		openfortivpn		# Connecting with SoC VPN (NUS)
 		hugo				# Blog sites
 		zoom-us				# Zoom meetings
@@ -32,7 +40,7 @@
 	];
 
 	# Enable kimpanel
-	dconf = {
+	dconf = lib.mkIf osConfig.modules.gnome.enable {
 		enable = true;
 		settings."org/gnome/shell" = {
 			disable-user-extensions = false;

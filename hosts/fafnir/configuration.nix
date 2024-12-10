@@ -32,22 +32,6 @@
 	# Enable networking
 	networking.networkmanager.enable = true;
 
-	# Enable the X11 windowing system.
-	services.xserver.enable = true;
-
-	# Enable the GNOME Desktop Environment.
-	services.xserver.displayManager.gdm.enable = true;
-	services.xserver.desktopManager.gnome.enable = true;
-
-	# Configure keymap in X11
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "";
-	};
-
-	# Enable touchpad support (enabled default in most desktopManager).
-	# services.xserver.libinput.enable = true;
-
 	# Enable fish shell
 	programs.fish.enable = true;
 	users.defaultUserShell = pkgs.fish;
@@ -59,9 +43,6 @@
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
 	};
 
-	# Install firefox.
-	programs.firefox.enable = true;
-
 	# Enable flakes and the new Nix CLI
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -70,15 +51,6 @@
 
 	# Auto-optimize Nix store
 	nix.settings.auto-optimise-store = true;
-
-	# List packages installed in system profile. To search, run:
-	# $ nix search wget
-	environment.systemPackages = with pkgs; [
-		git
-		gcc
-		wl-clipboard
-		gnupg
-	];
 
 	# Enable Gamemode
 	programs.gamemode.enable = true;
@@ -92,7 +64,8 @@
 	# Enable Tailscale
 	services.tailscale.enable = true;
 
-	system.stateVersion = "23.11"; # Leave this option alone
+	# Leave this option alone
+	system.stateVersion = "23.11"; 
 
 	# Manage fonts
 	fonts.packages = with pkgs; [
