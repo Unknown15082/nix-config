@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, outputs, system, lib, config, pkgs, ... }:
 
 {
 	imports =
@@ -98,4 +98,8 @@
 
 	# Disable command-not-found
 	programs.command-not-found.enable = false;
+
+	# Enable Hyprland
+	programs.hyprland.enable = true;
+	programs.hyprland.package = inputs.hyprland.packages."${system}".hyprland;
 }
