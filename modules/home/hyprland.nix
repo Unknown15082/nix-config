@@ -13,6 +13,9 @@ in
 
 		wayland.windowManager.hyprland = {
 			enable = true;
+			extraConfig = ''
+				${builtins.readFile ../../configs/hypr/hyprland.conf}
+			'';
 		};
 	};
 }
