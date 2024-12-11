@@ -1,4 +1,4 @@
-{ inputs, outputs, system, osConfig, lib, pkgs, ... }:
+{ inputs, outputs, osConfig, lib, pkgs, ... }:
 {
 	imports = [
 		../modules/home
@@ -33,7 +33,7 @@
 		zoom-us				# Zoom meetings
 		zathura				# Viewing PDFs with VimTex
 		xournalpp			# Tablet sketching
-		obsidian			# Note-taking and tasks tracking
+		obsidian				# Note-taking and tasks tracking
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
@@ -50,7 +50,4 @@
 			];
 		};
 	};
-
-	# Set hyprland version to flake inputs
-	modules.hyprland.package = inputs.hyprland.package.${system}.hyprland;
 }

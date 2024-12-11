@@ -5,10 +5,6 @@ in
 {
 	options.modules.hyprland = {
 		enable = lib.mkEnableOption "Hyprland";
-		package = lib.mkOption {
-			type = lib.types.package;
-			description = "Package for Hyprland";
-		};
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -17,13 +13,6 @@ in
 
 		wayland.windowManager.hyprland = {
 			enable = true;
-			settings = {
-				"$mod" = "SUPER";
-				bind = [
-					"$mod, C, exec, firefox"
-					"$mod, Q, exec, kitty"
-				];
-			};
 		};
 	};
 }
