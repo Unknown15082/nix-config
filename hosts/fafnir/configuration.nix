@@ -53,7 +53,6 @@
 	nix.settings.auto-optimise-store = true;
 
 	# Enable binary caches
-
 	nix.settings = {
 		substituters = [
 			"https://nix-community.cachix.org"

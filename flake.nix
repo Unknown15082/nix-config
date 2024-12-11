@@ -24,50 +24,48 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs : let
+	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
 		inherit (self) outputs;
+		inherit (nixpkgs) lib;
 
+		mylib = import ./lib { inherit lib; };
 		system = "x86_64-linux";
+		username = "unknown";
+
+		specialArgs = {
+			inherit inputs outputs system;
+			pkgs-stable = import nixpkgs-stable {
+				inherit system;
+				config.allowUnfree = true;
+			};
+		};
+
+		# Add pkgs.stable
 		overlay-stable = final: prev: {
 			stable = import nixpkgs-stable {
 				inherit system;
 				config.allowUnfree = true;
 			};
 		};
+
+		modify-pkgs = {
+			nixpkgs.overlays = [ overlay-stable ];
+			nixpkgs.config.allowUnfree = true;
+		};
 	in {
-		nixosConfigurations.fafnir = nixpkgs.lib.nixosSystem rec {
-			inherit system;
-			specialArgs = {
-				inherit inputs outputs system;
-			};
-			modules = [
-				# Make pkgs.stable available in configuration.nix and other files
-				{
-					nixpkgs = {
-						overlays = [ overlay-stable ]; 
-						config.allowUnfree = true;
-					};
-				}
+		nixosConfigurations.fafnir = mylib.nixosSystem {
+			inherit inputs lib system specialArgs username;
 
-				./modules/customs
-				./modules/nixos
-				./modules/devices
-				./hosts/fafnir/configuration.nix
+			nixos-modules = [ modify-pkgs ] ++
+				builtins.map mylib.relativeToRoot [
+					"modules/customs"
+					"modules/nixos"
+					"modules/devices"
+					"hosts/fafnir/configuration.nix"
+				];
 
-				# Allow the following users to add binary cache servers:
-				{
-					nix.settings.trusted-users = [ "unknown" ];
-				}
-
-				# Home-manager
-				home-manager.nixosModules.home-manager
-				{
-					home-manager.useGlobalPkgs = true;
-					home-manager.useUserPackages = true;
-					home-manager.extraSpecialArgs = specialArgs;
-
-					home-manager.users.unknown = import ./home/unknown.nix;
-				}
+			home-modules = builtins.map mylib.relativeToRoot [
+				"home/unknown.nix"
 			];
 		};
 	};
