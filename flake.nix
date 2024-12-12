@@ -33,7 +33,7 @@
 		username = "unknown";
 
 		specialArgs = {
-			inherit inputs outputs system;
+			inherit inputs outputs system mylib;
 			pkgs-stable = import nixpkgs-stable {
 				inherit system;
 				config.allowUnfree = true;
@@ -55,7 +55,6 @@
 	in {
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
-			inherit mylib;
 
 			nixos-modules = [ modify-pkgs ] ++
 				builtins.map mylib.relativeToRoot [

@@ -4,15 +4,10 @@ let
 in
 {
 	options.modules.shell-utils = {
-		enable = lib.mkEnableOption "all shell utils";
-		enableFishFunctions = lib.mkEnableOption "fish functions";
-		enableTmux = lib.mkEnableOption "tmux";
+		enable = lib.mkEnableOption "all shell utils" // { default = true; };
+		enableFishFunctions = lib.mkEnableOption "fish functions" // { default = true; };
+		enableTmux = lib.mkEnableOption "tmux" // { default = true; };
 	};
-
-	imports = [
-		./fish_functions.nix
-		./tmux.nix
-	];
 
 	config = lib.mkIf cfg.enable {
 		home.packages = [ pkgs.grc ];
