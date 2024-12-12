@@ -106,6 +106,5 @@
 	programs.command-not-found.enable = false;
 
 	# Enable Hyprland
-	programs.hyprland.enable = true;
-	programs.hyprland.package = inputs.hyprland.packages."${system}".hyprland;
+	modules.hyprland.enable = true;
 }
