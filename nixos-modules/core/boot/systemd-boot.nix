@@ -10,6 +10,12 @@ in
 			default = 7;
 			description = "The maximum number of boot configurations";
 		};
+
+		windows_dual_boot = lib.mkOption {
+			type = lib.types.nullOr lib.types.str;
+			default = null;
+			description = "The device handle for Windows EFI partition";
+		};
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -21,10 +27,10 @@ in
 
 				edk2-uefi-shell.enable = true;
 
-				windows."windows" = {
+				windows."windows" = lib.mkIf (cfg.windows_dual_boot != null) {
 					title = "Windows 11";
 					sortKey = "a_windows";
-					efiDeviceHandle = "HD0b";
+					efiDeviceHandle = cfg.windows_dual_boot;
 				};
 			};
 		};

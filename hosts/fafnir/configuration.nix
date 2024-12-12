@@ -29,6 +29,10 @@
 	# Include the laptop keyboard ID for KeyD
 	modules.keyd.keyboardIds = [ "048d:c966" ];
 
+	# Set Windows' device handle for systemd-boot
+	modules.systemd-boot.enable = true;
+	modules.systemd-boot.windows_dual_boot = "HD0b";
+
 	# Set the kernel version
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 

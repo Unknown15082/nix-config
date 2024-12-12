@@ -4,7 +4,6 @@
 		./bluetooth.nix
 		./sound.nix
 		./nvidia.nix
-		./systemd-boot.nix
 		./nh.nix
 		./input_method.nix
 		./gnome.nix
@@ -22,10 +21,6 @@
 		beta = lib.mkDefault true;
 		offload = lib.mkDefault true;
 		sync = lib.mkDefault false;
-	};
-
-	modules.systemd-boot = {
-		enable = lib.mkDefault true;
 	};
 
 	modules.nh.enable = lib.mkDefault true;
