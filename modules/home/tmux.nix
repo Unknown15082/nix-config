@@ -3,7 +3,7 @@ let
 	cfg = config.modules.shell-utils;
 in
 {
-	config = lib.mkIf cfg.enableTmux {
+	config = lib.mkIf cfg.enable {
 		programs.tmux = {
 			enable = true;
 

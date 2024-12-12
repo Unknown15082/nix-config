@@ -5,8 +5,6 @@ in
 {
 	options.modules.shell-utils = {
 		enable = lib.mkEnableOption "all shell utils" // { default = true; };
-		enableFishFunctions = lib.mkEnableOption "fish functions" // { default = true; };
-		enableTmux = lib.mkEnableOption "tmux" // { default = true; };
 	};
 
 	config = lib.mkIf cfg.enable {

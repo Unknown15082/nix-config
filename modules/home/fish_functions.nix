@@ -3,7 +3,7 @@ let
 	cfg = config.modules.shell-utils;
 in
 {
-	config = lib.mkIf cfg.enableFishFunctions {
+	config = lib.mkIf cfg.enable {
 		programs.fish.functions = {
 			nx = {
 				description = "Runs an app from the nixpkgs store";
