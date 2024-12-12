@@ -1,9 +1,6 @@
-{ inputs, outputs, osConfig, lib, pkgs, ... }:
-{
-	imports = [
-		../modules/home
-	];
 
+{ inputs, osConfig, lib, pkgs, ... }:
+{
 	home.username = "unknown";
 	home.homeDirectory = "/home/unknown";
 
@@ -30,7 +27,7 @@
 		# Other tools
 		openfortivpn		# Connecting with SoC VPN (NUS)
 		hugo				# Blog sites
-		zoom-us				# Zoom meetings
+		zoom-us		# Zoom meetings
 		zathura				# Viewing PDFs with VimTex
 		xournalpp			# Tablet sketching
 		obsidian				# Note-taking and tasks tracking

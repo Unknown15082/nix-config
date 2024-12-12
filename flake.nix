@@ -55,6 +55,7 @@
 	in {
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
+			inherit mylib;
 
 			nixos-modules = [ modify-pkgs ] ++
 				builtins.map mylib.relativeToRoot [
@@ -65,7 +66,8 @@
 				];
 
 			home-modules = builtins.map mylib.relativeToRoot [
-				"home/unknown.nix"
+				"modules/home"
+				"hosts/fafnir/home.nix"
 			];
 		};
 	};
