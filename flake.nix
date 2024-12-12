@@ -58,9 +58,8 @@
 
 			nixos-modules = [ modify-pkgs ] ++
 				builtins.map mylib.relativeToRoot [
-					"modules/customs"
 					"modules/nixos"
-					"modules/devices"
+					"nixos-modules"
 					"hosts/fafnir/configuration.nix"
 				];
 

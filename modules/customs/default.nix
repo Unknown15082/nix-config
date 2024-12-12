@@ -1,5 +1,0 @@
-{
-	imports = [
-		./pulse-cookie.nix
-	];
-}

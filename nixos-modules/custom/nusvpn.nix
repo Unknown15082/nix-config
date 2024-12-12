@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 with pkgs.python3Packages;
 let
 	pulse-cookie = buildPythonApplication rec {
@@ -29,10 +29,18 @@ let
 		DSID=$(${pulse-cookie}/bin/get-pulse-cookie -n DSID $HOST)
 		sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
 	'';
+
+	cfg = config.modules.nusvpn;
 in
 {
-	environment.systemPackages = with pkgs; [
-		openconnect
-		pulse-vpn	
-	];
+	options.modules.nusvpn = {
+		enable = lib.mkEnableOption "NUS VPN";
+	};
+
+	config = lib.mkIf cfg.enable {
+		environment.systemPackages = with pkgs; [
+			openconnect
+			pulse-vpn	
+		];
+	};
 }
