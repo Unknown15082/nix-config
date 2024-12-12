@@ -18,6 +18,14 @@ in
 			systemd-boot = {
 				enable = true;
 				configurationLimit = cfg.limit;
+
+				edk2-uefi-shell.enable = true;
+
+				windows."windows" = {
+					title = "Windows 11";
+					sortKey = "a_windows";
+					efiDeviceHandle = "HD0b";
+				};
 			};
 		};
 	};

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, osConfig, ... }:
 let
 	cfg = config.modules.hyprland;
 in
@@ -35,7 +35,7 @@ in
 					"QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 				] ++ (
 					lib.optionals 
-						config.modules.nvidia.enable
+						osConfig.modules.nvidia.enable
 						[
 							"GBM_BACKEND,nvidia-drm"
 							"__GLX_VENDOR_LIBRARY_NAME,nvidia"
