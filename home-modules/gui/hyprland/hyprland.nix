@@ -8,8 +8,6 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		programs.alacritty.enable = true;
-		programs.kitty.enable = true;
 		programs.fuzzel.enable = true;
 
 		wayland.windowManager.hyprland = {

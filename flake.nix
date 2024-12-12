@@ -22,6 +22,10 @@
 		hyprland = {
 			url = "github:hyprwm/Hyprland";
 		};
+
+		catppuccin = {
+			url = "github:catppuccin/nix";
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
@@ -56,14 +60,20 @@
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
-			nixos-modules = [ modify-pkgs ] ++
-				builtins.map mylib.relativeToRoot [
-					"modules/nixos"
-					"nixos-modules"
-					"hosts/fafnir/configuration.nix"
-				];
+			nixos-modules = [
+				modify-pkgs
+				inputs.catppuccin.nixosModules.catppuccin
+			]
+			++ builtins.map mylib.relativeToRoot [
+				"modules/nixos"
+				"nixos-modules"
+				"hosts/fafnir/configuration.nix"
+			];
 
-			home-modules = builtins.map mylib.relativeToRoot [
+			home-modules = [
+				inputs.catppuccin.homeManagerModules.catppuccin
+			]
+			++ builtins.map mylib.relativeToRoot [
 				"home-modules"
 				"hosts/fafnir/home.nix"
 			];
