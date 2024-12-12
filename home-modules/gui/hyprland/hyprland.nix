@@ -1,4 +1,4 @@
-{ lib, config, osConfig, ... }:
+{ lib, mylib, config, osConfig, ... }:
 let
 	cfg = config.modules.hyprland;
 in
@@ -14,7 +14,7 @@ in
 
 		wayland.windowManager.hyprland = {
 			enable = true;
-			extraConfig = builtins.readFile ../../configs/hypr/hyprland.conf;
+			extraConfig = builtins.readFile (mylib.relativeToRoot "configs/hypr/hyprland.conf");
 
 			settings = {
 				env = [
@@ -51,7 +51,7 @@ in
 		};
 
 		xdg.configFile."hypr/original.conf" = {
-			source = ../../configs/hypr/original.conf;
+			source = mylib.relativeToRoot "configs/hypr/original.conf";
 		};
 	};
 }

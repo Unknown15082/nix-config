@@ -65,7 +65,7 @@
 				];
 
 			home-modules = builtins.map mylib.relativeToRoot [
-				"modules/home"
+				"home-modules"
 				"hosts/fafnir/home.nix"
 			];
 		};
