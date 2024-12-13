@@ -1,4 +1,4 @@
-{ lib, osConfig, ... }:
+{ lib, osConfig, pkgs, ... }:
 let
 	cfg = osConfig.modules.keyring;
 in
@@ -8,5 +8,7 @@ in
 			enable = true;
 			components = [ "pkcs11" "secrets" "ssh" ];
 		};
+
+		home.packages = [ pkgs.seahorse ];
 	};
 }
