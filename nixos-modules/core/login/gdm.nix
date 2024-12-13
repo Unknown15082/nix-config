@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.gdm = {
-		enable = lib.mkEnableOption "GDM" // { default = true; };
+		enable = lib.mkEnableOption "GDM";
 		enableKeyring = lib.mkEnableOption "keyring" // { default = cfg.enable; };
 	};
 
