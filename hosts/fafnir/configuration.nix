@@ -101,6 +101,11 @@
 		};
 	};
 
+	# SSH
+	programs.ssh = {
+		startAgent = true;
+	};
+
 	# Disable command-not-found
 	programs.command-not-found.enable = false;
 
