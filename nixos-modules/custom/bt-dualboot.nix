@@ -22,12 +22,25 @@ let
 		};
 	};
 
+	cfg = config.modules.bluetooth;
+
 	bt-sync = pkgs.writeShellScriptBin "bt-sync" ''
-		${bt-dualboot}/bin/bt-dualboot --sync-all --no-backup
+		mount --mkdir /dev/${cfg.bt-sync.windows_partition} /mnt/win
+		${bt-dualboot}/bin/bt-dualboot --win /mnt/win --sync-all --no-backup
+		umount -R /mnt/win
 	'';
 in
 {
-	config = lib.mkIf config.modules.bluetooth.enable {
+	options.modules.bluetooth.bt-sync = {
+		enable = lib.mkEnableOption "Bluetooth dualboot script" // { default = cfg.enable; };
+
+		windows_partition = lib.mkOption {
+			type = lib.types.str;
+			description = "The partition of Windows' C: drive";
+		};
+	};
+
+	config = lib.mkIf cfg.bt-sync.enable {
 		environment.systemPackages = with pkgs; [
 			chntpw
 			bt-dualboot

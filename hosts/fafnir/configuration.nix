@@ -107,4 +107,7 @@
 
 	# Enable Hyprland
 	modules.hyprland.enable = true;
+
+	# Enable bt-sync
+	modules.bluetooth.bt-sync.windows_partition = "nvme0n1p3";
 }
