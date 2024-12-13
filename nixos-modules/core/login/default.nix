@@ -1,6 +1,6 @@
-{ mylib, ... }:
+{ lib, mylib, ... }:
 {
 	imports = mylib.scanPaths ./.;
 
-	modules.gdm.enable = true;
+	modules.gdm.enable = lib.mkDefault true;
 }
