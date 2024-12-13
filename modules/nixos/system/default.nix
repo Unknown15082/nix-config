@@ -1,7 +1,6 @@
 { lib, ... }:
 {
 	imports = [
-		./bluetooth.nix
 		./sound.nix
 		./nvidia.nix
 		./nh.nix
@@ -9,8 +8,6 @@
 		./gnome.nix
 	];
 
-	modules.bluetooth.enable = lib.mkDefault true;
-	
 	modules.sound = {
 		enable = lib.mkDefault true;
 		low-latency.enable = lib.mkDefault true;

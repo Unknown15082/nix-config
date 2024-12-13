@@ -4,13 +4,17 @@ let
 in
 {
 	options.modules.bluetooth = {
-		enable = lib.mkEnableOption "Enable Bluetooth";
+		enable = lib.mkEnableOption "Enable Bluetooth" // { default = true; };
 	};
 
 	config = lib.mkIf cfg.enable {
 		# Enable Bluetooth
 		hardware.bluetooth.enable = true;
 		hardware.bluetooth.powerOnBoot = true;
+
+		# Enable Blueman,
+		# which provides blueman-applet and blueman-manager
+		services.blueman.enable = true;
 
 		# Enable extra codecs for Bluetooth
 		services.pipewire.wireplumber.extraConfig = {
@@ -26,4 +30,3 @@ in
 		hardware.bluetooth.settings.General.Experimental = true;
 	};
 }
-
