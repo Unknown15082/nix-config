@@ -1,6 +1,7 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, username, ... }:
 let
 	cfg = config.modules.keyring;
+	uid = config.users.users.${username}.uid;
 in
 {
 	options.modules.keyring = {
@@ -12,5 +13,9 @@ in
 		environment.systemPackages = [ pkgs.libsecret ];
 		services.dbus.packages = [ pkgs.seahorse ];
 		programs.seahorse.enable = true;
+
+		environment.sessionVariables = {
+			SSH_AUTH_SOCK = "/run/user/${builtins.toString uid}/keyring/ssh";
+		};
 	};
 }

@@ -46,6 +46,7 @@
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.unknown = {
 		isNormalUser = true;
+		uid = 1000;
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
 	};

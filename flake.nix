@@ -37,7 +37,7 @@
 		username = "unknown";
 
 		specialArgs = {
-			inherit inputs outputs system mylib;
+			inherit inputs outputs system mylib username;
 			pkgs-stable = import nixpkgs-stable {
 				inherit system;
 				config.allowUnfree = true;
