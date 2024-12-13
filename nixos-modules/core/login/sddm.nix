@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.sddm = {
-		enable = lib.mkEnableOption "SDDM" // { default = true; };
+		enable = lib.mkEnableOption "SDDM";
 		enableKeyring = lib.mkEnableOption "keyring" // { default = cfg.enable; };
 	};
 
