@@ -42,7 +42,10 @@ in
 				);
 			};
 
-			systemd.enable = false;
+			systemd = {
+				enable = true;
+				variables = [ "--all" ];
+			};
 		};
 
 		xdg.configFile."hypr/original.conf" = {
