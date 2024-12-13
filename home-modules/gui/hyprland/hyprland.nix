@@ -43,7 +43,7 @@ in
 			};
 
 			systemd = {
-				enable = true;
+				enable = !osConfig.programs.hyprland.withUWSM;
 				variables = [ "--all" ];
 			};
 		};
