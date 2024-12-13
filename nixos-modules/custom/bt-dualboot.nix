@@ -21,12 +21,17 @@ let
 			license = licenses.mit;
 		};
 	};
+
+	bt-sync = pkgs.writeShellScriptBin "bt-sync" ''
+		${bt-dualboot}/bin/bt-dualboot --sync-all --no-backup
+	'';
 in
 {
 	config = lib.mkIf config.modules.bluetooth.enable {
 		environment.systemPackages = with pkgs; [
 			chntpw
 			bt-dualboot
+			bt-sync
 		];
 	};
 }
