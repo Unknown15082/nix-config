@@ -11,5 +11,6 @@ in
 		services.gnome.gnome-keyring.enable = true;
 		environment.systemPackages = [ pkgs.libsecret ];
 		services.dbus.packages = [ pkgs.seahorse ];
+		programs.seahorse.enable = true;
 	};
 }
