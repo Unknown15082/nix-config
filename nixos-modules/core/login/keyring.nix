@@ -8,6 +8,7 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
+		services.gnome.gnome-keyring.enable = true;
 		programs.seahorse.enable = true;
 		environment.systemPackages = [ pkgs.libsecret ];
 	};
