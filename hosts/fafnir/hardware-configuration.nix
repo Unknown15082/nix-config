@@ -17,13 +17,13 @@
 	# Declare the filesystem
 
 	fileSystems."/" =
-	{ device = "/dev/disk/by-uuid/c98f7040-8367-409c-b5a3-e2f6d525afce";
+	{ 	device = "/dev/disk/by-uuid/b5c0a56f-f40f-41d5-8168-994c6ebcb428";
 		fsType = "btrfs";
 		options = [ "subvol=@" ];
 	};
 
 	fileSystems."/boot" =
-	{ device = "/dev/disk/by-uuid/D05C-3895";
+	{ 	device = "/dev/disk/by-uuid/68E6-4D5A";
 		fsType = "vfat";
 		options = [ "fmask=0022" "dmask=0022" ];
 	};
