@@ -26,6 +26,11 @@ in
 					"Groups/0/Items/0" = { "Name" = "keyboard-us-altgr-intl"; };
 					"Groups/0/Items/1" = { "Name" = "bamboo"; };
 				};
+
+				catppuccin = {
+					enable = true;
+					flavor = "mocha";
+				};
 			};
 		};
 
