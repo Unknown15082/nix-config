@@ -59,6 +59,6 @@
 	fileSystems."/mnt/osu" = {
 		device = "/dev/disk/by-uuid/5CAC7A9EAC7A727E";
 		fsType = "ntfs-3g";
-		options = [ "rw" ];
+		options = [ "rw" "uid=1000" ];
 	};
 }
