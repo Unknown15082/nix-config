@@ -26,6 +26,11 @@
 		catppuccin = {
 			url = "github:catppuccin/nix";
 		};
+
+		nix-gaming = {
+			url = "github:fufexan/nix-gaming";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let

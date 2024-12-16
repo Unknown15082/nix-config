@@ -47,4 +47,7 @@
 			];
 		};
 	};
+
+	# Enable osu!stable
+	modules.games.osu.enable = true;
 }
