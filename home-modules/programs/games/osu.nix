@@ -9,7 +9,9 @@ in
 
 	config = lib.mkIf cfg.enable {
 		home.packages = [
-			inputs.nix-gaming.packages.${system}.osu-stable
+			(inputs.nix-gaming.packages.${system}.osu-stable.override {
+				location = "/mnt/osu/.osu";
+			})
 		];
 	};
 }
