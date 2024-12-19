@@ -82,6 +82,7 @@
 
 			home-modules = [
 				inputs.catppuccin.homeManagerModules.catppuccin
+				inputs.stylix.homeManagerModules.stylix
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"home-modules"
