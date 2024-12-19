@@ -8,7 +8,7 @@ in
 			enable = true;
 			settings = {
 				font = {
-					size = 14;
+					size = lib.mkForce 14;
 					bold = {
 						family = "JetBrainsMono Nerd Font Mono";
 						style = "Bold";
@@ -32,13 +32,10 @@ in
 
 				env.TERM = "xterm-256color";
 
+				window.decorations_theme_variant = "Dark";
+
 				# Custom catppuccin-mocha color override
 				colors.primary.background = lib.mkForce "#000000";
-			};
-
-			catppuccin = {
-				enable = true;
-				flavor = "mocha";
 			};
 		};
 	};
