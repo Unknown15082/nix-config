@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.hyprland = {
-		enable = lib.mkEnableOption "Hyprland" // { default = true; };
+		enable = mylib.mkEnableTrueOption "Hyprland";
 	};
 
 	config = lib.mkIf cfg.enable {

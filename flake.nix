@@ -31,6 +31,10 @@
 			url = "github:fufexan/nix-gaming";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		stylix = {
+			url = "github:danth/stylix";
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
@@ -68,6 +72,7 @@
 			nixos-modules = [
 				modify-pkgs
 				inputs.catppuccin.nixosModules.catppuccin
+				inputs.stylix.nixosModules.stylix
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"modules/nixos"

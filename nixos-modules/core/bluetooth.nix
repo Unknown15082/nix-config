@@ -1,10 +1,10 @@
-{ lib, config, ... }:
+{ lib, mylib, config, ... }:
 let
 	cfg = config.modules.bluetooth;
 in
 {
 	options.modules.bluetooth = {
-		enable = lib.mkEnableOption "Enable Bluetooth" // { default = true; };
+		enable = mylib.mkEnableTrueOption "Enable Bluetooth";
 	};
 
 	config = lib.mkIf cfg.enable {
