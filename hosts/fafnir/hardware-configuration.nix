@@ -18,13 +18,13 @@
 	# Declare the filesystem
 
 	fileSystems."/" =
-	{ 	device = "/dev/disk/by-uuid/b5c0a56f-f40f-41d5-8168-994c6ebcb428";
+	{ 	device = "/dev/disk/by-label/NixOS";
 		fsType = "btrfs";
 		options = [ "subvol=@" ];
 	};
 
 	fileSystems."/boot" =
-	{ 	device = "/dev/disk/by-uuid/68E6-4D5A";
+	{ 	device = "/dev/disk/by-label/BOOT";
 		fsType = "vfat";
 		options = [ "fmask=0022" "dmask=0022" ];
 	};
@@ -57,8 +57,14 @@
 
 	# Mount additional partitions
 	fileSystems."/mnt/osu" = {
-		device = "/dev/disk/by-uuid/5CAC7A9EAC7A727E";
-		fsType = "ntfs-3g";
+		device = "/dev/disk/by-label/osu";
+		fsType = "ntfs";
+		options = [ "rw" "uid=1000" ];
+	};
+
+	fileSystems."/mnt/data" = {
+		device = "/dev/disk/by-label/Data";
+		fsType = "ntfs";
 		options = [ "rw" "uid=1000" ];
 	};
 }
