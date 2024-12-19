@@ -28,16 +28,7 @@ in
 			image = wallpaper;
 			polarity = "dark";
 
-			fonts = {
-				monospace = {
-					package = pkgs.nerd-fonts.jetbrains-mono;
-					name = "JetBrainsMono Nerd Font Mono";
-				};
-
-				sizes = {
-					terminal = 14;
-				};
-			};
+			autoEnable = false;
 		};
 	};
 }
