@@ -20,7 +20,7 @@
 	fileSystems."/" =
 	{ 	device = "/dev/disk/by-label/NixOS";
 		fsType = "btrfs";
-		options = [ "subvol=@" ];
+		options = [ "subvol=@" "compress=zstd" ];
 	};
 
 	fileSystems."/boot" =
