@@ -32,10 +32,13 @@ in
 
 				env.TERM = "xterm-256color";
 
-				window.decorations_theme_variant = "Dark";
-
 				# Custom catppuccin-mocha color override
 				colors.primary.background = lib.mkForce "#000000";
+			};
+
+			catppuccin = {
+				enable = true;
+				flavor = "mocha";
 			};
 		};
 	};
