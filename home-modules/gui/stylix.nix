@@ -6,6 +6,7 @@ in
 	config = lib.mkIf cfg.enable {
 		stylix.targets = {
 			fish.enable = false;
+			rofi.enable = false;
 		};
 	};
 }

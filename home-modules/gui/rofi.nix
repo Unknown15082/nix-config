@@ -13,6 +13,8 @@ in
 			package = pkgs.rofi-wayland;
 
 			terminal = "${pkgs.alacritty}/bin/alacritty";
+
+			theme = mylib.relativeToRoot "configs/rofi/launcher.rasi";
 		};
 	};
 }
