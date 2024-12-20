@@ -3,13 +3,7 @@ let
 	cfg = config.modules.stylix;
 
 	theme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-	rawWallpaper = mylib.relativeToRoot "configs/wallpaper/NeutronStar.jpg";
-
-	wallpaper = pkgs.runCommand "wallpaper.png" {} ''
-		COLOR=$(${pkgs.yq}/bin/yq -r .base03 ${theme})
-		COLOR="#"$COLOR
-		${pkgs.imagemagick}/bin/magick ${rawWallpaper} $out
-	'';
+	wallpaper = mylib.relativeToRoot "configs/wallpaper/wallpaper.png";
 in
 {
 	options.modules.stylix = {

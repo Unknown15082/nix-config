@@ -1,4 +1,4 @@
-{ lib, mylib, config, osConfig, ... }:
+{ lib, mylib, config, osConfig, pkgs, ... }:
 let
 	cfg = config.modules.hyprland;
 in
@@ -15,6 +15,8 @@ in
 				border.width = 3;
 			};
 		};
+
+		home.packages = with pkgs; [ hyprpaper ];
 
 		wayland.windowManager.hyprland = {
 			enable = true;
