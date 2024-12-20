@@ -4,11 +4,8 @@ let
 in
 {
 	config = lib.mkIf cfg.enable {
-		stylix = {
-			enable = true;
-			autoEnable = false;
-
-			targets.alacritty.enable = false;
+		stylix.targets = {
+			fish.enable = false;
 		};
 	};
 }

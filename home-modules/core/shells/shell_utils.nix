@@ -22,6 +22,11 @@ in
 					{ name = "grc"; src = grc.src; }
 					{ name = "pure"; src = pure.src; }
 				];
+
+				catppuccin = {
+					enable = true;
+					flavor = "mocha";
+				};
 			};
 
 			eza = {

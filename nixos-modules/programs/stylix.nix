@@ -31,7 +31,32 @@ in
 			image = wallpaper;
 			polarity = "dark";
 
-			autoEnable = false;
+			cursor = {
+				name = "Bibata-Modern-Ice";
+				package = pkgs.bibata-cursors;
+				size = 24;
+			};
+
+			fonts = {
+				monospace = {
+					name = "JetBrainsMono Nerd Font Mono";
+					package = pkgs.nerd-fonts.jetbrains-mono;
+				};
+
+				serif = {
+					name = "DejaVu Serif";
+					package = pkgs.dejavu_fonts;
+				};
+
+				sansSerif = {
+					name = "DejaVu Sans";
+					package = pkgs.dejavu_fonts;
+				};
+
+				sizes = {
+					terminal = 14;
+				};
+			};
 		};
 	};
 }
