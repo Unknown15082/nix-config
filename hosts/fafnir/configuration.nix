@@ -93,6 +93,7 @@
 	fonts.packages = with pkgs; [
 		jetbrains-mono
 		nerd-fonts.jetbrains-mono
+		dejavu_fonts
 	];
 
 	# Enable GPG

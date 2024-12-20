@@ -26,7 +26,7 @@ in
 
 			base16Scheme = theme;
 			override = {
-				base00 = "000000";
+				base00 = "#000000";
 			};
 			image = wallpaper;
 			polarity = "dark";
@@ -43,14 +43,16 @@ in
 					package = pkgs.nerd-fonts.jetbrains-mono;
 				};
 
-				serif = {
-					name = "DejaVu Serif";
-					package = pkgs.dejavu_fonts;
-				};
-
 				sansSerif = {
 					name = "DejaVu Sans";
 					package = pkgs.dejavu_fonts;
+				};
+
+				serif = config.stylix.fonts.sansSerif;
+
+				emoji = {
+					name = "Noto Color Emoji";
+					package = pkgs.noto-fonts-emoji;
 				};
 
 				sizes = {
