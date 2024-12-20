@@ -31,7 +31,6 @@ in
 				};
 
 				env.TERM = "xterm-256color";
-				colors.draw_bold_text_with_bright_colors = true;
 
 				# Custom catppuccin-mocha color override
 				colors.primary.background = lib.mkForce "#000000";

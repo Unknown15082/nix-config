@@ -2,7 +2,7 @@
 let
 	cfg = config.modules.stylix;
 
-	theme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+	theme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 	rawWallpaper = mylib.relativeToRoot "configs/wallpaper/NeutronStar.jpg";
 
 	wallpaper = pkgs.runCommand "wallpaper.png" {} ''
@@ -25,6 +25,9 @@ in
 			};
 
 			base16Scheme = theme;
+			override = {
+				base00 = "000000";
+			};
 			image = wallpaper;
 			polarity = "dark";
 

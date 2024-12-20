@@ -8,11 +8,7 @@ in
 			enable = true;
 			autoEnable = false;
 
-			targets.hyprland = {
-				enable = true;
-				hyprpaper.enable = true;
-			};
-			targets.hyprpaper.enable = true;
+			targets.alacritty.enable = false;
 		};
 	};
 }
