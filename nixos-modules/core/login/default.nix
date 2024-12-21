@@ -2,5 +2,5 @@
 {
 	imports = mylib.scanPaths ./.;
 
-	modules.gdm.enable = lib.mkDefault true;
+	modules.sddm.enable = lib.mkDefault true;
 }
