@@ -50,6 +50,7 @@
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
 	};
+	time.timeZone = "Asia/Ho_Chi_Minh";
 
 	# Enable flakes and the new Nix CLI
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -116,4 +117,8 @@
 
 	# Enable stylix
 	modules.stylix.enable = true;
+
+	# Enable automatic timezone
+	# services.automatic-timezoned.enable = true;
+	# services.avahi.enable = true;
 }
