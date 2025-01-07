@@ -19,22 +19,19 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		hyprland = {
-			url = "github:hyprwm/Hyprland";
-		};
-
-		catppuccin = {
-			url = "github:catppuccin/nix";
-		};
-
 		nix-gaming = {
 			url = "github:fufexan/nix-gaming";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		stylix = {
-			url = "github:danth/stylix";
+		nvf = {
+			url = "github:notashelf/nvf";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		hyprland.url = "github:hyprwm/Hyprland";
+		catppuccin.url = "github:catppuccin/nix";
+		stylix.url = "github:danth/stylix";
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
@@ -65,7 +62,14 @@
 			nixpkgs.overlays = [ overlay-stable ];
 			nixpkgs.config.allowUnfree = true;
 		};
+
+		customNvf = inputs.nvf.lib.neovimConfiguration {
+			pkgs = nixpkgs.legacyPackages.${system};
+			modules = [ (mylib.relativeToRoot "configs/nvf") ];
+		};
 	in {
+		packages.${system}.nvf = customNvf.neovim;
+
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
