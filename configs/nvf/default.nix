@@ -1,6 +1,6 @@
+{ mylib, ... }:
 {
-	config.vim = {
-		viAlias = true;
-		vimAlias = true;
-	};
+	imports = [
+		./general.nix
+	];
 }

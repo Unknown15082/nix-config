@@ -64,8 +64,10 @@
 		};
 
 		customNvf = inputs.nvf.lib.neovimConfiguration {
-			pkgs = nixpkgs.legacyPackages.${system};
-			modules = [ (mylib.relativeToRoot "configs/nvf") ];
+			inherit (nixpkgs.legacyPackages.${system}) pkgs;
+			modules = [
+				(mylib.relativeToRoot "configs/nvf")
+			];
 		};
 	in {
 		packages.${system}.nvf = customNvf.neovim;
