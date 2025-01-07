@@ -22,11 +22,6 @@ in
 					{ name = "grc"; src = grc.src; }
 					{ name = "pure"; src = pure.src; }
 				];
-
-				catppuccin = {
-					enable = true;
-					flavor = "mocha";
-				};
 			};
 
 			eza = {
@@ -45,6 +40,13 @@ in
 				enable = true;
 				nix-direnv.enable = true;
 				silent = true;
+			};
+		};
+
+		catppuccin = {
+			fish = {
+				enable = true;
+				flavor = "mocha";
 			};
 		};
 	};

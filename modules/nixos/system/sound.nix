@@ -17,7 +17,7 @@ in
 
 	config = lib.mkIf cfg.enable {
 		# Disable pulseaudio
-		hardware.pulseaudio.enable = false;
+		services.pulseaudio.enable = false;
 
 		# Enable rtkit
 		security.rtkit.enable = true;

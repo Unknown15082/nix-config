@@ -26,12 +26,12 @@ in
 					"Groups/0/Items/0" = { "Name" = "keyboard-us-altgr-intl"; };
 					"Groups/0/Items/1" = { "Name" = "bamboo"; };
 				};
-
-				catppuccin = {
-					enable = true;
-					flavor = "mocha";
-				};
 			};
+		};
+
+		catppuccin.fcitx5 = {
+			enable = true;
+			flavor = "mocha";
 		};
 
 		environment.systemPackages = with pkgs.gnomeExtensions; [ kimpanel ];
