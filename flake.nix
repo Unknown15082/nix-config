@@ -24,8 +24,8 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		nvf = {
-			url = "github:notashelf/nvf";
+		custom-nvf = {
+			url = "github:Unknown15082/custom-nvf";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -62,15 +62,8 @@
 			nixpkgs.overlays = [ overlay-stable ];
 			nixpkgs.config.allowUnfree = true;
 		};
-
-		customNvf = inputs.nvf.lib.neovimConfiguration {
-			inherit (nixpkgs.legacyPackages.${system}) pkgs;
-			modules = [
-				(mylib.relativeToRoot "configs/nvf")
-			];
-		};
 	in {
-		packages.${system}.nvf = customNvf.neovim;
+		packages.${system}.nvf = inputs.custom-nvf.packages.${system}.nvf;
 
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;

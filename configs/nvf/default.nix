@@ -1,6 +1,0 @@
-{ mylib, ... }:
-{
-	imports = [
-		./general.nix
-	];
-}
