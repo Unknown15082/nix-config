@@ -49,5 +49,7 @@
 	};
 
 	# Enable osu!stable
-	modules.games.osu.enable = true;
+	# Currently wine-osu is failing to build, see:
+	# https://github.com/fufexan/nix-gaming/issues/229
+	modules.games.osu.enable = false;
 }
