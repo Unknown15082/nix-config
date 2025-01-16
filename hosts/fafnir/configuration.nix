@@ -50,7 +50,7 @@
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
 	};
-	time.timeZone = "Asia/Ho_Chi_Minh";
+	time.timeZone = "Asia/Singapore";
 
 	# Enable flakes and the new Nix CLI
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
