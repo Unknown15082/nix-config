@@ -31,6 +31,7 @@
 		zathura				# Viewing PDFs with VimTex
 		xournalpp			# Tablet sketching
 		obsidian				# Note-taking and tasks tracking
+		gparted
 
 		# Coding stuff
 		# TODO: Move to specific devshells

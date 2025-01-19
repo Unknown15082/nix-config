@@ -1,4 +1,4 @@
-{ inputs, lib, config, system, ... }:
+{ inputs, lib, config, system, pkgs, ... }:
 let
 	cfg = config.modules.hyprland;
 in
@@ -13,5 +13,9 @@ in
 			package = inputs.hyprland.packages."${system}".hyprland;
 			withUWSM = true;
 		};
+
+		environment.systemPackages = with pkgs; [
+			hyprpolkitagent
+		];
 	};
 }

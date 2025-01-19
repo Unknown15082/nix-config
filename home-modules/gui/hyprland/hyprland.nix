@@ -16,7 +16,9 @@ in
 		# 	};
 		# };
 
-		home.packages = with pkgs; [ hyprpaper ];
+		home.packages = with pkgs; [
+			hyprpaper
+		];
 
 		wayland.windowManager.hyprland = {
 			enable = true;
