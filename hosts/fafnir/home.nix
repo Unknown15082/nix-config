@@ -32,6 +32,11 @@
 		xournalpp			# Tablet sketching
 		obsidian				# Note-taking and tasks tracking
 
+		# Coding stuff
+		# TODO: Move to specific devshells
+		jetbrains.idea-community-bin
+		jdk
+
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
 	];
