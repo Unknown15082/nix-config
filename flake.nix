@@ -24,11 +24,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		custom-nvf = {
-			url = "github:Unknown15082/custom-nvf";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		stylix.url = "github:danth/stylix";
@@ -63,8 +58,6 @@
 			nixpkgs.config.allowUnfree = true;
 		};
 	in {
-		packages.${system}.nvf = inputs.custom-nvf.packages.${system}.nvf;
-
 		nixosConfigurations.fafnir = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
