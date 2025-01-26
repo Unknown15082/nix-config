@@ -121,4 +121,9 @@
 	# Enable automatic timezone
 	# services.automatic-timezoned.enable = true;
 	# services.avahi.enable = true;
+
+	# Enable postgresql
+	services.postgresql = {
+		enable = true;
+	};
 }
