@@ -21,6 +21,7 @@ in
 	config = lib.mkIf cfg.enable {
 		boot.loader = {
 			efi.canTouchEfiVariables = true;
+			timeout = 60;
 			systemd-boot = {
 				enable = true;
 				configurationLimit = cfg.limit;
