@@ -9,9 +9,7 @@ in
 
 	config = lib.mkIf cfg.enable {
 		home.packages = [
-			(inputs.nix-gaming.packages.${system}.osu-stable.override {
-				location = "/mnt/osu/.osu";
-			})
+			inputs.nix-gaming.packages.${system}.osu-lazer-bin
 		];
 	};
 }
