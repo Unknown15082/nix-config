@@ -50,7 +50,6 @@
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
 	};
-	time.timeZone = "Asia/Singapore";
 
 	# Enable flakes and the new Nix CLI
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -119,8 +118,12 @@
 	modules.stylix.enable = true;
 
 	# Enable automatic timezone
-	# services.automatic-timezoned.enable = true;
-	# services.avahi.enable = true;
+	# time.timeZone = "Asia/Singapore";
+	services.automatic-timezoned.enable = true;
+	services.avahi.enable = true;
+	services.geoclue2 = {
+		geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+	};
 
 	# Enable postgresql
 	services.postgresql = {
