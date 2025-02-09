@@ -18,6 +18,7 @@ in
 
 		home.packages = with pkgs; [
 			hyprpaper
+			grimblast
 		];
 
 		wayland.windowManager.hyprland = {

@@ -23,6 +23,9 @@
 		duf
 		ripgrep
 		lazygit
+		fd
+		unzip
+		bat
 
 		# Other tools
 		openfortivpn		# Connecting with SoC VPN (NUS)
@@ -32,6 +35,7 @@
 		xournalpp			# Tablet sketching
 		obsidian				# Note-taking and tasks tracking
 		gparted
+		mpv
 
 		# Coding stuff
 		# TODO: Move to specific devshells
