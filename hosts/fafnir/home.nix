@@ -1,4 +1,3 @@
-
 { inputs, osConfig, lib, pkgs, ... }:
 {
 	home.username = "unknown";
@@ -15,17 +14,6 @@
 		gcc
 		wl-clipboard
 		gnupg
-
-		# Modern Unix tools
-		fastfetch
-		btop
-		dust
-		duf
-		ripgrep
-		lazygit
-		fd
-		unzip
-		bat
 
 		# Other tools
 		openfortivpn		# Connecting with SoC VPN (NUS)

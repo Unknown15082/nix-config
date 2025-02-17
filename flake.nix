@@ -80,5 +80,25 @@
 				"hosts/fafnir/home.nix"
 			];
 		};
+
+		nixosConfigurations.customISO = mylib.nixosSystem {
+			inherit inputs lib system specialArgs;
+			username = "nixos";
+
+			nixos-modules = [
+				modify-pkgs
+			] ++ builtins.map mylib.relativeToRoot [
+				"nixos-modules/core/bluetooth.nix"
+				"nixos-modules/programs/automatic-timezoned.nix"
+				"hosts/isoimage/configuration.nix"
+			];
+
+			home-modules = [
+				inputs.catppuccin.homeManagerModules.catppuccin
+			] ++ builtins.map mylib.relativeToRoot [
+				"home-modules/core/shells"
+				"hosts/isoimage/home.nix"
+			];
+		};
 	};
 }

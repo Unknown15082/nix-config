@@ -117,14 +117,6 @@
 	# Enable stylix
 	modules.stylix.enable = true;
 
-	# Enable automatic timezone
-	# time.timeZone = "Asia/Singapore";
-	services.automatic-timezoned.enable = true;
-	services.avahi.enable = true;
-	services.geoclue2 = {
-		geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
-	};
-
 	# Enable postgresql
 	services.postgresql = {
 		enable = true;
