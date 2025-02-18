@@ -8,7 +8,6 @@
 		];
 
 	# List of kernel modules
-
 	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [ "kvm-amd" ];
@@ -16,7 +15,6 @@
 	boot.supportedFilesystems = [ "btrfs" "ntfs" ];
 
 	# Declare the filesystem
-
 	fileSystems."/" =
 	{ 	device = "/dev/disk/by-label/NixOS";
 		fsType = "btrfs";
@@ -30,19 +28,16 @@
 	};
 
 	# Add a 8GB swapfile
-
 	swapDevices = [ {
 		device = "/swapfile";
 		size = 8 * 1024; # 8GB
 	} ];
 
 	# Other hardware values
-
 	networking.useDHCP = lib.mkDefault true;
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
 	# Enable microcode update
-
 	hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
 

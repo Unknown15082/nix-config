@@ -37,7 +37,14 @@
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 
 	# Enable networking
-	networking.networkmanager.enable = true;
+	networking.networkmanager = {
+		enable = true;
+		insertNameservers = [
+			# Google
+			"8.8.8.8"
+			"8.8.4.4"
+		];
+	};
 
 	# Enable fish shell
 	programs.fish.enable = true;
