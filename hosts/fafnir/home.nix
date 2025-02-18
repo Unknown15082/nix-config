@@ -1,7 +1,7 @@
-{ inputs, osConfig, lib, pkgs, ... }:
+{ inputs, osConfig, lib, pkgs, username, ... }:
 {
-	home.username = "unknown";
-	home.homeDirectory = "/home/unknown";
+	home.username = "${username}";
+	home.homeDirectory = "/home/${username}";
 
 	home.stateVersion = "23.11";
 	programs.home-manager.enable = true;

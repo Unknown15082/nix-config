@@ -24,6 +24,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		disko = {
+			url = "github:nix-community/disko/latest";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		stylix.url = "github:danth/stylix";
@@ -38,7 +43,7 @@
 		username = "unknown";
 
 		specialArgs = {
-			inherit inputs outputs system mylib username;
+			inherit outputs mylib;
 			pkgs-stable = import nixpkgs-stable {
 				inherit system;
 				config.allowUnfree = true;
