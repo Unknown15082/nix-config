@@ -114,5 +114,16 @@
 				"hosts/isoimage/minimal.nix"
 			];
 		};
+
+		nixosConfigurations.digitalOcean = mylib.nixosSystem {
+			inherit inputs lib system specialArgs username;
+
+			nixos-modules = [
+				modify-pkgs
+				inputs.disko.nixosModules.disko
+			] ++ builtins.map mylib.relativeToRoot [
+				"hosts/digitalocean/configuration.nix"
+			];
+		};
 	};
 }
