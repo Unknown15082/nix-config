@@ -21,7 +21,7 @@
 	# SSH
 	services.openssh.enable = true;
 	systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
-	users.users.root.openssh.authorizedKeys.keys = [
+	users.users.nixos.openssh.authorizedKeys.keys = [
 		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPPZG7cZYt6YbE1/sQsAXGKpK22+CIOBe8L6LTZwYCSR .iso-only SSH key"
 	];
 	security.sudo.wheelNeedsPassword = false;
