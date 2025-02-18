@@ -105,5 +105,14 @@
 				"hosts/isoimage/home.nix"
 			];
 		};
+
+		nixosConfigurations.minimalISO = mylib.nixosSystem {
+			inherit inputs lib system specialArgs;
+			username = "nixos";
+
+			nixos-modules = builtins.map mylib.relativeToRoot [
+				"hosts/isoimage/minimal.nix"
+			];
+		};
 	};
 }
