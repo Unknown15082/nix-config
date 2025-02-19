@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, mylib, ... }:
 {
 	imports = [
 		./hardware-configuration.nix
@@ -32,6 +32,22 @@
 		dockerCompat = true;
 		defaultNetwork.settings.dns_enabled = true;
 	};
+
+	# Enable Caddy
+	services.caddy = {
+		enable = true;
+		package = pkgs.caddy.withPlugins {
+			plugins = [ "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e" ];
+			hash = "sha256-JVkUkDKdat4aALJHQCq1zorJivVCdyBT+7UhqTvaFLw=";
+		};
+		environmentFile = "/etc/secrets/caddy.env"; # TODO: Move to agenix later
+		globalConfig = ''
+			acme_dns cloudflare {$CF_API_TOKEN}
+		'';
+		extraConfig = builtins.readFile (mylib.relativeToRoot "configs/ifrit/Caddyfile");
+	};
+	networking.firewall.allowedTCPPorts = [ 80 443 ];
+	networking.firewall.allowedUDPPorts = [ 80 443 ];
 
 	system.stateVersion = "23.11";
 }
