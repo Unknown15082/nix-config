@@ -5,9 +5,6 @@
 		./hardware-configuration.nix
 	];
 
-	# Binary caches
-	nix.binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ];
-
 	# Disko
 	disko.devices.disk.main.device = "/dev/vda";
 
