@@ -106,14 +106,13 @@
 			];
 		};
 
-		nixosConfigurations.digitalOcean = mylib.nixosSystem {
+		nixosConfigurations.ifrit = mylib.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
 			nixos-modules = [
 				modify-pkgs
-				inputs.disko.nixosModules.disko
 			] ++ builtins.map mylib.relativeToRoot [
-				"hosts/digitalocean/configuration.nix"
+				"hosts/ifrit/configuration.nix"
 			];
 		};
 	};
