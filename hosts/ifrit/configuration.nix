@@ -39,6 +39,7 @@
 		enableCloudflare = true;
 		domainName = "huytrangia.dev";
 		services = {
+			index.enable = true;
 			test.enable = true;
 		};
 	};
