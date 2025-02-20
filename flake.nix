@@ -113,6 +113,7 @@
 				modify-pkgs
 			] ++ builtins.map mylib.relativeToRoot [
 				"hosts/ifrit/configuration.nix"
+				"nixos-modules/selfhost"
 			];
 		};
 	};
