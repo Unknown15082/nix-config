@@ -105,4 +105,24 @@
 	services.postgresql = {
 		enable = true;
 	};
+
+	# Enable Vietnamese input method
+	modules.input-method.vietnamese.enable = true;
+
+	# Enable Nvidia
+	modules.nvidia = {
+		enable = true;
+		beta = true;
+		offload = true;
+		sync = false;
+	};
+
+	# Enable sound server
+	modules.sound = {
+		enable = true;
+		low-latency.enable = true;
+	};
+
+	# Enable nh (nix helper)
+	modules.nh.enable = true;
 }

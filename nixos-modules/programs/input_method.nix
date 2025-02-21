@@ -34,6 +34,6 @@ in
 			flavor = "mocha";
 		};
 
-		environment.systemPackages = with pkgs.gnomeExtensions; [ kimpanel ];
+		environment.systemPackages = lib.optionals config.modules.gnome.enable [ pkgs.gnomeExtensions.kimpanel ];
 	};
 }
