@@ -17,5 +17,7 @@ in
 				makeDesktopItem = makeNvidiaDesktopItem;
 			})
 		];
+
+		modules.games.enableBinaryCache = true;
 	};
 }

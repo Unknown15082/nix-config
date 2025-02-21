@@ -70,6 +70,7 @@
 				modify-pkgs
 				inputs.catppuccin.nixosModules.catppuccin
 				inputs.stylix.nixosModules.stylix
+				inputs.nix-index-database.nixosModules.nix-index
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"modules/nixos"

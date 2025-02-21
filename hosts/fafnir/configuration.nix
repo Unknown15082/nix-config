@@ -12,9 +12,6 @@
 
 		# Include laptop-specific configs
 		./laptop.nix
-
-		# Add nix-index-database
-		inputs.nix-index-database.nixosModules.nix-index
 	];
 
 	# Enable specific configs for local devices
@@ -46,6 +43,9 @@
 		];
 	};
 
+	# Enable some nix settings
+	modules.nix-settings.enable = true;
+
 	# Enable fish shell
 	programs.fish.enable = true;
 	users.defaultUserShell = pkgs.fish;
@@ -56,29 +56,6 @@
 		uid = 1000;
 		description = "Unknown";
 		extraGroups = [ "networkmanager" "wheel" "docker" ];
-	};
-
-	# Enable flakes and the new Nix CLI
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-	# Set Nix PATH for nixd
-	nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-	# Auto-optimize Nix store
-	nix.settings.auto-optimise-store = true;
-
-	# Enable binary caches
-	nix.settings = {
-		substituters = [
-			"https://nix-community.cachix.org"
-			"https://hyprland.cachix.org"
-			"https://nix-gaming.cachix.org"
-		];
-		trusted-public-keys = [
-			"nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-			"hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-			"nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-		];
 	};
 
 	# Enable Gamemode
