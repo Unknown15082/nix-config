@@ -1,9 +1,9 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 let
-	cfg = config.modules.keyd;
+	cfg = config.modules.keyboards.keyd;
 in
 {
-	options.modules.keyd = {
+	options.modules.keyboards.keyd = {
 		enable = lib.mkEnableOption "KeyD";
 		keyboardIds = lib.mkOption {
 			type = lib.types.listOf lib.types.str;

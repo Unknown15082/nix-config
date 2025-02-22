@@ -34,18 +34,6 @@
 		inputs.nixvim-config.packages.${system}.default
 	];
 
-	# Enable kimpanel
-	dconf = lib.mkIf osConfig.modules.gnome.enable {
-		enable = true;
-		settings."org/gnome/shell" = {
-			disable-user-extensions = false;
-			enabled-extensions = with pkgs.gnomeExtensions; [
-				hide-top-bar.extensionUuid
-				kimpanel.extensionUuid
-			];
-		};
-	};
-
 	# Neovim as default
 	home.sessionVariables = {
 		EDITOR = "nvim";

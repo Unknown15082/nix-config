@@ -69,7 +69,6 @@
 				inputs.nix-index-database.nixosModules.nix-index
 			]
 			++ builtins.map mylib.relativeToRoot [
-				"modules/nixos"
 				"nixos-modules"
 				"hosts/fafnir/configuration.nix"
 			];

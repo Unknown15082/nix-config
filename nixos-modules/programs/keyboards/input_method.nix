@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 let
-	cfg = config.modules.input-method;
+	cfg = config.modules.keyboards.input-method;
 in
 {
-	options.modules.input-method = {
+	options.modules.keyboards.input-method = {
 		vietnamese = {
 			enable = lib.mkEnableOption "Vietnamese input method";
 		};

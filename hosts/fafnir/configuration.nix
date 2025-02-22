@@ -23,9 +23,6 @@
 	# Enable OpenTabletDriver
 	hardware.opentabletdriver.enable = true;
 
-	# Include the laptop keyboard ID for KeyD
-	modules.keyd.keyboardIds = [ "048d:c966" ];
-
 	# Set Windows' device handle for systemd-boot
 	modules.systemd-boot.enable = true;
 	modules.systemd-boot.windows_dual_boot = "HD0b";
@@ -106,9 +103,6 @@
 		enable = true;
 	};
 
-	# Enable Vietnamese input method
-	modules.input-method.vietnamese.enable = true;
-
 	# Enable Nvidia
 	modules.nvidia = {
 		enable = true;
@@ -132,4 +126,14 @@
 
 	# Enable Docker
 	modules.virtualisation.docker.enable = true;
+
+	# Enable keyboards modules
+	modules.keyboards = {
+		keyd = {
+			enable = true;
+			keyboardIds = [ "048d:c966" ];
+		};
+		qmk.enable = true;
+		input-method.vietnamese.enable = true;
+	};
 }

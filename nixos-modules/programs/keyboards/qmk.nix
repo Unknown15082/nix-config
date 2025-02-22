@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 let
-  cfg = config.modules.qmk;
+  cfg = config.modules.keyboards.qmk;
 in
 {
-	options.modules.qmk = {
+	options.modules.keyboards.qmk = {
 		enable = lib.mkEnableOption "qmk";
 	};
 
