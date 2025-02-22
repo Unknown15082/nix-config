@@ -7,7 +7,7 @@ in
 		enable = lib.mkEnableOption "systemd-boot";
 		limit = lib.mkOption {
 			type = lib.types.int;
-			default = 7;
+			default = 5;
 			description = "The maximum number of boot configurations";
 		};
 
