@@ -1,9 +1,9 @@
 { lib, mylib, config, pkgs, username, ... }:
 let
-	cfg = config.modules.libvirtd;
+	cfg = config.modules.virtualisation.libvirtd;
 in
 {
-	options.modules.libvirtd = {
+	options.modules.virtualisation.libvirtd = {
 		enable = mylib.mkEnableTrueOption "libvirtd";
 	};
 
