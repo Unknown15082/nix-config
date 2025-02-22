@@ -129,4 +129,7 @@
 	# Enable games
 	modules.games.steam.enable = true;
 	modules.games.osu.enable = true;
+
+	# Enable Docker
+	modules.virtualisation.docker.enable = true;
 }

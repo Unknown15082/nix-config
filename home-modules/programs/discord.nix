@@ -9,7 +9,7 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = [
+		home.packages = [
 			(if cfg.addons then
 				(pkgs.discord.override {
 					withOpenASAR = true;

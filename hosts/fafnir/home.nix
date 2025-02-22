@@ -50,4 +50,8 @@
 	home.sessionVariables = {
 		EDITOR = "nvim";
 	};
+
+	# Enable Discord
+	modules.discord.enable = true;
+	modules.discord.addons = true;
 }
