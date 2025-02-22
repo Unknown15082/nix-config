@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }:
 let
-	cfg = config.modules.steam;
+	cfg = config.modules.games.steam;
 in {
-	options.modules.steam = {
+	options.modules.games.steam = {
 		enable = lib.mkEnableOption "Steam";
 	};
 

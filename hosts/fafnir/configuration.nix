@@ -125,4 +125,8 @@
 
 	# Enable nh (nix helper)
 	modules.nh.enable = true;
+
+	# Enable games
+	modules.games.steam.enable = true;
+	modules.games.osu.enable = true;
 }

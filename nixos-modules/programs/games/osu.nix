@@ -1,7 +1,7 @@
-{ lib, config, osConfig, inputs, system, pkgs, ... }:
+{ lib, config, inputs, system, pkgs, ... }:
 let
 	cfg = config.modules.games.osu;
-	nvidiaOffload = osConfig.hardware.nvidia.prime.offload.enable;
+	nvidiaOffload = config.hardware.nvidia.prime.offload.enable;
 	nvidiaCommand = if nvidiaOffload then "nvidia-offload " else "";
 	makeNvidiaDesktopItem = attrs: pkgs.makeDesktopItem (attrs // { exec = nvidiaCommand + attrs.exec; });
 in
@@ -11,13 +11,18 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		home.packages = [
+		environment.systemPackages = [
 			# Override to use dGPU
 			(inputs.nix-gaming.packages.${system}.osu-lazer-bin.override {
 				makeDesktopItem = makeNvidiaDesktopItem;
 			})
 		];
 
-		modules.games.enableBinaryCache = true;
+		nix.settings = {
+			substituters = [ "https://nix-gaming.cachix.org" ];
+			trusted-public-keys = [
+				"nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+			];
+		};
 	};
 }

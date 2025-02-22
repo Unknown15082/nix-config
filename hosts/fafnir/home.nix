@@ -46,9 +46,6 @@
 		};
 	};
 
-	# Enable osu!stable
-	modules.games.osu.enable = true;
-
 	# Neovim as default
 	home.sessionVariables = {
 		EDITOR = "nvim";
