@@ -1,10 +1,10 @@
-{ lib, mylib, config, pkgs, username, ... }:
+{ lib, mylib, config, ... }:
 let
 	cfg = config.modules.virtualisation.waydroid;
 in
 {
 	options.modules.virtualisation.waydroid = {
-		enable = mylib.mkEnableTrueOption "Waydroid";
+		enable = lib.mkEnableOption "Waydroid";
 	};
 
 	config = lib.mkIf cfg.enable {
