@@ -34,6 +34,18 @@ in
 			flavor = "mocha";
 		};
 
-		environment.systemPackages = lib.optionals config.modules.gnome.enable [ pkgs.gnomeExtensions.kimpanel ];
+		hm = lib.mkIf config.modules.gnome.enable {
+			home.packages = with pkgs.gnomeExtensions; [ kimpanel ];
+
+			dconf = {
+				enable = true;
+				settings."org/gnome/shell" = {
+					disable-user-extensions = false;
+					enabled-extensions = with pkgs.gnomeExtensions; [
+						kimpanel.extensionUuid
+					];
+				};
+			};
+		};
 	};
 }

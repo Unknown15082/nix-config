@@ -17,5 +17,14 @@ in
 		environment.sessionVariables = {
 			SSH_AUTH_SOCK = "/run/user/${builtins.toString uid}/keyring/ssh";
 		};
+
+		hm = {
+			services.gnome-keyring = {
+				enable = true;
+				components = [ "pkcs11" "secrets" "ssh" ];
+			};
+
+			home.packages = [ pkgs.seahorse ];
+		};
 	};
 }

@@ -7,6 +7,7 @@ in
 		stylix.targets = {
 			fish.enable = false;
 			rofi.enable = false;
+			gnome-text-editor.enable = false;
 		};
 	};
 }

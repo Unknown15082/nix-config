@@ -4,18 +4,10 @@ let
 in
 {
 	options.modules.hyprland = {
-		enable = mylib.mkEnableTrueOption "Hyprland";
+		enable = lib.mkEnableOption "Hyprland";
 	};
 
 	config = lib.mkIf cfg.enable {
-		# programs.fuzzel = {
-		# 	enable = true;
-		# 	settings = {
-		# 		main.font = lib.mkForce "${config.stylix.fonts.monospace.name}:size=${toString config.stylix.fonts.sizes.popups}";
-		# 		border.width = 3;
-		# 	};
-		# };
-
 		home.packages = with pkgs; [
 			hyprpaper
 			grimblast

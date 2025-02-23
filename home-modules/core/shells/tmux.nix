@@ -11,16 +11,16 @@ in
 
 			sensibleOnTop = true;
 			plugins = with pkgs; [
-				# {
-				# 	plugin = tmuxPlugins.resurrect;
-				# }
-				# {
-				# 	plugin = tmuxPlugins.continuum;
-				# 	extraConfig = ''
-				# 		set -g @continuum-restore 'on'
-				# 		set -g @continuum-save-interval '1'
-				# 	'';
-				# }
+				{
+					plugin = tmuxPlugins.resurrect;
+				}
+				{
+					plugin = tmuxPlugins.continuum;
+					extraConfig = ''
+						set -g @continuum-restore 'on'
+						set -g @continuum-save-interval '1'
+					'';
+				}
 				{
 					plugin = tmuxPlugins.catppuccin;
 					extraConfig = ''
