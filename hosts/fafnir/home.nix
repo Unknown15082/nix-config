@@ -23,7 +23,7 @@
 		xournalpp			# Tablet sketching
 		obsidian				# Note-taking and tasks tracking
 		gparted
-		mpv
+		just
 
 		# Coding stuff
 		# TODO: Move to specific devshells
