@@ -136,4 +136,7 @@
 		qmk.enable = true;
 		input-method.vietnamese.enable = true;
 	};
+
+	# Enable SSH
+	services.openssh.enable = true;
 }
