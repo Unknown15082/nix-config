@@ -31,13 +31,22 @@ in {
 
 		virtualisation.oci-containers = with serviceCfg; {
 			containers.otterwiki = {
+				inherit environmentFiles;
+
 				image = "redimp/otterwiki:2-slim";
 				ports = [ "127.0.0.1:${toString port}:8080" ];
 				volumes = [
 					"${dataPath}:/app-data"
 				];
-				inherit environmentFiles;
+				user = "2001";
 			};
 		};
+
+		users.users.otterwiki = {
+			isSystemUser = true;
+			uid = 2001;
+			group = "otterwiki";
+		};
+		users.groups.otterwiki = {};
 	};
 }
