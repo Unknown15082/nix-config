@@ -31,7 +31,9 @@ in
 
 						home-manager.users."${username}".imports = home-modules;
 					}
+
+					(lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" username ])
+					#    ^^^^^ Use hm.* in nixos config, instead of home-manager.users.${username}
 				]
-			) ++ [ (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" username ]) ];
-			#    ^^^^^ Use hm.* in nixos config, instead of home-manager.users.${username}
+			);
 	}

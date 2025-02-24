@@ -41,6 +41,13 @@
 		services = {
 			index.enable = true;
 			test.enable = true;
+			otterwiki = {
+				enable = true;
+				port = 7001;
+				environmentFiles = [
+					"/etc/otterwiki/.env"
+				];
+			};
 		};
 	};
 

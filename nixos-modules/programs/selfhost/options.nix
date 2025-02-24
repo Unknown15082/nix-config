@@ -32,5 +32,7 @@ in {
 		networking.firewall = {
 			allowedTCPPorts = [ 80 443 ];
 		};
+
+		virtualisation.oci-containers.backend = "podman";
 	};
 }
