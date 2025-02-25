@@ -26,7 +26,7 @@ push:
 
 # Create a commit
 commit message: add
-	@git commit -m {{message}}
+	@git commit -m "{{message}}"
 
 # Amend the previous commit
 amend: add
@@ -35,7 +35,7 @@ amend: add
 # Update flake inputs
 update:
 	@nix flake update
-	@just commit "nix flake update"
+	@just commit 'nix flake update'
 	@just switch
 
 # Deploy to remote host
