@@ -45,4 +45,7 @@
 
 	# Enable spotify-player
 	modules.spotify-player.enable = true;
+
+	# Use ghostty instead of alacritty
+	modules.ghostty.enable = true;
 }

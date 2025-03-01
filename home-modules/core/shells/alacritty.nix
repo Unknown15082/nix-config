@@ -1,8 +1,12 @@
-{ lib, mylib, config, ... }:
+{ lib, config, ... }:
 let
-	cfg = config.modules.shell-utils;
+	cfg = config.modules.alacritty;
 in
 {
+	options.modules.alacritty = {
+		enable = lib.mkEnableOption "Alacritty";
+	};
+
 	config = lib.mkIf cfg.enable {
 		programs.alacritty = {
 			enable = true;
