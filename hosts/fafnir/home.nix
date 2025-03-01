@@ -42,4 +42,7 @@
 	# Enable Discord
 	modules.discord.enable = true;
 	modules.discord.addons = true;
+
+	# Enable spotify-player
+	modules.spotify-player.enable = true;
 }
