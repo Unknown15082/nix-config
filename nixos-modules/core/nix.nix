@@ -16,6 +16,12 @@ in {
 		# Auto-optimize Nix store
 		nix.settings.auto-optimise-store = true;
 
+		# Save outputs and derivations for nix-direnv
+		nix.extraOptions = ''
+			keep-outputs = true
+			keep-derivations = true
+		'';
+
 		# nix-community binary cache
 		nix.settings = {
 			substituters = [ "https://nix-community.cachix.org" ];
