@@ -21,12 +21,6 @@ in
 						set -g @continuum-save-interval '1'
 					'';
 				}
-				{
-					plugin = tmuxPlugins.catppuccin;
-					extraConfig = ''
-						set -g @catppuccin-flavour 'mocha'
-					'';
-				}
 			];
 
 			shell = "${pkgs.fish}/bin/fish";
@@ -65,6 +59,11 @@ in
 			# Enable vi-mode copy
 				setw -g mode-keys vi
 			'';
+		};
+
+		catppuccin.tmux = {
+			enable = true;
+			flavor = "mocha";
 		};
 	};
 }

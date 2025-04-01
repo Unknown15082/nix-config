@@ -74,7 +74,7 @@
 			];
 
 			home-modules = [
-				inputs.catppuccin.homeManagerModules.catppuccin
+				inputs.catppuccin.homeModules.catppuccin
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"home-modules"
@@ -95,7 +95,7 @@
 			];
 
 			home-modules = [
-				inputs.catppuccin.homeManagerModules.catppuccin
+				inputs.catppuccin.homeModules.catppuccin
 			] ++ builtins.map mylib.relativeToRoot [
 				"home-modules/core/shells"
 				"hosts/isoimage/home.nix"

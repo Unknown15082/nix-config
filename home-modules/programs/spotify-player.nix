@@ -8,12 +8,10 @@ in
 	};
 
 	config = lib.mkIf cfg.enable {
-		# Thanks Mr.aome for creating spotify-player
+		# Thanks aome for creating spotify-player
 		programs.spotify-player = {
 			enable = true;
 			settings = {
-				theme = "catppuccin_mocha";
-				# TODO: Add additional settings
 				# TODO: Manage client_id using agenix
 			};
 		};
