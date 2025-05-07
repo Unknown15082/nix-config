@@ -37,6 +37,11 @@
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		stylix.url = "github:danth/stylix";
+
+		secrets = {
+			url = "git+ssh://git@github.com/Unknown15082/nix-secrets.git?shallow=1";
+			flake = false;
+		};
 	};
 
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
@@ -76,6 +81,7 @@
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"nixos-modules"
+				"secrets"
 				"hosts/fafnir/configuration.nix"
 			];
 
@@ -113,8 +119,8 @@
 
 			nixos-modules = [
 				modify-pkgs
-				inputs.agenix.nixosModules.default
 			] ++ builtins.map mylib.relativeToRoot [
+				"secrets"
 				"hosts/ifrit/configuration.nix"
 				"nixos-modules/programs/selfhost"
 			];

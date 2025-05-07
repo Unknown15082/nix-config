@@ -17,13 +17,12 @@ in {
 			enable = true;
 			package = if cfg.enableCloudflare then
 				pkgs.caddy.withPlugins {
-					plugins = [ "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e" ];
-					hash = "sha256-JVkUkDKdat4aALJHQCq1zorJivVCdyBT+7UhqTvaFLw=";
+					plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" ];
+					hash = "sha256-saKJatiBZ4775IV2C5JLOmZ4BwHKFtRZan94aS5pO90=";
 				}
 			else pkgs.caddy;
 
-			# TODO: Move this to agenix
-			environmentFile = "/etc/secrets/caddy.env";
+			environmentFile = config.age.secrets.cloudflare_token.path;
 			globalConfig = if cfg.enableCloudflare then ''
 				acme_dns cloudflare {$CF_API_TOKEN}
 			'' else "";

@@ -1235,7 +1235,25 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim-config": "nixvim-config",
+        "secrets": "secrets",
         "stylix": "stylix"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746630787,
+        "narHash": "sha256-duHA/qPBaoSgnMqpEfdqj9Ofxlj9wxfTn8PQZoK/GOA=",
+        "ref": "refs/heads/main",
+        "rev": "ceb43e56acd298a7aa2b1c674deb6a18c9c7303a",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/Unknown15082/nix-secrets.git"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/Unknown15082/nix-secrets.git"
       }
     },
     "stylix": {
