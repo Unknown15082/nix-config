@@ -29,6 +29,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		agenix = {
+			url = "github:ryantm/agenix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		stylix.url = "github:danth/stylix";
@@ -67,6 +72,7 @@
 				inputs.catppuccin.nixosModules.catppuccin
 				inputs.stylix.nixosModules.stylix
 				inputs.nix-index-database.nixosModules.nix-index
+				inputs.agenix.nixosModules.default
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"nixos-modules"
@@ -107,6 +113,7 @@
 
 			nixos-modules = [
 				modify-pkgs
+				inputs.agenix.nixosModules.default
 			] ++ builtins.map mylib.relativeToRoot [
 				"hosts/ifrit/configuration.nix"
 				"nixos-modules/programs/selfhost"

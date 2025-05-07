@@ -32,6 +32,9 @@
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
+
+		# Agenix CLI
+		inputs.agenix.packages.${system}.default
 	];
 
 	# Neovim as default
