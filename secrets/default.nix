@@ -16,5 +16,9 @@ in
 		cloudflare_token = {
 			file = "${secrets}/cloudflare_token.age";
 		};
+
+		spotify_client_id = {
+			file = "${secrets}/spotify.age";
+		};
 	};
 }

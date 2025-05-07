@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, osConfig, ... }:
 let
 	cfg = config.modules.spotify-player;
 in
@@ -12,7 +12,7 @@ in
 		programs.spotify-player = {
 			enable = true;
 			settings = {
-				# TODO: Manage client_id using agenix
+				client_id_command = "cat ${osConfig.age.secrets.spotify_client_id.path}";
 			};
 		};
 	};
