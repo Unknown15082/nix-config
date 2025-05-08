@@ -20,5 +20,9 @@ in
 		spotify_client_id = {
 			file = "${secrets}/spotify.age";
 		};
+
+		paperless_password = {
+			file = "${secrets}/paperless.age";
+		};
 	};
 }

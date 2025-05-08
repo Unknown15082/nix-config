@@ -48,6 +48,10 @@
 					"/etc/otterwiki/.env"
 				];
 			};
+			paperless = {
+				enable = true;
+				port = 7002;
+			};
 		};
 	};
 
