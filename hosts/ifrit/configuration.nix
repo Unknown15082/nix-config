@@ -52,6 +52,10 @@
 				enable = true;
 				port = 7002;
 			};
+			stirling-pdf = {
+				enable = true;
+				port = 7003;
+			};
 		};
 	};
 
