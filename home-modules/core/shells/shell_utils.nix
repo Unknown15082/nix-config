@@ -24,14 +24,19 @@ in
 				];
 			};
 
+			fzf = {
+				enable = true;
+				enableFishIntegration = true;
+			};
+
 			eza = {
 				enable = true;
-				enableBashIntegration = true;
+				enableFishIntegration = true;
 			};
 
 			zoxide = {
 				enable = true;
-				enableBashIntegration = true;
+				enableFishIntegration = true;
 
 				options = [ "--cmd cd" ];
 			};
