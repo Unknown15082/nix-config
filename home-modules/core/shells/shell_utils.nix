@@ -21,12 +21,12 @@ in
 				plugins = with pkgs.fishPlugins; [
 					{ name = "grc"; src = grc.src; }
 					{ name = "pure"; src = pure.src; }
+					{ name = "fzf.fish"; src = fzf-fish.src; }
 				];
 			};
 
 			fzf = {
 				enable = true;
-				enableFishIntegration = true;
 			};
 
 			eza = {
