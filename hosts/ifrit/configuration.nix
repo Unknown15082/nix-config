@@ -20,11 +20,13 @@
 	environment.systemPackages = with pkgs; [
 		neovim
 		git
+		btop
 
 		dive
 		podman-tui
 		podman-compose
 	];
+	services.do-agent.enable = true;
 
 	virtualisation.containers.enable = true;
 	virtualisation.podman = {
