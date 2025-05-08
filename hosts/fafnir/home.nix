@@ -1,4 +1,4 @@
-{ inputs, osConfig, lib, pkgs, username, ... }:
+{ inputs, config, osConfig, lib, pkgs, username, ... }:
 {
 	home.username = "${username}";
 	home.homeDirectory = "/home/${username}";
@@ -10,7 +10,6 @@
 	home.packages = with pkgs; [
 		# Essential tools
 		firefox
-		git
 		gcc
 		wl-clipboard
 		gnupg
@@ -36,6 +35,30 @@
 		# Agenix CLI
 		inputs.agenix.packages.${system}.default
 	];
+
+	# Setup git
+	programs.git = {
+		enable = true;
+		userName = "Unknown15082";
+		userEmail = "trangiahuy15082006@gmail.com";
+
+		signing = {
+			key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+			format = "ssh";
+			signByDefault = true;
+		};
+
+		aliases = {
+			amend = "commit --amend --no-edit";
+			aliases = "config --get-regexp alias";
+		};
+
+		extraConfig = {
+			core = {
+				excludesFile = "${config.home.homeDirectory}/.gitignore";
+			};
+		};
+	};
 
 	# Neovim as default
 	home.sessionVariables = {
