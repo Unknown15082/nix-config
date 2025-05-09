@@ -13,8 +13,8 @@ in
 	];
 
 	age.secrets = {
-		cloudflare_token = {
-			file = "${secrets}/cloudflare_token.age";
+		caddy_env = {
+			file = "${secrets}/caddy_env.age";
 		};
 
 		spotify_client_id = {

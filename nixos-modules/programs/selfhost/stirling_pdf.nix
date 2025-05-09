@@ -15,6 +15,7 @@ in {
 	config = lib.mkIf serviceCfg.enable {
 		services.caddy = {
 			virtualHosts."spdf.${domainName}".extraConfig = ''
+				authorize with authpolicy
 				reverse_proxy :${toString serviceCfg.port}
 			'';
 		};
