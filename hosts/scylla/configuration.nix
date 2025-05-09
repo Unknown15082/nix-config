@@ -40,7 +40,6 @@
 	# Domain Name
 	modules.selfhost = {
 		enable = true;
-		enableCloudflare = true;
 		domainName = "huytrangia.dev";
 		services = {
 			index.enable = true;

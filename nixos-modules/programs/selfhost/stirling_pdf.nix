@@ -23,9 +23,6 @@ in {
 			enable = true;
 			environment = {
 				SERVER_PORT = serviceCfg.port;
-				
-				SECURITY_ENABLELOGIN = "true";
-				SECURITY_INITIALLOGIN_USERNAME = "${username}";
 			};
 		};
 	};

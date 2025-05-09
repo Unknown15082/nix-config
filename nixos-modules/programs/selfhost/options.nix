@@ -4,7 +4,6 @@ let
 in {
 	options.modules.selfhost = {
 		enable = lib.mkEnableOption "selfhosting softwares";
-		enableCloudflare = lib.mkEnableOption "cloudflare plugin";
 
 		domainName = lib.mkOption {
 			description = "The default domain name used";
@@ -15,17 +14,15 @@ in {
 	config = lib.mkIf cfg.enable {
 		services.caddy = {
 			enable = true;
-			package = if cfg.enableCloudflare then
-				pkgs.caddy.withPlugins {
-					plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" ];
-					hash = "sha256-saKJatiBZ4775IV2C5JLOmZ4BwHKFtRZan94aS5pO90=";
-				}
-			else pkgs.caddy;
+			package = pkgs.caddy.withPlugins {
+				plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" "github.com/greenpau/caddy-security@v1.0.14" ];
+				hash = "sha256-9MIZ55SpD8kocAmTzkCMnguaQuW5yvkjF9LXnNlCa/Q=";
+			};
 
 			environmentFile = config.age.secrets.cloudflare_token.path;
-			globalConfig = if cfg.enableCloudflare then ''
+			globalConfig = ''
 				acme_dns cloudflare {$CF_API_TOKEN}
-			'' else "";
+			'';
 		};
 
 		networking.firewall = {
