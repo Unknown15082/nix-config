@@ -36,4 +36,30 @@
 		dockerCompat = true;
 		defaultNetwork.settings.dns_enabled = true;
 	};
+
+	# Domain Name
+	modules.selfhost = {
+		enable = true;
+		enableCloudflare = true;
+		domainName = "huytrangia.dev";
+		services = {
+			index.enable = true;
+			test.enable = true;
+			otterwiki = {
+				enable = true;
+				port = 7001;
+				environmentFiles = [
+					"/etc/otterwiki/.env"
+				];
+			};
+			paperless = {
+				enable = true;
+				port = 7002;
+			};
+			stirling-pdf = {
+				enable = true;
+				port = 7003;
+			};
+		};
+	};
 }

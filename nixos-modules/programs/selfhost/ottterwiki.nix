@@ -29,9 +29,23 @@ in {
 			'';
 		};
 
+		environment.etc."otterwiki/.env".text = ''
+			SITE_NAME=Otterwiki
+			SITE_DESCRIPTION=Unknown's personal wiki
+
+			WRITE_ACCESS=APPROVED
+			ATTACHMENT_ACCESS=APPROVED
+
+			COMMIT_MESSAGE=OPTIONAL
+		'';
+
+		systemd.tmpfiles.rules = [
+			"d /etc/otterwiki/data 755 otterwiki otterwiki"
+		];
+
 		virtualisation.oci-containers = with serviceCfg; {
 			containers.otterwiki = {
-				inherit environmentFiles;
+				environmentFiles = serviceCfg.environmentFiles ++ [ "/etc/otterwiki/.env" ];
 
 				image = "redimp/otterwiki:2-slim";
 				ports = [ "127.0.0.1:${toString port}:8080" ];
