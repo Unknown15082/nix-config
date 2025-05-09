@@ -125,5 +125,18 @@
 				"nixos-modules/programs/selfhost"
 			];
 		};
+
+		nixosConfigurations.scylla = mylib.nixosSystem {
+			inherit inputs lib system specialArgs username;
+
+			nixos-modules = [
+				modify-pkgs
+				inputs.disko.nixosModules.disko
+			] ++ builtins.map mylib.relativeToRoot [
+				"secrets"
+				"hosts/scylla/configuration.nix"
+				"nixos-modules/programs/selfhost"
+			];
+		};
 	};
 }

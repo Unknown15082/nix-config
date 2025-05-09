@@ -1,0 +1,39 @@
+{ pkgs, ... }:
+{
+	imports = [
+		./hardware-configuration.nix
+		./disko-config.nix
+	];
+
+	nixpkgs.hostPlatform = "x86_64-linux";
+	nix.settings.experimental-features = [
+		"nix-command" "flakes"
+	];
+
+	system.stateVersion = "25.05";
+
+	boot.loader.grub.enable = true;
+
+	networking.hostName = "scylla";
+	services.openssh.enable = true;
+	users.users.root.openssh.authorizedKeys.keys = [
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILeIOQzu+mY5V0Gll45muIwqjACIOdqNP2JuE5G8vyYM"
+	];
+
+	environment.systemPackages = with pkgs; [
+		neovim
+		git
+		btop
+
+		dive
+		podman-tui
+		podman-compose
+	];
+
+	virtualisation.containers.enable = true;
+	virtualisation.podman = {
+		enable = true;
+		dockerCompat = true;
+		defaultNetwork.settings.dns_enabled = true;
+	};
+}
