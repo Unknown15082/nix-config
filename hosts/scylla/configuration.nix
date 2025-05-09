@@ -48,9 +48,6 @@
 			otterwiki = {
 				enable = true;
 				port = 7001;
-				environmentFiles = [
-					"/etc/otterwiki/.env"
-				];
 			};
 			paperless = {
 				enable = true;
