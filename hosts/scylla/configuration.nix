@@ -56,6 +56,10 @@
 				enable = true;
 				port = 7003;
 			};
+			headscale = {
+				enable = true;
+				port = 7004;
+			};
 		};
 	};
 }

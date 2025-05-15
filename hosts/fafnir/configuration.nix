@@ -65,7 +65,10 @@
 	};
 
 	# Enable Tailscale
-	services.tailscale.enable = true;
+	services.tailscale = {
+		enable = true;
+		useRoutingFeatures = "client";
+	};
 
 	# Leave this option alone
 	system.stateVersion = "23.11"; 
