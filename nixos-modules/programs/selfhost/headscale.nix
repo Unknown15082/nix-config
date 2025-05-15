@@ -33,7 +33,7 @@ in {
 				server_url = "https://hs.${domainName}";
 				
 				dns = {
-					base_domain = "net.ts";
+					base_domain = "ts.net";
 				};
 
 				noise.private_key_path = "/var/lib/headscale/noise_private.key";
