@@ -5,17 +5,12 @@ in
 {
 	options.modules.discord = {
 		enable = lib.mkEnableOption "Discord";
-		addons = lib.mkEnableOption "Discord addons";
+		addons = lib.mkEnableOption "Discord addons - Vesktop";
 	};
 
 	config = lib.mkIf cfg.enable {
 		home.packages = [
-			(if cfg.addons then
-				(pkgs.discord.override {
-					withOpenASAR = true;
-					withVencord = true;
-					withTTS = true;
-				})
+			(if cfg.addons then pkgs.vesktop
 			else pkgs.discord)
 		];
 	};

@@ -15,6 +15,8 @@ in
 
 		wayland.windowManager.hyprland = {
 			enable = true;
+			package = null;
+			portalPackage = null;
 			extraConfig = builtins.readFile (mylib.relativeToRoot "configs/hypr/hyprland.conf");
 
 			settings = {
