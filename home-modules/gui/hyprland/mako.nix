@@ -12,7 +12,7 @@ in
 			enable = true;
 			settings = {
 				layer = "overlay";
-				defaultTimeout = 10000; # 10000ms = 10s
+				default-timeout = 10000; # 10000ms = 10s
 			};
 		};
 	};
