@@ -53,6 +53,7 @@ in {
 					"${dataPath}:/app-data"
 				];
 				user = "2001";
+				extraOptions = [ "--pull=newer" ];
 			};
 		};
 
