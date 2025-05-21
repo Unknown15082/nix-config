@@ -59,6 +59,10 @@
 			headscale = {
 				enable = true;
 				port = 7004;
+				webui = {
+					enable = true;
+					port = 7005;
+				};
 			};
 		};
 	};
