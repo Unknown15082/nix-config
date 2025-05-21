@@ -1,11 +1,29 @@
-{ lib, config, username, ... }:
+{ lib, config, pkgs, inputs, ... }:
 let
 	cfg = config.modules.selfhost;
 	serviceCfg = cfg.services.headscale;
 	domainName = cfg.domainName;
 
-	webuiReverseProxy = lib.optionalString serviceCfg.webui.enable "reverse_proxy /web* :${toString serviceCfg.webui.port}";
+	format = pkgs.formats.yaml {};
+	fixedSettings = lib.recursiveUpdate config.services.headscale.settings {
+		acme_email = "/dev/null";
+		tls_cert_path = "/dev/null";
+		tls_key_path = "/dev/null";
+		policy.path = "/dev/null";
+		oidc.client_secret_path = "/dev/null";
+	};
+	headscaleConfig = format.generate "headscale.yml" fixedSettings;
+
+	headplaneReverseProxy = lib.optionalString serviceCfg.headplane.enable ''
+		redir /admin /admin/
+		reverse_proxy /admin/* :${toString serviceCfg.headplane.port}
+	'';
 in {
+	imports = [
+		inputs.headplane.nixosModules.headplane
+		{ nixpkgs.overlays = [ inputs.headplane.overlays.default ]; }
+	];
+
 	options.modules.selfhost.services.headscale = {
 		enable = lib.mkEnableOption "service: headscale";
 		port = lib.mkOption {
@@ -13,8 +31,8 @@ in {
 			type = lib.types.int;
 		};
 
-		webui = {
-			enable = lib.mkEnableOption "service: headscale-webui";
+		headplane = {
+			enable = lib.mkEnableOption "service: headplane";
 			port = lib.mkOption {
 				description = "The exposed port";
 				type = lib.types.int;
@@ -25,7 +43,7 @@ in {
 	config = lib.mkIf serviceCfg.enable {
 		services.caddy = {
 			virtualHosts."hs.${domainName}".extraConfig = ''
-				${webuiReverseProxy}
+				${headplaneReverseProxy}
 				reverse_proxy :${toString serviceCfg.port}
 			'';
 		};
@@ -51,11 +69,26 @@ in {
 			};
 		};
 
-		virtualisation.oci-containers = with serviceCfg.webui; lib.mkIf enable {
-			containers.headscale-webui = {
-				image = "ghcr.io/gurucomputing/headscale-ui:latest";
-				ports = [ "127.0.0.1:${toString port}:8080" ];
-				pull = "newer";
+		services.headplane = with serviceCfg.headplane; lib.mkIf enable {
+			enable = true;
+			agent.enable = false; # Not yet ready
+			settings = {
+				server = {
+					host = "0.0.0.0";
+					port = port;
+					cookie_secret_path = config.age.secrets.headplane_cookie.path;
+					cookie_secure = true;
+					agent = {
+						enabled = false;
+						authkey = "";
+					};
+				};
+				headscale = {
+					url = config.services.headscale.settings.server_url;
+					config_path = headscaleConfig;
+					config_strict = true;
+				};
+				integration.proc.enabled = true;
 			};
 		};
 	};

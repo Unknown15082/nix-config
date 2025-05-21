@@ -59,7 +59,7 @@
 			headscale = {
 				enable = true;
 				port = 7004;
-				webui = {
+				headplane = {
 					enable = true;
 					port = 7005;
 				};

@@ -34,6 +34,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		headplane = {
+			url = "github:tale/headplane";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		stylix.url = "github:danth/stylix";
