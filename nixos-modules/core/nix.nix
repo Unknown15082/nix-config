@@ -22,6 +22,9 @@ in {
 			keep-derivations = true
 		'';
 
+		# Enable nix-ld
+		programs.nix-ld.enable = true;
+
 		# nix-community binary cache
 		nix.settings = {
 			substituters = [ "https://nix-community.cachix.org" ];
