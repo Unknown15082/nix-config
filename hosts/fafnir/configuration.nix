@@ -142,4 +142,7 @@
 
 	# Enable SSH
 	services.openssh.enable = true;
+
+	# Enable I2C
+	hardware.i2c.enable = true;
 }
