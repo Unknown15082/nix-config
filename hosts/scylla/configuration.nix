@@ -64,6 +64,10 @@
 					port = 7005;
 				};
 			};
+			silverbullet = {
+				enable = true;
+				port = 7006;
+			};
 		};
 	};
 }
