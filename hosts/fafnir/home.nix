@@ -28,6 +28,7 @@
 		# TODO: Move to specific devshells
 		jetbrains.idea-community-bin
 		jdk
+		vscode
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
