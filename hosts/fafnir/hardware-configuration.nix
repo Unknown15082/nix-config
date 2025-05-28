@@ -62,4 +62,10 @@
 		fsType = "ntfs";
 		options = [ "rw" "uid=1000" ];
 	};
+
+	fileSystems."/mnt/win" = {
+		device = "/dev/disk/by-uuid/DAB48FF4B48FD205";
+		fsType = "ntfs";
+		options = [ "rw" "uid=1000" ];
+	};
 }
