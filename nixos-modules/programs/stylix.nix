@@ -53,6 +53,10 @@ in
 					terminal = 16;
 				};
 			};
+
+			opacity = {
+				terminal = 0.8;
+			};
 		};
 	};
 }
