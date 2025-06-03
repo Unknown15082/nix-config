@@ -19,16 +19,7 @@ in {
 				listener = [
 					{
 						timeout = 600;
-						on-timeout = "brightnessctl set 30%";
-						on-resume = "brightnessctl set 100%";
-					}
-					{
-						timeout = 900;
-						on-timeout = "hyprlock";
-					}
-					{
-						timeout = 1200;
-						on-timeout = "hyprctl dispatch dpms off";
+						on-timeout = "hyprlock & sleep 2; hyprctl dispatch dpms off";
 						on-resume = "hyprctl dispatch dpms on";
 					}
 				];
