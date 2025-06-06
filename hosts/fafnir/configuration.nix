@@ -115,10 +115,7 @@
 	};
 
 	# Enable sound server
-	modules.sound = {
-		enable = true;
-		low-latency.enable = true;
-	};
+	modules.sound.enable = true;
 
 	# Enable nh (nix helper)
 	modules.nh.enable = true;
