@@ -31,7 +31,7 @@ in
 		hardware.graphics.enable = true;
 	
 		# Load Nvidia driver
-		services.xserver.videoDrivers = [ "nvidia" ];
+		services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
 		hardware.nvidia = {
 			# Select version
@@ -40,9 +40,14 @@ in
 			# Enable modesetting
 			modesetting.enable = true;
 
-			# Disable the open source kernel module (not nouveau)
-			# Recommended to disable, as this is alpha-quality/buggy
-			open = false;
+			# Enable the open source kernel module (not nouveau)
+			open = true;
+
+			# Enable power management
+			powerManagement = {
+				enable = true;
+				finegrained = true;
+			};
 
 			# Enable the Nvidia settings menu with nvidia-settings
 			nvidiaSettings = true;
