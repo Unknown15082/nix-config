@@ -23,6 +23,8 @@
 		obsidian				# Note-taking and tasks tracking
 		gparted
 		just
+		gcalcli
+		nchat
 
 		# Coding stuff
 		# TODO: Move to specific devshells
