@@ -30,6 +30,10 @@ let
 		sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
 	'';
 
+	nusvpn = pkgs.writeShellScriptBin "nusvpn" ''
+		pulse-vpn "https://webvpn.nus.edu.sg/stu"
+	'';
+
 	cfg = config.modules.nusvpn;
 in
 {
@@ -40,7 +44,14 @@ in
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = with pkgs; [
 			openconnect
-			pulse-vpn	
+			pulse-vpn
+			nusvpn
+			qt6.qtbase
+			qt6.qtwayland
 		];
+
+		environment.variables = {
+			QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt6.qtbase}/lib/qt-6/plugins/platforms";
+		};
 	};
 }
