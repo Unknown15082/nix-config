@@ -77,4 +77,21 @@
 
 	# Use ghostty instead of alacritty
 	modules.ghostty.enable = true;
+
+	# Testing out IAMB (TODO: Move to module)
+	programs.iamb = {
+		enable = true;
+		settings = {
+			default_profile = "dtth";
+
+			profiles.dtth = {
+				user_id = "@unknown1508:dtth.ch";
+			};
+
+			settings = {
+				notifications.enabled = true;
+				image_preview.protocol.type = "kitty";
+			};
+		};
+	};
 }
