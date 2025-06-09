@@ -34,6 +34,10 @@ let
 		pulse-vpn "https://webvpn.nus.edu.sg/stu"
 	'';
 
+	socvpn = pkgs.writeShellScriptBin "socvpn" ''
+		sudo openfortivpn "webvpn.comp.nus.edu.sg:443" --cookie="$(openfortivpn-webview -- webvpn.comp.nus.edu.sg)" 
+	'';
+
 	cfg = config.modules.nusvpn;
 in
 {
@@ -44,10 +48,15 @@ in
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = with pkgs; [
 			openconnect
-			pulse-vpn
-			nusvpn
+			openfortivpn
+			openfortivpn-webview-qt
+
 			qt6.qtbase
 			qt6.qtwayland
+
+			pulse-vpn
+			nusvpn
+			socvpn
 		];
 
 		environment.variables = {
