@@ -25,6 +25,7 @@
 		just
 		gcalcli
 		nchat
+		anki-bin
 
 		# Coding stuff
 		# TODO: Move to specific devshells
@@ -66,6 +67,7 @@
 	# Neovim as default
 	home.sessionVariables = {
 		EDITOR = "nvim";
+		ANKI_WAYLAND = "1";
 	};
 
 	# Enable Discord
