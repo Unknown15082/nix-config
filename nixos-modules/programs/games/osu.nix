@@ -1,9 +1,6 @@
 { lib, config, inputs, system, pkgs, ... }:
 let
 	cfg = config.modules.games.osu;
-	nvidiaOffload = config.hardware.nvidia.prime.offload.enable;
-	nvidiaCommand = if nvidiaOffload then "nvidia-offload " else "";
-	makeNvidiaDesktopItem = attrs: pkgs.makeDesktopItem (attrs // { exec = nvidiaCommand + attrs.exec; });
 in
 {
 	options.modules.games.osu = {
@@ -13,9 +10,7 @@ in
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = [
 			# Override to use dGPU
-			(inputs.nix-gaming.packages.${system}.osu-lazer-bin.override {
-				makeDesktopItem = makeNvidiaDesktopItem;
-			})
+			inputs.nix-gaming.packages.${system}.osu-lazer-bin
 		];
 
 		nix.settings = {
