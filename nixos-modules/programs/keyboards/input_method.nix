@@ -7,6 +7,7 @@ in
 		vietnamese = {
 			enable = lib.mkEnableOption "Vietnamese input method";
 		};
+		# TODO: Separate into Japanese option
 	};
 
 	config = lib.mkIf cfg.vietnamese.enable {
@@ -14,17 +15,25 @@ in
 			enable = true;
 			type = "fcitx5";
 			fcitx5 = {
-				addons = [ pkgs.fcitx5-bamboo ];
+				addons = [
+					pkgs.fcitx5-bamboo
+					pkgs.fcitx5-mozc
+				];
 				waylandFrontend = true;
 
-				settings.inputMethod = {
-					"Groups/0" = {
-						"Name" = "Default";
-						"Default Layout" = "us-altgr-intl";
-						"DefaultIM" = "keyboard-us-altgr-intl";
+				settings = {
+					globalOptions = {};
+
+					inputMethod = {
+						"Groups/0" = {
+							Name = "Default";
+							DefaultIM = "keyboard-us-altgr-intl";
+							"Default Layout" = "us-altgr-intl";
+						};
+						"Groups/0/Items/0" = { "Name" = "keyboard-us-altgr-intl"; };
+						"Groups/0/Items/1" = { "Name" = "mozc"; };
+						"Groups/0/Items/2" = { "Name" = "bamboo"; };
 					};
-					"Groups/0/Items/0" = { "Name" = "keyboard-us-altgr-intl"; };
-					"Groups/0/Items/1" = { "Name" = "bamboo"; };
 				};
 			};
 		};
