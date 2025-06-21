@@ -78,6 +78,9 @@
 		jetbrains-mono
 		nerd-fonts.jetbrains-mono
 		dejavu_fonts
+
+		noto-fonts-cjk-sans
+		noto-fonts-cjk-serif
 	];
 
 	# Enable GPG
