@@ -11,6 +11,7 @@
 		# Essential tools
 		firefox
 		gcc
+		gdb
 		wl-clipboard
 		gnupg
 
