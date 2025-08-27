@@ -12,6 +12,8 @@ in
 		"/home/${username}/.ssh/id_ed25519"
 	];
 
+	# TODO: Move each secrets to its own config
+
 	age.secrets = {
 		caddy_env = {
 			file = "${secrets}/caddy_env.age";

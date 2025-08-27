@@ -60,9 +60,11 @@
 		mylib = import ./lib { inherit lib; };
 		system = "x86_64-linux";
 		username = "unknown";
+		repoRoot = "/home/${username}/nix-config";
 
 		specialArgs = {
 			inherit outputs mylib;
+			inherit repoRoot;
 		};
 
 		# Add pkgs.stable

@@ -56,5 +56,7 @@ in
 		xdg.configFile."hypr/original.conf" = {
 			source = mylib.relativeToRoot "configs/hypr/original.conf";
 		};
+
+		modules.quickshell.enable = true;
 	};
 }
