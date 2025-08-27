@@ -1,2 +1,5 @@
 # ISO images
 images/
+
+# QMLLS
+.qmlls.ini
