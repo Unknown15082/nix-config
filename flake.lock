@@ -1079,11 +1079,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1749649685,
-        "narHash": "sha256-oQeE1J/drzFi3iqxt5B1x3n7Mb+m1j/GFqPItJrUR4E=",
+        "lastModified": 1756288176,
+        "narHash": "sha256-c+LNQqynWyHw+TJl/HLSOVi+VfXnQnW6rfyC4xzudEg=",
         "owner": "Unknown15082",
         "repo": "nixvim-config",
-        "rev": "cf8d571d2c15beb19c96510c466aabaf7b317b8e",
+        "rev": "8d344bab17ba412eda57eafc101b67b5f0606000",
         "type": "github"
       },
       "original": {
