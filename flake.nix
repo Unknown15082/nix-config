@@ -44,6 +44,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		caelestia = {
+			url = "github:caelestia-dots/shell";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 
@@ -98,6 +103,7 @@
 
 			home-modules = [
 				inputs.catppuccin.homeModules.catppuccin
+				inputs.caelestia.homeManagerModules.default
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"home-modules"
