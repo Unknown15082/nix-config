@@ -81,8 +81,8 @@
 	# Use ghostty instead of alacritty
 	modules.ghostty.enable = true;
 
-	# Enable caelestia-dots
-	modules.caelestia.enable = true;
+	# Enable caelestia-dots (disable right now)
+	modules.caelestia.enable = false;
 
 	# Testing out IAMB (TODO: Move to module)
 	programs.iamb = {
