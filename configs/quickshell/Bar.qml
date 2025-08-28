@@ -13,7 +13,7 @@ Scope {
             required property var modelData
             screen: modelData
 
-            color: "#bb89b4fa"
+            color: Appearance.barColor
 
             anchors {
                 top: true
@@ -25,7 +25,12 @@ Scope {
 
             ClockWidget {
                 anchors.centerIn: parent
-                barColor: "#89b4fa"
+            }
+
+            SysTray {
+                anchors.bottom: parent.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottomMargin: 10
             }
         }
     }

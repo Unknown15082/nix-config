@@ -1,11 +1,10 @@
 import Quickshell
 import QtQuick
+import QtQuick.Shapes
 
 Rectangle {
     id: clockWidget
-    color: "transparent"
-
-    property color barColor
+    color: Appearance.cellColor
 
     radius: 5
 
@@ -18,44 +17,22 @@ Rectangle {
         text: SysClock.format("hh\nmm")
     }
 
-    PopupWindow {
-        id: clockPopup
-        color: "transparent"
+    StyledPopup {
+        item: clockWidget
 
-        anchor {
-            item: clockWidget
-            rect {
-                x: clockWidget.width + 15
-                y: clockWidget.height / 4 - 5
-            }
-        }
-
-        visible: false
-
-        implicitWidth: contentRect.implicitWidth
-        implicitHeight: contentRect.implicitHeight
-
-        Rectangle {
-            id: contentRect
-            color: clockWidget.barColor
+        content: Rectangle {
+            id: content
+            color: Appearance.cellColor
             radius: 5
 
-            implicitWidth: contentText.implicitWidth + 10
-            implicitHeight: contentText.implicitHeight + 10
+            implicitWidth: text.implicitWidth + 10
+            implicitHeight: text.implicitHeight + 10
 
             Text {
-                id: contentText
+                id: text
                 anchors.centerIn: parent
                 text: SysClock.format("yyyy-MM-dd hh:mm:ss")
             }
         }
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-
-        onEntered: clockPopup.visible = true
-        onExited: clockPopup.visible = false
     }
 }
