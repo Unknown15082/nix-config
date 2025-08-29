@@ -987,11 +987,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1756290145,
-        "narHash": "sha256-4vJXL+BBVvgRsNuwQ4oYrBJX12NxVl0qqWRYVOmQfOI=",
+        "lastModified": 1756448110,
+        "narHash": "sha256-QaM2YRcpO5eNKbeOwI3//YQ9jJLcxd+oFaMOihPCRDg=",
         "owner": "Unknown15082",
         "repo": "nixvim-config",
-        "rev": "0bfb45ff2f5be2ce5e89ceda04df6a2f5425f351",
+        "rev": "095a703d3b8620be668a39806eec23bc1848d05d",
         "type": "github"
       },
       "original": {

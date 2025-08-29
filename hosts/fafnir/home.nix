@@ -33,6 +33,7 @@
 		jetbrains.idea-community-bin
 		jdk
 		vscode
+		typst
 
 		# Personal NixVim config
 		inputs.nixvim-config.packages.${system}.default
