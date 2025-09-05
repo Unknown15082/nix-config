@@ -50,7 +50,7 @@ in
 				};
 
 				sizes = {
-					terminal = 16;
+					terminal = 14;
 				};
 			};
 
