@@ -63,6 +63,7 @@ in {
 				
 				dns = {
 					base_domain = "ts.net";
+					override_local_dns = false;
 				};
 
 				noise.private_key_path = "/var/lib/headscale/noise_private.key";
