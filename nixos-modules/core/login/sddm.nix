@@ -22,7 +22,7 @@ in
 				enable = true;
 				package = pkgs.kdePackages.sddm;
 				
-				theme = "catppuccin-mocha";
+				theme = "catppuccin-mocha-mauve";
 			};
 		};
 
