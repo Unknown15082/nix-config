@@ -41,6 +41,13 @@ in {
 	};
 
 	config = lib.mkIf serviceCfg.enable {
+		age.secrets.headplane_cookie = {
+			file = "${inputs.secrets}/headplane.age";
+			mode = "400";
+			owner = "headscale";
+			group = "headscale";
+		};
+
 		services.caddy = {
 			virtualHosts."hs.${domainName}".extraConfig = ''
 				${headplaneReverseProxy}

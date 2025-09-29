@@ -26,12 +26,5 @@ in
 		paperless_password = {
 			file = "${secrets}/paperless.age";
 		};
-
-		headplane_cookie = {
-			file = "${secrets}/headplane.age";
-			mode = "400";
-			owner = "headscale";
-			group = "headscale";
-		};
 	};
 }
