@@ -2,7 +2,7 @@
 let
 	cfg = config.modules.selfhost;
 in {
-	config = lib.mkIf (cfg.reverseProxy == "caddy") {
+	config = lib.mkIf (cfg.enable && cfg.reverseProxy == "caddy") {
 		services.tailscaleAuth.enable = true;
 
 		services.caddy = {

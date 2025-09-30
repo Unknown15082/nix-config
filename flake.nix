@@ -35,7 +35,7 @@
 		};
 
 		headplane = {
-			url = "github:tale/headplane";
+			url = "github:tale/headplane?tag=v0.6.0";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -104,6 +104,7 @@
 			home-modules = [
 				inputs.catppuccin.homeModules.catppuccin
 				inputs.caelestia.homeManagerModules.default
+				inputs.agenix.homeManagerModules.default
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"home-modules"

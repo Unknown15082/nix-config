@@ -104,6 +104,5 @@
 
 	# Set agenix identity path
 	age.identityPaths = [
-		"/home/${username}/.ssh/id_ed25519"
 	];
 }
