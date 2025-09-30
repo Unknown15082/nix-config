@@ -41,6 +41,8 @@
 	modules.selfhost = {
 		enable = true;
 		domainName = "huytrangia.dev";
+		reverseProxy = "caddy";
+
 		services = {
 			index.enable = true;
 			test.enable = true;

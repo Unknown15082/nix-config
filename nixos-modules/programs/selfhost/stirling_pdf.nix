@@ -1,4 +1,4 @@
-{ lib, config, username, ... }:
+{ lib, config, ... }:
 let
 	cfg = config.modules.selfhost;
 	serviceCfg = cfg.services.stirling-pdf;
@@ -15,7 +15,6 @@ in {
 	config = lib.mkIf serviceCfg.enable {
 		services.caddy = {
 			virtualHosts."spdf.${domainName}".extraConfig = ''
-				authorize with authpolicy
 				reverse_proxy :${toString serviceCfg.port}
 			'';
 		};
