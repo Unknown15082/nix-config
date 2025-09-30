@@ -25,6 +25,7 @@ in {
 	config = lib.mkIf serviceCfg.enable {
 		services.caddy = {
 			virtualHosts."wiki.${domainName}".extraConfig = ''
+				import tailscale
 				reverse_proxy :${toString serviceCfg.port}
 			'';
 		};
