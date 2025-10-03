@@ -11,6 +11,7 @@ in
 		environment.systemPackages = [
 			(pkgs.catppuccin-sddm.override {
 				flavor = "mocha";
+				accent = "sapphire";
 				font = config.stylix.fonts.sansSerif.name;
 				fontSize = "12";
 			})
@@ -22,7 +23,7 @@ in
 				enable = true;
 				package = pkgs.kdePackages.sddm;
 				
-				theme = "catppuccin-mocha-mauve";
+				theme = "catppuccin-mocha-sapphire";
 			};
 		};
 
