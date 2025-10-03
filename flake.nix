@@ -58,6 +58,8 @@
 		};
 	};
 
+	# outputs = inputs: import ./outputs inputs;
+
 	outputs = { self, nixpkgs, nixpkgs-stable, ... } @ inputs : let
 		inherit (self) outputs;
 		inherit (nixpkgs) lib;

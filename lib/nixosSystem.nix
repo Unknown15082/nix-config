@@ -1,11 +1,11 @@
-{
+{	# This will be passed as {...}@args from an output
 	inputs,
 	lib,
 	system,
-	nixos-modules,
-	home-modules ? [],
-	specialArgs,
-	username,
+	nixos-modules, # TODO: Add a homeSystem.nix where this is ? []...
+	home-modules ? [], # ...and this is required
+	specialArgs, # TODO: Rewrite as: specialArgs ? (genSpecialArgs system),
+	username, # TODO: Take from myvars
 	...
 }: let
 	inherit (inputs) nixpkgs home-manager;

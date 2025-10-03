@@ -19,9 +19,5 @@
 
 	nixosSystem = import ./nixosSystem.nix;
 
-	# TODO: This is not a good pattern, should move options to presets
-	mkEnableTrueOption = name: lib.mkEnableOption name // { default = true; };
-
 	mkPresetDefault = lib.mkOverride 900;
-
 }
