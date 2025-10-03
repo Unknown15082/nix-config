@@ -5,12 +5,12 @@ help:
 	@just --list --justfile {{justfile()}}
 
 # Switch to new version
-switch: add
-	@nh os switch
+switch *FLAGS: add
+	@nh os switch {{FLAGS}}
 
 # Test new version
-test: add
-	@nh os test
+test *FLAGS: add
+	@nh os test {{FLAGS}}
 
 # Reinstall bootloader
 reinstall-bootloader:
@@ -20,24 +20,10 @@ reinstall-bootloader:
 add:
 	@git add .
 
-# Push changes to git
-push:
-	@git push
-
-# Create a commit
-commit message: add
-	@git commit -m "{{message}}"
-
-# Amend the previous commit
-amend: add
-	@git commit --amend --no-edit
-
 # Update flake inputs
 update:
-	@nix flake update
-	@just commit 'nix flake update'
-	@just switch
+	@just switch -u --commit-lock-file
 
 # Deploy to remote host
 deploy host:
-	@nixos-rebuild switch --flake .#{{host}} --target-host {{host}}
+	@just switch -H {{host}} --target-host {{host}}
