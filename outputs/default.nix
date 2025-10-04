@@ -30,7 +30,6 @@ let
 		|> lib.mapAttrs (_: v: v.${name});
 
 	allHostValues = builtins.attrValues hosts;
-	# allSystems = loadOutputs "system" |> lib.attrValues |> lib.uniqueStrings;
 	allOutputNames =
 		allHostValues
 		|> map builtins.attrNames
