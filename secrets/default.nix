@@ -13,6 +13,7 @@ in
 	];
 
 	# TODO: Move each secrets to its own config
+	# TODO: Set permissions
 
 	age.secrets = {
 		caddy_env = {

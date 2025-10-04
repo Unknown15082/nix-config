@@ -92,10 +92,9 @@
 
 			nixos-modules = [
 				modify-pkgs
-				inputs.catppuccin.nixosModules.catppuccin
-				inputs.stylix.nixosModules.stylix
-				inputs.nix-index-database.nixosModules.nix-index
-				inputs.agenix.nixosModules.default
+				inputs.catppuccin.nixosModules.catppuccin # Put this in core/colors.nix
+				inputs.stylix.nixosModules.stylix # Move to stylix.nix
+				inputs.nix-index-database.nixosModules.nix-index # Move to nix.nix
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"nixos-modules"
@@ -104,9 +103,9 @@
 			];
 
 			home-modules = [
-				inputs.catppuccin.homeModules.catppuccin
-				inputs.caelestia.homeManagerModules.default
-				inputs.agenix.homeManagerModules.default
+				inputs.catppuccin.homeModules.catppuccin # Move in hm's core/colors.nix
+				inputs.caelestia.homeManagerModules.default # Remove
+				inputs.agenix.homeManagerModules.default # Move to hm's secrets
 			]
 			++ builtins.map mylib.relativeToRoot [
 				"home-modules"

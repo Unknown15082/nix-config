@@ -1,5 +1,7 @@
 {
+	self,
 	nixpkgs,
+	deploy-rs,
 	...
 } @ inputs:
 let
@@ -29,16 +31,14 @@ let
 		|> lib.filterAttrs (_: lib.hasAttr name)
 		|> lib.mapAttrs (_: v: v.${name});
 
-	allHostValues = builtins.attrValues hosts;
-	allOutputNames =
-		allHostValues
-		|> map builtins.attrNames
-		|> lib.flatten
-		|> lib.uniqueStrings;
-
 	forAllSystems = lib.genAttrs allSystems;
 in
-(lib.genAttrs allOutputNames loadOutputs)
-// {
+{
+	nixosConfigurations = loadOutputs "nixosConfigurations";
+	homeConfigurations = loadOutputs "homeConfigurations";
+	deploy.nodes = loadOutputs "nodes";
+
+	checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
 	formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
 }
