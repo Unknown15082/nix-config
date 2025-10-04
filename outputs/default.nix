@@ -23,18 +23,22 @@ let
 		fafnir = import ./src/fafnir.nix (mkArgs "x86_64-linux");
 	};
 
-	allHostValues = builtins.attrValues hosts;
-	allOutputNames = map builtins.attrNames allHostValues;
-	combinedOutputNames = lib.uniqueStrings (lib.flatten allOutputNames);
+	loadOutputs = name:
+		hosts
+		|> lib.filterAttrs (_: lib.hasAttr name)
+		|> lib.mapAttrs (_: v: v.${name});
 
-	loadOutputs = outputName: {
-		${outputName} = lib.mapAttrs (
-			_: out: (out.${outputName} or {})
-		) hosts;
-	};
+	allHostValues = builtins.attrValues hosts;
+	allSystems = loadOutputs "system" |> lib.attrValues |> lib.uniqueStrings;
+	allOutputNames =
+		allHostValues
+		|> map builtins.attrNames
+		|> lib.flatten
+		|> lib.uniqueStrings;
+
+	forAllSystems = lib.genAttrs allSystems;
 in
-(lib.mergeAttrsList (map loadOutputs combinedOutputNames))
+(lib.mergeAttrsList (lib.genAttrs allOutputNames loadOutputs))
 // {
-	# Add extra general outputs here
-	# For examples, formatters
+	formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
 }
