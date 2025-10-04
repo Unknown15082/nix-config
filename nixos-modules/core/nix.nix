@@ -10,8 +10,11 @@ in {
 		# Set Nix PATH
 		nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-		# Enable flakes and the new Nix CLI
-		nix.settings.experimental-features = [ "nix-command" "flakes" ];
+		# Enable experimental features
+		#	nix-command: modern Nix CLI
+		#	flakes: flake system
+		#	pipe-operators: |>
+		nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
 
 		# Auto-optimize Nix store
 		nix.settings.auto-optimise-store = true;
