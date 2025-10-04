@@ -18,6 +18,7 @@
 			(builtins.readDir path)));
 
 	nixosSystem = import ./nixosSystem.nix;
+	homeSystem = import ./homeSystem.nix;
 
 	mkPresetDefault = lib.mkOverride 900;
 }
