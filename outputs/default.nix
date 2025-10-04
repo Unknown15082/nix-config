@@ -22,6 +22,7 @@ let
 	hosts = {
 		fafnir = import ./src/fafnir.nix (mkArgs "x86_64-linux");
 	};
+	allSystems = [ "x86_64-linux" ];
 
 	loadOutputs = name:
 		hosts
@@ -29,7 +30,7 @@ let
 		|> lib.mapAttrs (_: v: v.${name});
 
 	allHostValues = builtins.attrValues hosts;
-	allSystems = loadOutputs "system" |> lib.attrValues |> lib.uniqueStrings;
+	# allSystems = loadOutputs "system" |> lib.attrValues |> lib.uniqueStrings;
 	allOutputNames =
 		allHostValues
 		|> map builtins.attrNames
@@ -38,7 +39,7 @@ let
 
 	forAllSystems = lib.genAttrs allSystems;
 in
-(lib.mergeAttrsList (lib.genAttrs allOutputNames loadOutputs))
+(lib.genAttrs allOutputNames loadOutputs)
 // {
 	formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
 }
