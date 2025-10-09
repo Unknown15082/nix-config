@@ -27,8 +27,9 @@ in
 				configurationLimit = cfg.limit;
 
 				edk2-uefi-shell.enable = true;
+				memtest86.enable = true;
 
-				windows."windows" = lib.mkIf (cfg.windows_dual_boot != null) {
+				windows."11" = lib.mkIf (cfg.windows_dual_boot != null) {
 					title = "Windows 11";
 					sortKey = "a_windows";
 					efiDeviceHandle = cfg.windows_dual_boot;
