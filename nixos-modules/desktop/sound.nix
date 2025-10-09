@@ -8,7 +8,7 @@ in
 	];
 
 	options.modules.sound = {
-		enable = lib.mkEnableOption "Enable PipeWire sound server";
+		enable = lib.mkEnableOption "PipeWire sound server";
 	};
 
 	config = lib.mkIf cfg.enable {

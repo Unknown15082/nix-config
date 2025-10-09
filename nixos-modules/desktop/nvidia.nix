@@ -12,6 +12,9 @@ in
 			description = "Whether to enable the beta Nvidia driver version";
 		};
 
+		# TODO: Convert to enum
+		# mode = enum [ "offload" "sync" ]
+
 		# Offload mode and Sync mode are mutually exclusive
 		offload = lib.mkOption {
 			type = lib.types.bool;

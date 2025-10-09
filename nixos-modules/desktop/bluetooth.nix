@@ -1,10 +1,10 @@
-{ lib, mylib, config, ... }:
+{ lib, config, ... }:
 let
 	cfg = config.modules.bluetooth;
 in
 {
 	options.modules.bluetooth = {
-		enable = mylib.mkEnableTrueOption "Enable Bluetooth";
+		enable = lib.mkEnableOption "Bluetooth";
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -16,6 +16,7 @@ in
 		# which provides blueman-applet and blueman-manager
 		services.blueman.enable = true;
 
+		# TODO: Check for pipewire/wireplumber
 		# Enable extra codecs for Bluetooth
 		services.pipewire.wireplumber.extraConfig = {
 			"monitor.bluez.properties" = {
