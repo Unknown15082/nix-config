@@ -33,11 +33,11 @@
 	# Enable networking
 	networking.networkmanager = {
 		enable = true;
-		insertNameservers = [
-			# Google
-			"8.8.8.8"
-			"8.8.4.4"
-		];
+		# insertNameservers = [
+		# 	# Google
+		# 	"8.8.8.8"
+		# 	"8.8.4.4"
+		# ];
 	};
 
 	# Enable some nix settings
