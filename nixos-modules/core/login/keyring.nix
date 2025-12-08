@@ -1,11 +1,11 @@
-{ lib, mylib, config, pkgs, username, ... }:
+{ lib, utils, config, pkgs, username, ... }:
 let
 	cfg = config.modules.keyring;
 	uid = config.users.users.${username}.uid;
 in
 {
 	options.modules.keyring = {
-		enable = mylib.mkEnableTrueOption "GNOME Keyring";
+		enable = utils.mkEnableTrueOption "GNOME Keyring";
 	};
 
 	config = lib.mkIf cfg.enable {

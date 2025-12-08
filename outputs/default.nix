@@ -7,17 +7,17 @@
 let
 	inherit (nixpkgs) lib;
 
-	mylib = import ../lib { inherit lib; };
+	utils = import ../utils { inherit lib; };
 	myvars = import ../vars;
 
 	genSpecialArgs = system:
 		inputs // {
-			inherit mylib myvars;
+			inherit utils myvars;
 			inherit system;
 		};
 
 	mkArgs = system: {
-		inherit inputs lib system mylib myvars genSpecialArgs;
+		inherit inputs lib system utils myvars genSpecialArgs;
 	};
 
 	# To add a new machine, import it here

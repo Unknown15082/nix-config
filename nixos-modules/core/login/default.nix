@@ -1,6 +1,6 @@
-{ lib, mylib, ... }:
+{ lib, utils, ... }:
 {
-	imports = mylib.scanPaths ./.;
+	imports = utils.scanPaths ./.;
 
 	# TODO: Move these to desktop/
 	modules.sddm.enable = lib.mkDefault true;

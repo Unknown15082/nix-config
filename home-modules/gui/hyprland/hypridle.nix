@@ -1,9 +1,9 @@
-{ lib, mylib, config, ... }:
+{ lib, utils, config, ... }:
 let
 	cfg = config.modules.hypridle;
 in {
 	options.modules.hypridle = {
-		enable = mylib.mkEnableTrueOption "Hypridle";
+		enable = utils.mkEnableTrueOption "Hypridle";
 	};
 
 	config = lib.mkIf cfg.enable {

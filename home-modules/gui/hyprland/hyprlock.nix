@@ -1,9 +1,9 @@
-{ lib, mylib, config, ... }:
+{ lib, utils, config, ... }:
 let
 	cfg = config.modules.hyprlock;
 in {
 	options.modules.hyprlock = {
-		enable = mylib.mkEnableTrueOption "Hyprlock";
+		enable = utils.mkEnableTrueOption "Hyprlock";
 	};
 
 	config = lib.mkIf cfg.enable {

@@ -1,4 +1,4 @@
-{ lib, mylib, config, osConfig, pkgs, ... }:
+{ lib, utils, config, osConfig, pkgs, ... }:
 let
 	cfg = config.modules.hyprland;
 in
@@ -17,7 +17,7 @@ in
 			enable = true;
 			package = null;
 			portalPackage = null;
-			extraConfig = builtins.readFile (mylib.relativeToRoot "configs/hypr/hyprland.conf");
+			extraConfig = builtins.readFile (utils.relativeToRoot "configs/hypr/hyprland.conf");
 
 			settings = {
 				env = [
@@ -54,7 +54,7 @@ in
 		};
 
 		xdg.configFile."hypr/original.conf" = {
-			source = mylib.relativeToRoot "configs/hypr/original.conf";
+			source = utils.relativeToRoot "configs/hypr/original.conf";
 		};
 
 		modules.quickshell.enable = true;

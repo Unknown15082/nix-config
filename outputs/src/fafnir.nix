@@ -2,13 +2,13 @@
 	inputs,
 	lib,
 	system,
-	mylib,
+	utils,
 	myvars,
 	genSpecialArgs,
 	...
 } @ args:
 let
-	inherit (mylib) relativeToRoot;
+	inherit (utils) relativeToRoot;
 	name = "fafnir";
 
 	nixos-modules = map relativeToRoot [
@@ -22,7 +22,7 @@ let
 	];
 in
 {
-	nixosConfigurations = mylib.nixosSystem (args // {
+	nixosConfigurations = utils.nixosSystem (args // {
 		inherit nixos-modules home-modules;
 	});
 }

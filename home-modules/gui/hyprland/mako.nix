@@ -1,10 +1,10 @@
-{ lib, mylib, config, ... }:
+{ lib, utils, config, ... }:
 let
 	cfg = config.modules.mako;
 in
 {
 	options.modules.mako = {
-		enable = mylib.mkEnableTrueOption "Mako";
+		enable = utils.mkEnableTrueOption "Mako";
 	};
 
 	config = lib.mkIf cfg.enable {

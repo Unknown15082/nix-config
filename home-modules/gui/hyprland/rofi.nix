@@ -1,10 +1,10 @@
-{ lib, mylib, config, pkgs, ... }:
+{ lib, utils, config, pkgs, ... }:
 let
 	cfg = config.modules.rofi;
 in
 {
 	options.modules.rofi = {
-		enable = mylib.mkEnableTrueOption "Rofi (Wayland)";
+		enable = utils.mkEnableTrueOption "Rofi (Wayland)";
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -14,7 +14,7 @@ in
 
 			terminal = "${pkgs.alacritty}/bin/alacritty";
 
-			theme = mylib.relativeToRoot "configs/rofi/launcher.rasi";
+			theme = utils.relativeToRoot "configs/rofi/launcher.rasi";
 		};
 	};
 }

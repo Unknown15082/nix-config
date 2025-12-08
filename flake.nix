@@ -64,13 +64,13 @@
 		inherit (self) outputs;
 		inherit (nixpkgs) lib;
 
-		mylib = import ./lib { inherit lib; };
+		utils = import ./lib { inherit lib; };
 		system = "x86_64-linux";
 		username = "unknown";
 		repoRoot = "/home/${username}/nix-config";
 
 		specialArgs = {
-			inherit outputs mylib;
+			inherit outputs utils;
 			inherit repoRoot;
 		};
 
@@ -87,7 +87,7 @@
 			nixpkgs.config.allowUnfree = true;
 		};
 	in {
-		nixosConfigurations.fafnir = mylib.nixosSystem {
+		nixosConfigurations.fafnir = utils.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
 			nixos-modules = [
@@ -96,7 +96,7 @@
 				inputs.stylix.nixosModules.stylix # Move to stylix.nix
 				inputs.nix-index-database.nixosModules.nix-index # Move to nix.nix
 			]
-			++ builtins.map mylib.relativeToRoot [
+			++ builtins.map utils.relativeToRoot [
 				"nixos-modules"
 				"secrets"
 				"hosts/fafnir/configuration.nix"
@@ -107,19 +107,19 @@
 				inputs.caelestia.homeManagerModules.default # Remove
 				inputs.agenix.homeManagerModules.default # Move to hm's secrets
 			]
-			++ builtins.map mylib.relativeToRoot [
+			++ builtins.map utils.relativeToRoot [
 				"home-modules"
 				"hosts/fafnir/home.nix"
 			];
 		};
 
-		nixosConfigurations.customISO = mylib.nixosSystem {
+		nixosConfigurations.customISO = utils.nixosSystem {
 			inherit inputs lib system specialArgs;
 			username = "nixos";
 
 			nixos-modules = [
 				modify-pkgs
-			] ++ builtins.map mylib.relativeToRoot [
+			] ++ builtins.map utils.relativeToRoot [
 				"nixos-modules/core/bluetooth.nix"
 				"nixos-modules/programs/automatic-timezoned.nix"
 				"hosts/isoimage/configuration.nix"
@@ -127,31 +127,31 @@
 
 			home-modules = [
 				inputs.catppuccin.homeModules.catppuccin
-			] ++ builtins.map mylib.relativeToRoot [
+			] ++ builtins.map utils.relativeToRoot [
 				"home-modules/core/shells"
 				"hosts/isoimage/home.nix"
 			];
 		};
 
-		nixosConfigurations.ifrit = mylib.nixosSystem {
+		nixosConfigurations.ifrit = utils.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
 			nixos-modules = [
 				modify-pkgs
-			] ++ builtins.map mylib.relativeToRoot [
+			] ++ builtins.map utils.relativeToRoot [
 				"secrets"
 				"hosts/ifrit/configuration.nix"
 				"nixos-modules/programs/selfhost"
 			];
 		};
 
-		nixosConfigurations.scylla = mylib.nixosSystem {
+		nixosConfigurations.scylla = utils.nixosSystem {
 			inherit inputs lib system specialArgs username;
 
 			nixos-modules = [
 				modify-pkgs
 				inputs.disko.nixosModules.disko
-			] ++ builtins.map mylib.relativeToRoot [
+			] ++ builtins.map utils.relativeToRoot [
 				"secrets"
 				"hosts/scylla/configuration.nix"
 				"nixos-modules/programs/selfhost"

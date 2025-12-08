@@ -1,9 +1,9 @@
-{ lib, mylib, config, pkgs, ... }:
+{ lib, utils, config, pkgs, ... }:
 let
 	cfg = config.modules.osd;
 in {
 	options.modules.osd = {
-		enable = mylib.mkEnableTrueOption "SwayOSD";
+		enable = utils.mkEnableTrueOption "SwayOSD";
 	};
 
 	config = lib.mkIf cfg.enable {

@@ -1,9 +1,9 @@
-{ lib, mylib, config, ... }:
+{ lib, utils, config, ... }:
 let
 	cfg = config.modules.waybar;
 in {
 	options.modules.waybar = {
-		enable = mylib.mkEnableTrueOption "Waybar";
+		enable = utils.mkEnableTrueOption "Waybar";
 	};
 
 	config = lib.mkIf cfg.enable {

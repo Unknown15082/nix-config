@@ -1,10 +1,10 @@
-{ lib, mylib, config, pkgs, ... }:
+{ lib, utils, config, pkgs, ... }:
 let
 	cfg = config.modules.shell-utils;
 in
 {
 	options.modules.shell-utils = {
-		enable = mylib.mkEnableTrueOption "all shell utils";
+		enable = utils.mkEnableTrueOption "all shell utils";
 	};
 
 	config = lib.mkIf cfg.enable {
