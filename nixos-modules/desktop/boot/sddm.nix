@@ -28,5 +28,6 @@ in
 		};
 
 		security.pam.services.sddm.enableGnomeKeyring = true;
+		modules.keyring.enable = true;
 	};
 }

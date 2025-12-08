@@ -5,7 +5,7 @@ let
 in
 {
 	options.modules.keyring = {
-		enable = utils.mkEnableTrueOption "GNOME Keyring";
+		enable = lib.mkEnableOption "GNOME Keyring";
 	};
 
 	config = lib.mkIf cfg.enable {

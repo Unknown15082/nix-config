@@ -15,5 +15,8 @@ in
 				wayland = true;
 			};
 		};
+
+		# Since I'm not using this module anymore,
+		# I am not doing anything about keyring support.
 	};
 }
