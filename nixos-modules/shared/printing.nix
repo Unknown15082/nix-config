@@ -1,10 +1,10 @@
 { lib, config, pkgs, ... }:
 let
-	cfg = config.modules.devices.LBP2900;
+	cfg = config.modules.printing;
 in
 {
-	options.modules.devices.LBP2900 = {
-		enable = lib.mkEnableOption "Canon LBP2900 printer";
+	options.modules.printing = {
+		enable = lib.mkEnableOption "Printing";
 	};
 
 	config = lib.mkIf cfg.enable {
