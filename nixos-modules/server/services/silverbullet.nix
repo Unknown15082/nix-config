@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
-	cfg = config.modules.selfhost;
-	serviceCfg = cfg.services.stirling-pdf;
+	cfg = config.modules.services;
+	serviceCfg = cfg.services.silverbullet;
 	domainName = cfg.domainName;
 in {
-	options.modules.selfhost.services.stirling-pdf = {
-		enable = lib.mkEnableOption "service: stirling-pdf";
+	options.modules.services.services.silverbullet = {
+		enable = lib.mkEnableOption "service: Silverbullet";
 		port = lib.mkOption {
 			description = "The exposed port";
 			type = lib.types.int;
@@ -14,17 +14,16 @@ in {
 
 	config = lib.mkIf serviceCfg.enable {
 		services.caddy = {
-			virtualHosts."spdf.${domainName}".extraConfig = ''
+			virtualHosts."notes.${domainName}".extraConfig = ''
 				import tailscale
 				reverse_proxy :${toString serviceCfg.port}
 			'';
 		};
 
-		services.stirling-pdf = {
+		services.silverbullet = {
 			enable = true;
-			environment = {
-				SERVER_PORT = serviceCfg.port;
-			};
+			listenAddress = "0.0.0.0";
+			listenPort = serviceCfg.port;
 		};
 	};
 }

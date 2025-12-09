@@ -36,7 +36,7 @@
 	};
 
 	# Domain Name
-	modules.selfhost = {
+	modules.services = {
 		enable = true;
 		domainName = "huytrangia.dev";
 		services = {

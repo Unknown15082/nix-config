@@ -1,10 +1,10 @@
 { lib, config, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 	serviceCfg = cfg.services.otterwiki;
 	domainName = cfg.domainName;
 in {
-	options.modules.selfhost.services.otterwiki = {
+	options.modules.services.services.otterwiki = {
 		enable = lib.mkEnableOption "service: otterwiki";
 		dataPath = lib.mkOption {
 			description = "The data path to be mounted";

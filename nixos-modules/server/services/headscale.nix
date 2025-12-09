@@ -1,6 +1,6 @@
 { lib, config, pkgs, inputs, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 	serviceCfg = cfg.services.headscale;
 	domainName = cfg.domainName;
 
@@ -24,7 +24,7 @@ in {
 		{ nixpkgs.overlays = [ inputs.headplane.overlays.default ]; }
 	];
 
-	options.modules.selfhost.services.headscale = {
+	options.modules.services.services.headscale = {
 		enable = lib.mkEnableOption "service: headscale";
 		port = lib.mkOption {
 			description = "The exposed port";

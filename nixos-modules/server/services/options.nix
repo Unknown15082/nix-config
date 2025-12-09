@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 in {
-	options.modules.selfhost = {
-		enable = lib.mkEnableOption "selfhosting softwares";
+	options.modules.services = {
+		enable = lib.mkEnableOption "servicesing softwares";
 
 		domainName = lib.mkOption {
 			description = "The default domain name used";

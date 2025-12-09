@@ -1,10 +1,10 @@
 { lib, config, username, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 	serviceCfg = cfg.services.paperless;
 	domainName = cfg.domainName;
 in {
-	options.modules.selfhost.services.paperless = {
+	options.modules.services.services.paperless = {
 		enable = lib.mkEnableOption "service: paperless-ngx";
 		port = lib.mkOption {
 			description = "The exposed port";

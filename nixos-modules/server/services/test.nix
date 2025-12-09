@@ -1,10 +1,10 @@
 { lib, config, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 	serviceCfg = cfg.services.test;
 	domainName = cfg.domainName;
 in {
-	options.modules.selfhost.services.test = {
+	options.modules.services.services.test = {
 		enable = lib.mkEnableOption "service: test";
 	};
 

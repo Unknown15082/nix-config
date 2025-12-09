@@ -1,10 +1,10 @@
 { lib, config, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 	serviceCfg = cfg.services.index;
 	domainName = cfg.domainName;
 in {
-	options.modules.selfhost.services.index = {
+	options.modules.services.services.index = {
 		enable = lib.mkEnableOption "service: index";
 	};
 

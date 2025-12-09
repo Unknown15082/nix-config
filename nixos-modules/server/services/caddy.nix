@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }:
 let
-	cfg = config.modules.selfhost;
+	cfg = config.modules.services;
 in {
 	config = lib.mkIf (cfg.enable && cfg.reverseProxy == "caddy") {
 		services.tailscaleAuth.enable = true;
