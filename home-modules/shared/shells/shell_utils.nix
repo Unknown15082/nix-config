@@ -4,6 +4,7 @@ let
 in
 {
 	options.modules.shell-utils = {
+		# TODO: Rewrite entire module with an options.nix and config-only files
 		enable = utils.mkEnableTrueOption "all shell utils";
 	};
 
