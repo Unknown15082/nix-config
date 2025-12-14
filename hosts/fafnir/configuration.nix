@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, system, lib, config, pkgs, ... }:
+{ pkgs, myvars, ... }:
 
 {
 	imports =
@@ -28,32 +28,36 @@
 	modules.systemd-boot.windows_dual_boot = "HD0b";
 
 	# Set the kernel version
-	boot.kernelPackages = pkgs.linuxPackages_zen;
+	# boot.kernelPackages = pkgs.linuxPackages_zen;
+	modules.kernel.enable = true;
 
 	# Enable networking
-	networking.networkmanager = {
-		enable = true;
-		insertNameservers = [
-			# Google
-			"8.8.8.8"
-			"8.8.4.4"
-		];
-	};
+	# networking.networkmanager = {
+	# 	enable = true;
+	# 	insertNameservers = [
+	# 		# Google
+	# 		"8.8.8.8"
+	# 		"8.8.4.4"
+	# 	];
+	# };
+	modules.networking.enable = true;
+	modules.networking.nameservers.google = true;
 
 	# Enable some nix settings
 	modules.nix-settings.enable = true;
 
 	# Enable fish shell
-	programs.fish.enable = true;
-	users.defaultUserShell = pkgs.fish;
+	# programs.fish.enable = true;
+	# users.defaultUserShell = pkgs.fish;
 
 	# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.unknown = {
-		isNormalUser = true;
-		uid = 1000;
-		description = "Unknown";
-		extraGroups = [ "networkmanager" "wheel" "docker" ];
-	};
+	# users.users.unknown = {
+	# 	isNormalUser = true;
+	# 	uid = 1000;
+	# 	description = "Unknown";
+	# 	extraGroups = [ /* "networkmanager" */ "wheel" "docker" ];
+	# };
+	modules.users.username = myvars.username;
 
 	# Enable Gamemode
 	programs.gamemode.enable = true;

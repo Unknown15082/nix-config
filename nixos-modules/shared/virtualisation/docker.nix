@@ -12,5 +12,7 @@ in
 		virtualisation.docker = {
 			enable = true;
 		};
+
+		modules.users.extraGroups = [ "docker" ];
 	};
 }

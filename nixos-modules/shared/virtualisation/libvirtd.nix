@@ -24,6 +24,7 @@ in
 			};
 		};
 
+		# TODO: Use modules.users
 		users.users.${username} = {
 			extraGroups = [ "libvirtd" ];
 		};
