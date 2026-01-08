@@ -14,8 +14,8 @@
 		./laptop.nix
 	];
 
-	# Enable printing
-	modules.printing.enable = true;
+	# Enable default desktop settings
+	presets.desktop.enable = true;
 
 	# Enable NUSVPN
 	modules.nusvpn.enable = true;
@@ -24,18 +24,7 @@
 	hardware.opentabletdriver.enable = true;
 
 	# Set Windows' device handle for systemd-boot
-	modules.systemd-boot.enable = true;
 	modules.systemd-boot.windows_dual_boot = "HD0b";
-
-	# Set the kernel version
-	modules.kernel.enable = true;
-
-	# Enable networking
-	modules.networking.enable = true;
-	modules.networking.nameservers.google = true;
-
-	# Enable some nix settings
-	modules.nix-settings.enable = true;
 
 	# Enable fish shell
 	programs.fish.enable = true;
@@ -80,28 +69,6 @@
 
 	# Enable bt-sync
 	modules.bluetooth.bt-sync.windows_partition = "nvme0n1p3";
-
-	# Enable stylix
-	modules.stylix.enable = true;
-
-	# Enable postgresql
-	services.postgresql = {
-		enable = true;
-	};
-
-	# Enable Nvidia
-	modules.nvidia = {
-		enable = true;
-		beta = true;
-		offload = true;
-		sync = false;
-	};
-
-	# Enable sound server
-	modules.sound.enable = true;
-
-	# Enable nh (nix helper)
-	modules.nh.enable = true;
 
 	# Enable games
 	modules.games.steam.enable = true;
