@@ -12,14 +12,20 @@ let
 		"secrets"
 		"hosts/${name}/configuration.nix"
 	] ++ [
-		inputs.catppuccin.nixosModules.catppuccin # TODO: Move to separate module
+		# TODO: Move to separate module
+		inputs.catppuccin.nixosModules.catppuccin 
+		inputs.stylix.nixosModules.stylix
+		inputs.nix-index-database.nixosModules.nix-index
+		inputs.agenix.nixosModules.default
 	];
 
 	home-modules = map relativeToRoot [
 		"home-modules"
 		"hosts/${name}/home.nix"
 	] ++ [
-		inputs.catppuccin.homeModules.catppuccin # TODO: Move to separate module
+		# TODO: Move to separate module
+		inputs.catppuccin.homeModules.catppuccin
+		inputs.agenix.homeManagerModules.default
 	];
 in
 {
