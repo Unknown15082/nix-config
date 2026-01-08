@@ -28,18 +28,9 @@
 	modules.systemd-boot.windows_dual_boot = "HD0b";
 
 	# Set the kernel version
-	# boot.kernelPackages = pkgs.linuxPackages_zen;
 	modules.kernel.enable = true;
 
 	# Enable networking
-	# networking.networkmanager = {
-	# 	enable = true;
-	# 	insertNameservers = [
-	# 		# Google
-	# 		"8.8.8.8"
-	# 		"8.8.4.4"
-	# 	];
-	# };
 	modules.networking.enable = true;
 	modules.networking.nameservers.google = true;
 
@@ -47,26 +38,11 @@
 	modules.nix-settings.enable = true;
 
 	# Enable fish shell
-	# programs.fish.enable = true;
-	# users.defaultUserShell = pkgs.fish;
+	programs.fish.enable = true;
+	users.defaultUserShell = pkgs.fish;
 
 	# Define a user account. Don't forget to set a password with ‘passwd’.
-	# users.users.unknown = {
-	# 	isNormalUser = true;
-	# 	uid = 1000;
-	# 	description = "Unknown";
-	# 	extraGroups = [ /* "networkmanager" */ "wheel" "docker" ];
-	# };
 	modules.users.username = myvars.username;
-
-	# Enable Gamemode
-	programs.gamemode.enable = true;
-
-	# Enable Gamescope
-	programs.gamescope = {
-		enable = true;
-		capSysNice = true;
-	};
 
 	# Enable Tailscale
 	services.tailscale = {
