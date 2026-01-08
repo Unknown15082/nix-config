@@ -1,10 +1,5 @@
 {
-	inputs,
-	lib,
-	system,
 	libutils,
-	myvars,
-	genSpecialArgs,
 	...
 } @ args:
 let
@@ -13,6 +8,7 @@ let
 
 	nixos-modules = map relativeToRoot [
 		"nixos-modules"
+		"secrets"
 		"hosts/${name}/configuration.nix"
 	];
 
