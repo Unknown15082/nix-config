@@ -79,7 +79,6 @@ in {
 
 		services.headplane = with serviceCfg.headplane; lib.mkIf enable {
 			enable = true;
-			agent.enable = false; # Not yet ready
 			settings = {
 				server = {
 					host = "0.0.0.0";
