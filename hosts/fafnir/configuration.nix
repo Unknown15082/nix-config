@@ -14,8 +14,8 @@
 		./laptop.nix
 	];
 
-	# Enable specific configs for local devices
-	modules.devices.LBP2900.enable = true;
+	# Enable printing
+	modules.printing.enable = true;
 
 	# Enable NUSVPN
 	modules.nusvpn.enable = true;
