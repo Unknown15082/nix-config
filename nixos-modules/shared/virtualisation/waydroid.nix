@@ -1,4 +1,4 @@
-{ lib, utils, config, ... }:
+{ lib, libutils, config, ... }:
 let
 	cfg = config.modules.virtualisation.waydroid;
 in

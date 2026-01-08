@@ -1,10 +1,10 @@
-{ lib, utils, config, ... }:
+{ lib, libutils, config, ... }:
 let
 	cfg = config.modules.automatic-timezoned;
 in
 {
 	options.modules.automatic-timezoned = {
-		enable = utils.mkEnableTrueOption "Automatic timezone";
+		enable = libutils.mkEnableTrueOption "Automatic timezone";
 	};
 
 	config = lib.mkIf cfg.enable {

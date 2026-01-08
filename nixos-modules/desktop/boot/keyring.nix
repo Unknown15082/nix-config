@@ -1,4 +1,4 @@
-{ lib, utils, config, pkgs, username, ... }:
+{ lib, libutils, config, pkgs, username, ... }:
 let
 	cfg = config.modules.keyring;
 	uid = config.users.users.${username}.uid;

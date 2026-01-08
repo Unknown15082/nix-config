@@ -1,9 +1,9 @@
-{ lib, utils, config, pkgs, ... }:
+{ lib, libutils, config, pkgs, ... }:
 let
 	cfg = config.modules.stylix;
 
 	theme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-	wallpaper = utils.relativeToRoot "configs/wallpaper/wallpaper.png";
+	wallpaper = libutils.relativeToRoot "configs/wallpaper/wallpaper.png";
 in
 {
 	options.modules.stylix = {

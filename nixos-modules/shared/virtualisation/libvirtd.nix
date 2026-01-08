@@ -1,10 +1,10 @@
-{ lib, utils, config, pkgs, username, ... }:
+{ lib, libutils, config, pkgs, username, ... }:
 let
 	cfg = config.modules.virtualisation.libvirtd;
 in
 {
 	options.modules.virtualisation.libvirtd = {
-		enable = utils.mkEnableTrueOption "libvirtd";
+		enable = libutils.mkEnableTrueOption "libvirtd";
 	};
 
 	config = lib.mkIf cfg.enable {

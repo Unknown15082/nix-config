@@ -1,11 +1,11 @@
-{ lib, utils, config, pkgs, ... }:
+{ lib, libutils, config, pkgs, ... }:
 let
 	cfg = config.modules.shell-utils;
 in
 {
 	options.modules.shell-utils = {
 		# TODO: Rewrite entire module with an options.nix and config-only files
-		enable = utils.mkEnableTrueOption "all shell utils";
+		enable = libutils.mkEnableTrueOption "all shell libutils";
 	};
 
 	config = lib.mkIf cfg.enable {
