@@ -12,7 +12,7 @@ let
 
 	genSpecialArgs = system:
 		inputs // {
-			inherit utils myvars;
+			inherit utils myvars inputs;
 			inherit system;
 		};
 
