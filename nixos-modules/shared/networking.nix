@@ -14,7 +14,7 @@ in {
 	config = lib.mkIf cfg.enable {
 		networking.networkmanager = {
 			enable = true;
-			nameservers = (lib.optionals cfg.nameservers.google [
+			insertNameservers = (lib.optionals cfg.nameservers.google [
 				"8.8.8.8" "8.8.4.4"
 			]) ++ (lib.optionals cfg.nameservers.cloudflare [
 				"1.1.1.1" "1.0.0.1"
