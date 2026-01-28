@@ -38,7 +38,7 @@ in
 				clipboard-write = "allow";
 
 				# Shell integrations
-				shell-integration-features = "no-cursor,sudo,title";
+				shell-integration-features = "no-cursor,sudo,title,ssh-terminfo,ssh-env";
 			};
 		};
 	};
