@@ -5,7 +5,7 @@ in
 {
 	options.modules.shell-utils = {
 		# TODO: Rewrite entire module with an options.nix and config-only files
-		enable = libutils.mkEnableTrueOption "all shell libutils";
+		enable = lib.mkEnableOption "all shell libutils";
 	};
 
 	config = lib.mkIf cfg.enable {

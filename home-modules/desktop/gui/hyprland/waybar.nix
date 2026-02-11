@@ -3,7 +3,7 @@ let
 	cfg = config.modules.waybar;
 in {
 	options.modules.waybar = {
-		enable = libutils.mkEnableTrueOption "Waybar";
+		enable = lib.mkEnableOption "Waybar";
 	};
 
 	config = lib.mkIf cfg.enable {

@@ -3,7 +3,7 @@ let
 	cfg = config.modules.hypridle;
 in {
 	options.modules.hypridle = {
-		enable = libutils.mkEnableTrueOption "Hypridle";
+		enable = lib.mkEnableOption "Hypridle";
 	};
 
 	config = lib.mkIf cfg.enable {

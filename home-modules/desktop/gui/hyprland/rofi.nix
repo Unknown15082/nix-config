@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.rofi = {
-		enable = libutils.mkEnableTrueOption "Rofi (Wayland)";
+		enable = lib.mkEnableOption "Rofi (Wayland)";
 	};
 
 	config = lib.mkIf cfg.enable {

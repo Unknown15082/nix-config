@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.automatic-timezoned = {
-		enable = libutils.mkEnableTrueOption "Automatic timezone";
+		enable = lib.mkEnableOption "Automatic timezone";
 	};
 
 	config = lib.mkIf cfg.enable {

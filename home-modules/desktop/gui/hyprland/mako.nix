@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.mako = {
-		enable = libutils.mkEnableTrueOption "Mako";
+		enable = lib.mkEnableOption "Mako";
 	};
 
 	config = lib.mkIf cfg.enable {

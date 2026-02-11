@@ -14,6 +14,7 @@ let
 		inputs // {
 			inherit libutils myvars inputs;
 			inherit system;
+			inherit (myvars) username;
 		};
 
 	mkArgs = system: {

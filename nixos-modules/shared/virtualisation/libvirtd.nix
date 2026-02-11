@@ -4,7 +4,7 @@ let
 in
 {
 	options.modules.virtualisation.libvirtd = {
-		enable = libutils.mkEnableTrueOption "libvirtd";
+		enable = lib.mkEnableOption "libvirtd";
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -14,13 +14,6 @@ in
 				package = pkgs.qemu_kvm;
 				runAsRoot = true;
 				swtpm.enable = true;
-				ovmf = {
-					enable = true;
-					packages = [(pkgs.OVMF.override {
-						secureBoot = true;
-						tpmSupport = true;
-					}).fd];
-				};
 			};
 		};
 

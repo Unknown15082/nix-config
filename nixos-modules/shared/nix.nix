@@ -16,6 +16,9 @@ in {
 		#	pipe-operators: |>
 		nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
 
+		# Allow unfree packages
+		nixpkgs.config.allowUnfree = true;
+
 		# Auto-optimize Nix store
 		nix.settings.auto-optimise-store = true;
 

@@ -3,7 +3,7 @@ let
 	cfg = config.modules.hyprlock;
 in {
 	options.modules.hyprlock = {
-		enable = libutils.mkEnableTrueOption "Hyprlock";
+		enable = lib.mkEnableOption "Hyprlock";
 	};
 
 	config = lib.mkIf cfg.enable {

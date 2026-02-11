@@ -3,7 +3,7 @@ let
 	cfg = config.modules.osd;
 in {
 	options.modules.osd = {
-		enable = libutils.mkEnableTrueOption "SwayOSD";
+		enable = lib.mkEnableOption "SwayOSD";
 	};
 
 	config = lib.mkIf cfg.enable {

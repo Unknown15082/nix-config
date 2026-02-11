@@ -75,8 +75,9 @@
 	modules.games.osu.enable = true;
 	modules.games.ffxiv.enable = true;
 
-	# Enable Docker
+	# Enable Docker & libvirtd
 	modules.virtualisation.docker.enable = true;
+	modules.virtualisation.libvirtd.enable = true;
 
 	# Enable keyboards modules
 	modules.keyboards = {
@@ -99,4 +100,7 @@
 	i18n.extraLocaleSettings = {
 		LC_TIME = "en_GB.UTF-8";
 	};
+
+	# Auto timezone
+	modules.automatic-timezoned.enable = true;
 }

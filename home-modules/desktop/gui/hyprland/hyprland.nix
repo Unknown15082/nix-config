@@ -57,6 +57,13 @@ in
 			source = libutils.relativeToRoot "configs/hypr/original.conf";
 		};
 
-		modules.quickshell.enable = true;
+		modules = {
+			rofi.enable = true;
+			waybar.enable = true;
+			osd.enable = true;
+			mako.enable = true;
+			hyprlock.enable = true;
+			hypridle.enable = true;
+		};
 	};
 }
