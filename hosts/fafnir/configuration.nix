@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, system, lib, config, pkgs, ... }:
+{ pkgs, myvars, ... }:
 
 {
 	imports =
@@ -14,8 +14,8 @@
 		./laptop.nix
 	];
 
-	# Enable specific configs for local devices
-	modules.devices.LBP2900.enable = true;
+	# Enable default desktop settings
+	presets.desktop.enable = true;
 
 	# Enable NUSVPN
 	modules.nusvpn.enable = true;
@@ -24,45 +24,14 @@
 	hardware.opentabletdriver.enable = true;
 
 	# Set Windows' device handle for systemd-boot
-	modules.systemd-boot.enable = true;
 	modules.systemd-boot.windows_dual_boot = "HD0b";
-
-	# Set the kernel version
-	boot.kernelPackages = pkgs.linuxPackages_zen;
-
-	# Enable networking
-	networking.networkmanager = {
-		enable = true;
-		# insertNameservers = [
-		# 	# Google
-		# 	"8.8.8.8"
-		# 	"8.8.4.4"
-		# ];
-	};
-
-	# Enable some nix settings
-	modules.nix-settings.enable = true;
 
 	# Enable fish shell
 	programs.fish.enable = true;
 	users.defaultUserShell = pkgs.fish;
 
 	# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.unknown = {
-		isNormalUser = true;
-		uid = 1000;
-		description = "Unknown";
-		extraGroups = [ "networkmanager" "wheel" "docker" ];
-	};
-
-	# Enable Gamemode
-	programs.gamemode.enable = true;
-
-	# Enable Gamescope
-	programs.gamescope = {
-		enable = true;
-		capSysNice = true;
-	};
+	modules.users.username = myvars.username;
 
 	# Enable Tailscale
 	services.tailscale = {
@@ -101,35 +70,14 @@
 	# Enable bt-sync
 	modules.bluetooth.bt-sync.windows_partition = "nvme0n1p3";
 
-	# Enable stylix
-	modules.stylix.enable = true;
-
-	# Enable postgresql
-	services.postgresql = {
-		enable = true;
-	};
-
-	# Enable Nvidia
-	modules.nvidia = {
-		enable = true;
-		beta = true;
-		offload = true;
-		sync = false;
-	};
-
-	# Enable sound server
-	modules.sound.enable = true;
-
-	# Enable nh (nix helper)
-	modules.nh.enable = true;
-
 	# Enable games
 	modules.games.steam.enable = true;
 	modules.games.osu.enable = true;
 	modules.games.ffxiv.enable = true;
 
-	# Enable Docker
+	# Enable Docker & libvirtd
 	modules.virtualisation.docker.enable = true;
+	modules.virtualisation.libvirtd.enable = true;
 
 	# Enable keyboards modules
 	modules.keyboards = {
@@ -152,4 +100,7 @@
 	i18n.extraLocaleSettings = {
 		LC_TIME = "en_GB.UTF-8";
 	};
+
+	# Auto timezone
+	modules.automatic-timezoned.enable = true;
 }

@@ -1,4 +1,4 @@
-{ username, mylib, ... }:
+{ username, libutils, ... }:
 {
 	home.username = "${username}";
 	home.homeDirectory = "/home/${username}";
@@ -6,10 +6,10 @@
 	programs.home-manager.enable = true;
 
 	home.file."README.md" = {
-		source = mylib.relativeToRoot "configs/isoimage/README.md";
+		source = libutils.relativeToRoot "configs/isoimage/README.md";
 	};
 
 	home.file."justfile" = {
-		source = mylib.relativeToRoot "configs/isoimage/justfile";
+		source = libutils.relativeToRoot "configs/isoimage/justfile";
 	};
 }

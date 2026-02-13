@@ -1,4 +1,4 @@
-{ mylib, ... }:
+{ libutils, ... }:
 {
-	imports = mylib.scanPaths ./.;
+	imports = libutils.scanPaths ./.;
 }

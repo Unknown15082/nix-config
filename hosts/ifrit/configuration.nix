@@ -1,4 +1,4 @@
-{ pkgs, mylib, ... }:
+{ pkgs, libutils, ... }:
 {
 	imports = [
 		./hardware-configuration.nix
@@ -36,7 +36,7 @@
 	};
 
 	# Domain Name
-	modules.selfhost = {
+	modules.services = {
 		enable = true;
 		domainName = "huytrangia.dev";
 		services = {

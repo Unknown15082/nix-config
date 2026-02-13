@@ -30,7 +30,7 @@
 
 		# Coding stuff
 		# TODO: Move to specific devshells
-		jetbrains.idea-community-bin
+		jetbrains.idea-oss
 		jdk
 		vscode
 		typst
@@ -82,8 +82,8 @@
 	# Use ghostty instead of alacritty
 	modules.ghostty.enable = true;
 
-	# Enable caelestia-dots (disable right now)
-	modules.caelestia.enable = false;
+	# Enable shell-utils
+	modules.shell-utils.enable = true;
 
 	# Testing out IAMB (TODO: Move to module)
 	programs.iamb = {
