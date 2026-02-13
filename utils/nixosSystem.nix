@@ -13,6 +13,18 @@ let
     inherit (inputs) nixpkgs home-manager;
     inherit (myvars) username;
 
+    default-nixos-modules = with inputs; [
+        catppuccin.nixosModules.catppuccin
+        stylix.nixosModules.stylix
+        nix-index-database.nixosModules.nix-index
+        agenix.nixosModules.default
+    ];
+
+    default-home-modules = with inputs; [
+        catppuccin.homeModules.catppuccin
+        agenix.homeManagerModules.default
+    ];
+
     hasHomeManager = (lib.lists.length home-modules) > 0;
 
     hmAlias =
@@ -30,12 +42,12 @@ let
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm.backup";
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${username}".imports = home-modules;
+            home-manager.users."${username}".imports = home-modules ++ default-home-modules;
         }
     ];
 in
 nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
 
-    modules = nixos-modules ++ [ hmAlias ] ++ hmModules;
+    modules = nixos-modules ++ default-nixos-modules ++ [ hmAlias ] ++ hmModules;
 }
