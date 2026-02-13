@@ -33,9 +33,10 @@
     modules.users.username = myvars.username;
 
     # Enable Tailscale
-    services.tailscale = {
+    modules.tailscale = {
         enable = true;
-        useRoutingFeatures = "client";
+        clientFeatures = true;
+        systray = true;
     };
 
     # Leave this option alone

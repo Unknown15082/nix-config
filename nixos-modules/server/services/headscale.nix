@@ -62,9 +62,9 @@ in
                 			'';
         };
 
-        services.tailscale = {
+        modules.tailscale = {
             enable = true;
-            useRoutingFeatures = "server";
+            serverFeatures = true;
         };
 
         services.headscale = {
