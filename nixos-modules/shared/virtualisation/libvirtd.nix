@@ -1,29 +1,36 @@
-{ lib, libutils, config, pkgs, username, ... }:
+{
+    lib,
+    libutils,
+    config,
+    pkgs,
+    username,
+    ...
+}:
 let
-	cfg = config.modules.virtualisation.libvirtd;
+    cfg = config.modules.virtualisation.libvirtd;
 in
 {
-	options.modules.virtualisation.libvirtd = {
-		enable = lib.mkEnableOption "libvirtd";
-	};
+    options.modules.virtualisation.libvirtd = {
+        enable = lib.mkEnableOption "libvirtd";
+    };
 
-	config = lib.mkIf cfg.enable {
-		virtualisation.libvirtd = {
-			enable = true;
-			qemu = {
-				package = pkgs.qemu_kvm;
-				runAsRoot = true;
-				swtpm.enable = true;
-			};
-		};
+    config = lib.mkIf cfg.enable {
+        virtualisation.libvirtd = {
+            enable = true;
+            qemu = {
+                package = pkgs.qemu_kvm;
+                runAsRoot = true;
+                swtpm.enable = true;
+            };
+        };
 
-		# TODO: Use modules.users
-		users.users.${username} = {
-			extraGroups = [ "libvirtd" ];
-		};
+        # TODO: Use modules.users
+        users.users.${username} = {
+            extraGroups = [ "libvirtd" ];
+        };
 
-		environment.systemPackages = with pkgs; [
-			virt-manager
-		];
-	};
+        environment.systemPackages = with pkgs; [
+            virt-manager
+        ];
+    };
 }

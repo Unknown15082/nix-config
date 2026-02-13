@@ -1,8 +1,8 @@
 {
-	username = "unknown";
-	email = "trangiahuy15082006@gmail.com";
+    username = "unknown";
+    email = "trangiahuy15082006@gmail.com";
 
-	publicKeys = [
+    publicKeys = [
 
-	];
+    ];
 }

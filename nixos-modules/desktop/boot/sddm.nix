@@ -1,33 +1,38 @@
-{ lib, config, pkgs, ... }:
+{
+    lib,
+    config,
+    pkgs,
+    ...
+}:
 let
-	cfg = config.modules.sddm;
+    cfg = config.modules.sddm;
 in
 {
-	options.modules.sddm = {
-		enable = lib.mkEnableOption "SDDM";
-	};
+    options.modules.sddm = {
+        enable = lib.mkEnableOption "SDDM";
+    };
 
-	config = lib.mkIf cfg.enable {
-		environment.systemPackages = [
-			(pkgs.catppuccin-sddm.override {
-				flavor = "mocha";
-				accent = "sapphire";
-				font = config.stylix.fonts.sansSerif.name;
-				fontSize = "12";
-			})
-		];
+    config = lib.mkIf cfg.enable {
+        environment.systemPackages = [
+            (pkgs.catppuccin-sddm.override {
+                flavor = "mocha";
+                accent = "sapphire";
+                font = config.stylix.fonts.sansSerif.name;
+                fontSize = "12";
+            })
+        ];
 
-		services.xserver.enable = true;
-		services.displayManager = {
-			sddm = {
-				enable = true;
-				package = pkgs.kdePackages.sddm;
-				
-				theme = "catppuccin-mocha-sapphire";
-			};
-		};
+        services.xserver.enable = true;
+        services.displayManager = {
+            sddm = {
+                enable = true;
+                package = pkgs.kdePackages.sddm;
 
-		security.pam.services.sddm.enableGnomeKeyring = true;
-		modules.keyring.enable = true;
-	};
+                theme = "catppuccin-mocha-sapphire";
+            };
+        };
+
+        security.pam.services.sddm.enableGnomeKeyring = true;
+        modules.keyring.enable = true;
+    };
 }

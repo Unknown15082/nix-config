@@ -1,66 +1,71 @@
-{ pkgs, lib, config, ... }:
+{
+    pkgs,
+    lib,
+    config,
+    ...
+}:
 with pkgs.python3Packages;
 let
-	pulse-cookie = buildPythonApplication rec {
-		pname = "pulse-cookie";
-		version = "1.0";
-		pyproject = true;
+    pulse-cookie = buildPythonApplication rec {
+        pname = "pulse-cookie";
+        version = "1.0";
+        pyproject = true;
 
-		src = pkgs.fetchPypi {
-			inherit pname version;
-			sha256 = "sha256-ZURSXfChq2k8ktKO6nc6AuVaAMS3eOcFkiKahpq4ebU=";
-		};
+        src = pkgs.fetchPypi {
+            inherit pname version;
+            sha256 = "sha256-ZURSXfChq2k8ktKO6nc6AuVaAMS3eOcFkiKahpq4ebU=";
+        };
 
-		dependencies = [
-			setuptools
-			setuptools-scm
-			pyqt6-webengine
-		];
+        dependencies = [
+            setuptools
+            setuptools-scm
+            pyqt6-webengine
+        ];
 
-		meta = with lib; {
-			homepage = "https://pypi.org/project/pulse-cookie/";
-			description = "Minimal QtWebEngine-based Web UI to extract the Pulse Connect Secure authentication cookie for use with OpenConnect VPN";
-			license = licenses.gpl3;
-		};
-	};
+        meta = with lib; {
+            homepage = "https://pypi.org/project/pulse-cookie/";
+            description = "Minimal QtWebEngine-based Web UI to extract the Pulse Connect Secure authentication cookie for use with OpenConnect VPN";
+            license = licenses.gpl3;
+        };
+    };
 
-	pulse-vpn = pkgs.writeShellScriptBin "pulse-vpn" ''
-		HOST=$1
-		DSID=$(${pulse-cookie}/bin/get-pulse-cookie -n DSID $HOST)
-		sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
-	'';
+    pulse-vpn = pkgs.writeShellScriptBin "pulse-vpn" ''
+        		HOST=$1
+        		DSID=$(${pulse-cookie}/bin/get-pulse-cookie -n DSID $HOST)
+        		sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
+        	'';
 
-	nusvpn = pkgs.writeShellScriptBin "nusvpn" ''
-		pulse-vpn "https://webvpn.nus.edu.sg/stu"
-	'';
+    nusvpn = pkgs.writeShellScriptBin "nusvpn" ''
+        		pulse-vpn "https://webvpn.nus.edu.sg/stu"
+        	'';
 
-	socvpn = pkgs.writeShellScriptBin "socvpn" ''
-		sudo openfortivpn "webvpn.comp.nus.edu.sg:443" --cookie="$(openfortivpn-webview -- webvpn.comp.nus.edu.sg)" 
-	'';
+    socvpn = pkgs.writeShellScriptBin "socvpn" ''
+        		sudo openfortivpn "webvpn.comp.nus.edu.sg:443" --cookie="$(openfortivpn-webview -- webvpn.comp.nus.edu.sg)" 
+        	'';
 
-	cfg = config.modules.nusvpn;
+    cfg = config.modules.nusvpn;
 in
 {
-	options.modules.nusvpn = {
-		enable = lib.mkEnableOption "NUS VPN";
-	};
+    options.modules.nusvpn = {
+        enable = lib.mkEnableOption "NUS VPN";
+    };
 
-	config = lib.mkIf cfg.enable {
-		environment.systemPackages = with pkgs; [
-			openconnect
-			openfortivpn
-			openfortivpn-webview-qt
+    config = lib.mkIf cfg.enable {
+        environment.systemPackages = with pkgs; [
+            openconnect
+            openfortivpn
+            openfortivpn-webview-qt
 
-			qt6.qtbase
-			qt6.qtwayland
+            qt6.qtbase
+            qt6.qtwayland
 
-			pulse-vpn
-			nusvpn
-			socvpn
-		];
+            pulse-vpn
+            nusvpn
+            socvpn
+        ];
 
-		environment.variables = {
-			QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt6.qtbase}/lib/qt-6/plugins/platforms";
-		};
-	};
+        environment.variables = {
+            QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt6.qtbase}/lib/qt-6/plugins/platforms";
+        };
+    };
 }

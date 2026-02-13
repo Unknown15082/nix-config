@@ -1,24 +1,24 @@
 { lib, ... }:
 {
-	relativeToRoot = lib.path.append ../.;
+    relativeToRoot = lib.path.append ../.;
 
-	scanPaths = path:
-		builtins.map
-		(f: (path + "/${f}"))
-		(builtins.attrNames
-		  (lib.attrsets.filterAttrs
-			(
-			  path: _type:
-				(_type == "directory") # include directories
-				|| (
-				  (path != "default.nix") # ignore default.nix
-				  && (lib.strings.hasSuffix ".nix" path) # include .nix files
-				)
-			)
-			(builtins.readDir path)));
+    scanPaths =
+        path:
+        builtins.map (f: (path + "/${f}")) (
+            builtins.attrNames (
+                lib.attrsets.filterAttrs (
+                    path: _type:
+                    (_type == "directory") # include directories
+                    || (
+                        (path != "default.nix") # ignore default.nix
+                        && (lib.strings.hasSuffix ".nix" path) # include .nix files
+                    )
+                ) (builtins.readDir path)
+            )
+        );
 
-	nixosSystem = import ./nixosSystem.nix;
-	homeSystem = import ./homeSystem.nix;
+    nixosSystem = import ./nixosSystem.nix;
+    homeSystem = import ./homeSystem.nix;
 
-	mkPresetDefault = lib.mkOverride 900;
+    mkPresetDefault = lib.mkOverride 900;
 }

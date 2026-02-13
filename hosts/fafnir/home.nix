@@ -1,108 +1,116 @@
-{ inputs, config, osConfig, lib, pkgs, username, ... }:
 {
-	home.username = "${username}";
-	home.homeDirectory = "/home/${username}";
+    inputs,
+    config,
+    osConfig,
+    lib,
+    pkgs,
+    username,
+    ...
+}:
+{
+    home.username = "${username}";
+    home.homeDirectory = "/home/${username}";
 
-	home.stateVersion = "23.11";
-	programs.home-manager.enable = true;
+    home.stateVersion = "23.11";
+    programs.home-manager.enable = true;
 
-	# Add packages
-	home.packages = with pkgs; [
-		# Essential tools
-		firefox
-		gcc
-		gdb
-		wl-clipboard
-		gnupg
+    # Add packages
+    home.packages = with pkgs; [
+        # Essential tools
+        firefox
+        gcc
+        gdb
+        wl-clipboard
+        gnupg
 
-		# Other tools
-		openfortivpn		# Connecting with SoC VPN (NUS)
-		hugo				# Blog sites
-		zoom-us		# Zoom meetings
-		zathura				# Viewing PDFs with VimTex
-		xournalpp			# Tablet sketching
-		obsidian				# Note-taking and tasks tracking
-		gparted
-		just
-		gcalcli
-		nchat
-		anki-bin
+        # Other tools
+        openfortivpn # Connecting with SoC VPN (NUS)
+        hugo # Blog sites
+        zoom-us # Zoom meetings
+        zathura # Viewing PDFs with VimTex
+        xournalpp # Tablet sketching
+        obsidian # Note-taking and tasks tracking
+        gparted
+        just
+        gcalcli
+        nchat
+        anki-bin
 
-		# Coding stuff
-		# TODO: Move to specific devshells
-		jetbrains.idea-oss
-		jdk
-		vscode
-		typst
+        # Coding stuff
+        # TODO: Move to specific devshells
+        jetbrains.idea-oss
+        jdk
+        vscode
+        typst
 
-		# Personal NixVim config
-		inputs.nixvim-config.packages.${system}.default
+        # Personal NixVim config
+        inputs.nixvim-config.packages.${system}.default
 
-		# Agenix CLI
-		inputs.agenix.packages.${system}.default
-	];
+        # Agenix CLI
+        inputs.agenix.packages.${system}.default
+    ];
 
-	# Setup git
-	programs.git = {
-		enable = true;
-		userName = "Unknown15082";
-		userEmail = "trangiahuy15082006@gmail.com";
+    # Setup git
+    programs.git = {
+        enable = true;
+        userName = "Unknown15082";
+        userEmail = "trangiahuy15082006@gmail.com";
 
-		signing = {
-			key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
-			format = "ssh";
-			signByDefault = true;
-		};
+        signing = {
+            key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+            format = "ssh";
+            signByDefault = true;
+        };
 
-		aliases = {
-			amend = "commit --amend --no-edit";
-			aliases = "config --get-regexp alias";
-		};
+        aliases = {
+            amend = "commit --amend --no-edit";
+            aliases = "config --get-regexp alias";
+        };
 
-		extraConfig = {
-			core = {
-				excludesFile = "${config.home.homeDirectory}/.gitignore";
-			};
-		};
-	};
+        extraConfig = {
+            core = {
+                excludesFile = "${config.home.homeDirectory}/.gitignore";
+            };
+        };
+    };
 
-	# Neovim as default
-	home.sessionVariables = {
-		EDITOR = "nvim";
-		ANKI_WAYLAND = "1";
-	};
+    # Neovim as default
+    home.sessionVariables = {
+        EDITOR = "nvim";
+        ANKI_WAYLAND = "1";
+    };
 
-	# Enable Discord
-	modules.discord.enable = true;
-	modules.discord.addons = true;
+    # Enable Discord
+    modules.discord.enable = true;
+    modules.discord.addons = true;
 
-	# Enable spotify-player
-	modules.spotify-player.enable = true;
+    # Enable spotify-player
+    modules.spotify-player.enable = true;
 
-	# Use ghostty instead of alacritty
-	modules.ghostty.enable = true;
+    # Use ghostty instead of alacritty
+    modules.ghostty.enable = true;
 
-	# Enable shell-utils
-	modules.shell-utils.enable = true;
+    # Enable shell-utils
+    modules.shell-utils.enable = true;
 
-	# Testing out IAMB (TODO: Move to module)
-	programs.iamb = {
-		enable = true;
-		settings = {
-			default_profile = "dtth";
+    # Testing out IAMB (TODO: Move to module)
+    programs.iamb = {
+        enable = true;
+        settings = {
+            default_profile = "dtth";
 
-			profiles.dtth = {
-				user_id = "@unknown1508:dtth.ch";
-			};
+            profiles.dtth = {
+                user_id = "@unknown1508:dtth.ch";
+            };
 
-			settings = {
-				notifications.enabled = true;
-				image_preview.protocol.type = "kitty";
-			};
-		};
-	};
+            settings = {
+                notifications.enabled = true;
+                image_preview.protocol.type = "kitty";
+            };
+        };
+    };
 
-	# Set agenix identity path
-	age.identityPaths = [
-	];
+    # Set agenix identity path
+    age.identityPaths = [
+    ];
 }

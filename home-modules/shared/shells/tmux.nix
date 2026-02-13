@@ -1,69 +1,74 @@
-{ lib, config, pkgs, ... }:
+{
+    lib,
+    config,
+    pkgs,
+    ...
+}:
 let
-	cfg = config.modules.shell-utils;
+    cfg = config.modules.shell-utils;
 in
 {
-	config = lib.mkIf cfg.enable {
-		programs.tmux = {
-			enable = true;
+    config = lib.mkIf cfg.enable {
+        programs.tmux = {
+            enable = true;
 
-			shortcut = "a"; # Set prefix to C-a
+            shortcut = "a"; # Set prefix to C-a
 
-			sensibleOnTop = true;
-			plugins = with pkgs; [
-				{
-					plugin = tmuxPlugins.resurrect;
-				}
-				{
-					plugin = tmuxPlugins.continuum;
-					extraConfig = ''
-						set -g @continuum-restore 'on'
-						set -g @continuum-save-interval '1'
-					'';
-				}
-			];
+            sensibleOnTop = true;
+            plugins = with pkgs; [
+                {
+                    plugin = tmuxPlugins.resurrect;
+                }
+                {
+                    plugin = tmuxPlugins.continuum;
+                    extraConfig = ''
+                        						set -g @continuum-restore 'on'
+                        						set -g @continuum-save-interval '1'
+                        					'';
+                }
+            ];
 
-			shell = "${pkgs.fish}/bin/fish";
-			clock24 = true;
-			mouse = true;
-			disableConfirmationPrompt = true;
-			baseIndex = 1;
-			escapeTime = 0;
-			historyLimit = 50000;
-			terminal = "xterm-256color";
+            shell = "${pkgs.fish}/bin/fish";
+            clock24 = true;
+            mouse = true;
+            disableConfirmationPrompt = true;
+            baseIndex = 1;
+            escapeTime = 0;
+            historyLimit = 50000;
+            terminal = "xterm-256color";
 
-			extraConfig = ''
-			# Alt-arrow to switch panes
-			# Shift-arrow to switch windows
-				bind -n M-Left select-pane -L
-				bind -n M-Down select-pane -D
-				bind -n M-Up select-pane -U
-				bind -n M-Right select-pane -R
+            extraConfig = ''
+                			# Alt-arrow to switch panes
+                			# Shift-arrow to switch windows
+                				bind -n M-Left select-pane -L
+                				bind -n M-Down select-pane -D
+                				bind -n M-Up select-pane -U
+                				bind -n M-Right select-pane -R
 
-				bind -n S-Left previous-window
-				bind -n S-Right next-window
+                				bind -n S-Left previous-window
+                				bind -n S-Right next-window
 
-			# Better keybinds for splitting
-				bind v split-window -h -c "#{pane_current_path}"
-				bind h split-window -v -c "#{pane_current_path}"
+                			# Better keybinds for splitting
+                				bind v split-window -h -c "#{pane_current_path}"
+                				bind h split-window -v -c "#{pane_current_path}"
 
-			# Open new window in current working directory
-				bind c new-window -c "#{pane_current_path}"
+                			# Open new window in current working directory
+                				bind c new-window -c "#{pane_current_path}"
 
-			# Toggle fullscreen pane
-				bind f resize-pane -Z
+                			# Toggle fullscreen pane
+                				bind f resize-pane -Z
 
-			# Enable 24-bit color
-				set-option -sa terminal-overrides ",xterm-256color:Tc"
+                			# Enable 24-bit color
+                				set-option -sa terminal-overrides ",xterm-256color:Tc"
 
-			# Enable vi-mode copy
-				setw -g mode-keys vi
-			'';
-		};
+                			# Enable vi-mode copy
+                				setw -g mode-keys vi
+                			'';
+        };
 
-		catppuccin.tmux = {
-			enable = true;
-			flavor = "mocha";
-		};
-	};
+        catppuccin.tmux = {
+            enable = true;
+            flavor = "mocha";
+        };
+    };
 }
