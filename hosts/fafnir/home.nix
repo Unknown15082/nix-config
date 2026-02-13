@@ -42,6 +42,7 @@
         jdk
         vscode
         typst
+        pre-commit
 
         # Personal NixVim config
         inputs.nixvim-config.packages.${system}.default
