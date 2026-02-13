@@ -10,6 +10,14 @@ let
 	libutils = import ../utils { inherit lib; };
 	myvars = import ../vars;
 
+	mkFormatter = system: (nixpkgs.legacyPackages.${system}.nixfmt-tree.override {
+		settings = {
+			formatter.nixfmt = {
+				options = [ "--indent=4" ];
+			};
+		};
+	});
+
 	genSpecialArgs = system:
 		inputs // {
 			inherit libutils myvars inputs;
@@ -41,5 +49,5 @@ in
 
 	checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
-	formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+	formatter = forAllSystems mkFormatter;
 }
