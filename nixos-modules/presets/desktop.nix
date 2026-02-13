@@ -26,6 +26,7 @@ in {
 				nameservers.google = true;
 			};
 			
+			sddm.enable = true;
 			stylix.enable = true;
 			nh.enable = true;
 		};
