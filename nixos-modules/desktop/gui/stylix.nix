@@ -58,5 +58,7 @@ in
 				terminal = 0.8;
 			};
 		};
+
+		hm.modules.stylix.enable = true;
 	};
 }
