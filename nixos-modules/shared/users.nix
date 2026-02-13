@@ -19,7 +19,7 @@ in {
 		users.users.${cfg.username} = {
 			isNormalUser = true;
 			description = cfg.username;
-			inherit (cfg) extraGroups;
+			extraGroups = cfg.extraGroups ++ [ "wheel" ];
 			# TODO: hashPasswordFile
 			# TODO: authorizedKeys
 		};
