@@ -15,7 +15,7 @@ in
 			fish = {
 				enable = true;
 				interactiveShellInit = ''
-					set fish_gretting
+					set fish_greeting
 					_pure_prompt_new_line
 				'';
 
