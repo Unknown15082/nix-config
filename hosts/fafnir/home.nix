@@ -30,7 +30,7 @@
 
 		# Coding stuff
 		# TODO: Move to specific devshells
-		jetbrains.idea-community-bin
+		jetbrains.idea-oss
 		jdk
 		vscode
 		typst
