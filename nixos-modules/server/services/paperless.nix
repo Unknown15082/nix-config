@@ -1,6 +1,7 @@
 {
     lib,
     config,
+    secrets,
     username,
     ...
 }:
@@ -19,6 +20,12 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
+        age.secrets.paperless_password = {
+            file = "${secrets}/paperless.age";
+            mode = "400";
+            owner = config.services.paperless.user;
+        };
+
         services.caddy = {
             virtualHosts."paper.${domainName}".extraConfig = ''
                 				import tailscale

@@ -9,7 +9,6 @@ let
 
     nixos-modules = map relativeToRoot [
         "nixos-modules"
-        "secrets"
         "hosts/${name}/configuration.nix"
     ];
 

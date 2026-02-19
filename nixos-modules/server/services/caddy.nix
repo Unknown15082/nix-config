@@ -2,6 +2,7 @@
     lib,
     config,
     pkgs,
+    secrets,
     ...
 }:
 let
@@ -9,6 +10,13 @@ let
 in
 {
     config = lib.mkIf (cfg.enable && cfg.reverseProxy == "caddy") {
+        age.secrets.caddy_env = {
+            file = "${secrets}/caddy_env.age";
+            mode = "400";
+            owner = config.services.caddy.user;
+            group = config.services.caddy.group;
+        };
+
         services.tailscaleAuth.enable = true;
 
         services.caddy = {
