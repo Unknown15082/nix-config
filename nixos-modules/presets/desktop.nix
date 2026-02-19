@@ -8,10 +8,9 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        presets.base.enable = true;
+
         modules = {
-            kernel.enable = true;
-            systemd-boot.enable = true;
-            nix-settings.enable = true;
             nvidia = {
                 enable = true;
                 beta = true;
@@ -22,10 +21,7 @@ in
             bluetooth.enable = true;
             printing.enable = true;
             sound.enable = true;
-            networking = {
-                enable = true;
-                nameservers.google = true;
-            };
+            networking.nameservers.google = true;
 
             sddm.enable = true;
             stylix.enable = true;
