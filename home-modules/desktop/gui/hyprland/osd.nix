@@ -15,9 +15,13 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            swayosd
             brightnessctl
             jq
         ];
+
+        services.swayosd = {
+            enable = true;
+            topMargin = 0.95;
+        };
     };
 }
