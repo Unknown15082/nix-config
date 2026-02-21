@@ -26,7 +26,7 @@ in
                     "github.com/caddy-dns/cloudflare@v0.2.1"
                     "github.com/greenpau/caddy-security@v1.1.31"
                 ];
-                hash = "sha256-AxrLKxrnJEDUlK5m4nAlUz+RfLH0Io8fZS2nyTyF22w=";
+                hash = "sha256-MyCauokxAulv2LuR/MJIl1oCPGLzS9Ind5AjiKgCQPw=";
             };
 
             environmentFile = config.age.secrets.caddy_env.path;
