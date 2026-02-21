@@ -55,6 +55,13 @@ in
             group = "headscale";
         };
 
+        age.secrets.headplane_preauth = {
+            file = "${inputs.secrets}/tailscale_preauth.age";
+            mode = "400";
+            owner = "headscale";
+            group = "headscale";
+        };
+
         services.caddy = {
             virtualHosts."hs.${domainName}".extraConfig = ''
                 				${headplaneReverseProxy}
@@ -102,8 +109,8 @@ in
                     };
                     integration.proc.enabled = true;
                     integration.agent = {
-                        enabled = false;
-                        pre_authkey_path = "";
+                        enabled = true;
+                        pre_authkey_path = config.age.secrets.headplane_preauth.path;
                     };
                 };
             };
