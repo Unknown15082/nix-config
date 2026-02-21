@@ -27,7 +27,7 @@ in
         users.users.${cfg.username} = {
             isNormalUser = normalUser;
             isSystemUser = !normalUser;
-            description = cfg.username;
+            description = lib.mkIf normalUser cfg.username;
             extraGroups = cfg.extraGroups ++ [ "wheel" ];
             # TODO: hashPasswordFile
             # TODO: authorizedKeys
