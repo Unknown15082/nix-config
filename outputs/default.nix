@@ -43,6 +43,7 @@ let
     # To add a new machine, import it here
     hosts = {
         fafnir = import ./src/fafnir.nix (mkArgs "x86_64-linux");
+        scylla = import ./src/scylla.nix (mkArgs "x86_64-linux");
     };
     allSystems = [ "x86_64-linux" ];
 

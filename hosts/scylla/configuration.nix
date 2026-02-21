@@ -5,21 +5,15 @@
         ./disko-config.nix
     ];
 
-    nixpkgs.hostPlatform = "x86_64-linux";
-    nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-    ];
-
     system.stateVersion = "25.05";
 
-    boot.loader.grub.enable = true;
-
     networking.hostName = "scylla";
-    services.openssh.enable = true;
+    # TODO: Use modules.users.keys and myvars.publicKeys
     users.users.root.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILeIOQzu+mY5V0Gll45muIwqjACIOdqNP2JuE5G8vyYM"
     ];
+
+    modules.users.username = "root";
 
     environment.systemPackages = with pkgs; [
         neovim
