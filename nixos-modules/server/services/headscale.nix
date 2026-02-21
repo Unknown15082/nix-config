@@ -103,6 +103,7 @@ in
                     integration.proc.enabled = true;
                     integration.agent = {
                         enabled = false;
+                        pre_authkey_path = "";
                     };
                 };
             };
