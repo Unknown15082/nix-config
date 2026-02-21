@@ -1,10 +1,9 @@
 {
     inputs,
     config,
-    osConfig,
-    lib,
     pkgs,
     username,
+    system,
     ...
 }:
 {
