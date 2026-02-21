@@ -10,17 +10,12 @@ let
         "nixos-modules"
         "hosts/${name}/configuration.nix"
     ];
-
-    home-modules = map relativeToRoot [
-        "home-modules"
-        "hosts/${name}/home.nix"
-    ];
 in
 {
     nixosConfigurations = libutils.nixosSystem (
         args
         // {
-            inherit nixos-modules home-modules;
+            inherit nixos-modules;
         }
     );
 }
