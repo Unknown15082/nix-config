@@ -44,6 +44,7 @@ let
     hosts = {
         fafnir = import ./src/fafnir.nix (mkArgs "x86_64-linux");
         scylla = import ./src/scylla.nix (mkArgs "x86_64-linux");
+        banshee = import ./src/banshee.nix (mkArgs "x86_64-linux");
     };
     allSystems = [ "x86_64-linux" ];
 
