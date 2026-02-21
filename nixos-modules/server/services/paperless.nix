@@ -28,7 +28,6 @@ in
 
         services.caddy = {
             virtualHosts."paper.${domainName}".extraConfig = ''
-                				import tailscale
                 				reverse_proxy :${toString serviceCfg.port}
                 			'';
         };
