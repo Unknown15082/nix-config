@@ -1,9 +1,7 @@
 {
     lib,
-    libutils,
     config,
     pkgs,
-    username,
     ...
 }:
 let
@@ -25,9 +23,7 @@ in
         };
 
         # TODO: Use modules.users
-        users.users.${username} = {
-            extraGroups = [ "libvirtd" ];
-        };
+        modules.users.extraGroups = [ "libvirtd" ];
 
         environment.systemPackages = with pkgs; [
             virt-manager
