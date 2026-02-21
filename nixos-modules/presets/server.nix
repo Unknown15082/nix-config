@@ -15,6 +15,8 @@ in
             #     docker.enable = true;
             #     libvirtd.enable = true;
             # };
+
+            systemd-boot.timeout = 3;
         };
 
         boot.tmp.cleanOnBoot = true;

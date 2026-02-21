@@ -5,6 +5,13 @@ in
 {
     options.modules.systemd-boot = {
         enable = lib.mkEnableOption "systemd-boot";
+
+        timeout = lib.mkOption {
+            type = lib.types.int;
+            default = 60;
+            description = "Timeout duration";
+        };
+
         limit = lib.mkOption {
             type = lib.types.int;
             default = 5;
@@ -21,7 +28,7 @@ in
     config = lib.mkIf cfg.enable {
         boot.loader = {
             efi.canTouchEfiVariables = true;
-            timeout = 60;
+            timeout = cfg.timeout;
             systemd-boot = {
                 enable = true;
                 configurationLimit = cfg.limit;
