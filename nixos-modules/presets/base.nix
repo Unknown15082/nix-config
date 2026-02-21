@@ -16,6 +16,9 @@ in
             networking = {
                 enable = true;
             };
+
+            fonts.all = true;
+            locale.enable = true;
         };
     };
 }
