@@ -11,10 +11,10 @@ in
         presets.base.enable = true;
 
         modules = {
-            virtualisation = {
-                docker.enable = true;
-                libvirtd.enable = true;
-            };
+            # virtualisation = {
+            #     docker.enable = true;
+            #     libvirtd.enable = true;
+            # };
         };
 
         boot.tmp.cleanOnBoot = true;
