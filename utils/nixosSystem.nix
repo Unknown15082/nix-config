@@ -18,6 +18,7 @@ let
         stylix.nixosModules.stylix
         nix-index-database.nixosModules.nix-index
         agenix.nixosModules.default
+        disko.nixosModules.disko
     ];
 
     default-home-modules = with inputs; [
