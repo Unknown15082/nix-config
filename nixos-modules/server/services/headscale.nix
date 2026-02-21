@@ -94,10 +94,6 @@ in
                         port = port;
                         cookie_secret_path = config.age.secrets.headplane_cookie.path;
                         cookie_secure = true;
-                        agent = {
-                            enabled = false;
-                            authkey = "";
-                        };
                     };
                     headscale = {
                         url = config.services.headscale.settings.server_url;
@@ -105,6 +101,9 @@ in
                         config_strict = true;
                     };
                     integration.proc.enabled = true;
+                    integration.agent = {
+                        enabled = false;
+                    };
                 };
             };
     };
