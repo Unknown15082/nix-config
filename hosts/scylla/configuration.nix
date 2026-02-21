@@ -5,6 +5,8 @@
         ./disko-config.nix
     ];
 
+    presets.server.enable = true;
+
     system.stateVersion = "25.05";
 
     networking.hostName = "scylla";
