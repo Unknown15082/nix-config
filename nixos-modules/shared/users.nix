@@ -6,6 +6,8 @@
 }:
 let
     cfg = config.modules.users;
+
+    normalUser = cfg.username != "root";
 in
 {
     options.modules.users = {
@@ -23,7 +25,8 @@ in
 
     config = {
         users.users.${cfg.username} = {
-            isNormalUser = true;
+            isNormalUser = normalUser;
+            isSystemUser = !normalUser;
             description = cfg.username;
             extraGroups = cfg.extraGroups ++ [ "wheel" ];
             # TODO: hashPasswordFile
