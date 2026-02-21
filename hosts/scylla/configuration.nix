@@ -38,7 +38,7 @@
     # Domain Name
     modules.services = {
         enable = true;
-        domainName = "huytrangia.dev";
+        domainName = "huytran.me";
         reverseProxy = "caddy";
 
         services = {
