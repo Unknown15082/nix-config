@@ -43,6 +43,7 @@
     system.stateVersion = "23.11";
 
     # Manage fonts
+    # TODO: Fonts
     fonts.packages = with pkgs; [
         jetbrains-mono
         nerd-fonts.jetbrains-mono
@@ -96,6 +97,7 @@
     hardware.i2c.enable = true;
 
     # Set locale
+    # TODO: Locale
     i18n.extraLocales = [ "en_GB.UTF-8/UTF-8" ];
     i18n.extraLocaleSettings = {
         LC_TIME = "en_GB.UTF-8";

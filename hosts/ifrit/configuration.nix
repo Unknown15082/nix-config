@@ -5,17 +5,17 @@
         ./networking.nix
     ];
 
-    nixpkgs.hostPlatform = "x86_64-linux";
-    nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-    ];
+    # nixpkgs.hostPlatform = "x86_64-linux";
+    # nix.settings.experimental-features = [
+    #     "nix-command"
+    #     "flakes"
+    # ];
 
-    boot.tmp.cleanOnBoot = true;
-    zramSwap.enable = true;
+    # boot.tmp.cleanOnBoot = true;
+    # zramSwap.enable = true;
     networking.hostName = "ifrit";
-    networking.domain = "";
-    services.openssh.enable = true;
+    # networking.domain = "";
+    # services.openssh.enable = true;
     users.users.root.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILeIOQzu+mY5V0Gll45muIwqjACIOdqNP2JuE5G8vyYM"
     ];
