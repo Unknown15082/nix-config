@@ -48,6 +48,9 @@
 
         # Agenix CLI
         inputs.agenix.packages.${system}.default
+
+        # Deploy-rs CLI
+        inputs.deploy-rs.packages.${system}.default
     ];
 
     # Setup git
