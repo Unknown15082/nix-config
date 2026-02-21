@@ -53,8 +53,6 @@
     # Setup git
     programs.git = {
         enable = true;
-        userName = "Unknown15082";
-        userEmail = "trangiahuy15082006@gmail.com";
 
         signing = {
             key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
@@ -62,14 +60,17 @@
             signByDefault = true;
         };
 
-        aliases = {
-            amend = "commit --amend --no-edit";
-            aliases = "config --get-regexp alias";
-        };
-
-        extraConfig = {
+        settings = {
             core = {
                 excludesFile = "${config.home.homeDirectory}/.gitignore";
+            };
+
+            user.name = "Unknown15082";
+            user.email = "trangiahuy15082006@gmail.com";
+
+            alias = {
+                amend = "commit --amend --no-edit";
+                aliases = "config --get-regexp alias";
             };
         };
     };
