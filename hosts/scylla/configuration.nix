@@ -19,6 +19,7 @@
         neovim
         git
         btop
+        ghostty.terminfo
 
         dive
         podman-tui
