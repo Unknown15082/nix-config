@@ -42,7 +42,6 @@
         reverseProxy = "caddy";
 
         services = {
-            index.enable = true;
             test.enable = true;
             otterwiki = {
                 enable = true;
@@ -51,10 +50,6 @@
             paperless = {
                 enable = true;
                 port = 7002;
-            };
-            stirling-pdf = {
-                enable = true;
-                port = 7003;
             };
             headscale = {
                 enable = true;
