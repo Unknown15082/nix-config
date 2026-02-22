@@ -10,6 +10,7 @@ in
         port = lib.mkOption {
             description = "The exposed port";
             type = lib.types.int;
+            default = 7003;
         };
     };
 

@@ -36,6 +36,7 @@ in
         port = lib.mkOption {
             description = "The exposed port";
             type = lib.types.int;
+            default = 7004;
         };
 
         headplane = {
@@ -43,6 +44,7 @@ in
             port = lib.mkOption {
                 description = "The exposed port";
                 type = lib.types.int;
+                default = 7005;
             };
         };
     };

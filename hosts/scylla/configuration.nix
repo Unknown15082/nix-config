@@ -45,23 +45,18 @@
             test.enable = true;
             otterwiki = {
                 enable = true;
-                port = 7001;
             };
             paperless = {
                 enable = true;
-                port = 7002;
             };
             headscale = {
                 enable = true;
-                port = 7004;
                 headplane = {
                     enable = true;
-                    port = 7005;
                 };
             };
             silverbullet = {
                 enable = true;
-                port = 7006;
             };
         };
     };
