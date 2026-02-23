@@ -12,8 +12,15 @@ in
     config = lib.mkIf serviceCfg.enable {
         services.caddy = {
             virtualHosts."test.${domainName}".extraConfig = ''
-                				respond "Testing"
-                			'';
+                				@tailnet remote_ip 100.64.0.0/10
+
+                				handle @tailnet {
+                					respond "Hello from tailnet!"
+                				}
+
+                				handle {
+                					respond "Testing"
+                				}'';
         };
     };
 }
