@@ -24,6 +24,15 @@ in
             virtualHosts."auth.${domainName}".extraConfig = ''
                 				reverse_proxy :${toString serviceCfg.port}
                 			'';
+
+            extraConfig = ''
+                                				(tinyauth) {
+                									forward_auth :${toString serviceCfg.port} {
+                                						uri /api/auth/caddy
+                                						copy_headers Remote-User Remote-Name Remote-Email Remote-Groups
+                                					}
+                                				}
+                                			'';
         };
 
         age.secrets.tinyauth = {
