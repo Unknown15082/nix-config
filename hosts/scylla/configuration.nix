@@ -51,6 +51,7 @@
             };
             silverbullet.enable = true;
             pocket-id.enable = true;
+            tinyauth.enable = true;
         };
     };
 }
