@@ -7,7 +7,7 @@
 }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.headscale;
+    serviceCfg = cfg.apps.headscale;
     domainName = cfg.domainName;
 
     format = pkgs.formats.yaml { };
@@ -31,7 +31,7 @@ in
         { nixpkgs.overlays = [ inputs.headplane.overlays.default ]; }
     ];
 
-    options.modules.services.services.headscale = {
+    options.modules.services.apps.headscale = {
         enable = lib.mkEnableOption "service: headscale";
         port = lib.mkOption {
             description = "The exposed port";

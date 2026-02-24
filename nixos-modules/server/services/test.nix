@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.test;
+    serviceCfg = cfg.apps.test;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.services.test = {
+    options.modules.services.apps.test = {
         enable = lib.mkEnableOption "service: test";
     };
 

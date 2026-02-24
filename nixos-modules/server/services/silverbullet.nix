@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.silverbullet;
+    serviceCfg = cfg.apps.silverbullet;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.services.silverbullet = {
+    options.modules.services.apps.silverbullet = {
         enable = lib.mkEnableOption "service: Silverbullet";
         port = lib.mkOption {
             description = "The exposed port";

@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.index;
+    serviceCfg = cfg.apps.index;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.services.index = {
+    options.modules.services.apps.index = {
         enable = lib.mkEnableOption "service: index";
     };
 

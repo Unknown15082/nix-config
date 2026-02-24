@@ -7,11 +7,11 @@
 }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.paperless;
+    serviceCfg = cfg.apps.paperless;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.services.paperless = {
+    options.modules.services.apps.paperless = {
         enable = lib.mkEnableOption "service: paperless-ngx";
         port = lib.mkOption {
             description = "The exposed port";

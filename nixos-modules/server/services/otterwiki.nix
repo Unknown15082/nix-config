@@ -1,11 +1,11 @@
 { lib, config, ... }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.services.otterwiki;
+    serviceCfg = cfg.apps.otterwiki;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.services.otterwiki = {
+    options.modules.services.apps.otterwiki = {
         enable = lib.mkEnableOption "service: otterwiki";
         dataPath = lib.mkOption {
             description = "The data path to be mounted";

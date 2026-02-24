@@ -41,7 +41,7 @@
         domainName = "huytran.me";
         reverseProxy = "caddy";
 
-        services = {
+        apps = {
             test.enable = true;
             otterwiki = {
                 enable = true;
