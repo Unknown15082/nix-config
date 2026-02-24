@@ -43,21 +43,14 @@
 
         apps = {
             test.enable = true;
-            otterwiki = {
-                enable = true;
-            };
-            paperless = {
-                enable = true;
-            };
+            otterwiki.enable = true;
+            paperless.enable = true;
             headscale = {
                 enable = true;
-                headplane = {
-                    enable = true;
-                };
+                headplane.enable = true;
             };
-            silverbullet = {
-                enable = true;
-            };
+            silverbullet.enable = true;
+            pocket-id.enable = true;
         };
     };
 }
