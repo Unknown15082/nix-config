@@ -35,14 +35,14 @@ in
         age.secrets.booklore = {
             file = "${secrets}/booklore.age";
             mode = "400";
-            owner = "2003";
+            owner = "root";
         };
 
         systemd.tmpfiles.rules = with serviceCfg; [
-            "d ${dataDir}/data 755 booklore booklore"
-            "d ${dataDir}/books 755 booklore booklore"
-            "d ${dataDir}/bookdrop 755 booklore booklore"
-            "d ${dataDir}/db 755 booklore booklore"
+            "d ${dataDir}/data 755 root root"
+            "d ${dataDir}/books 755 root root"
+            "d ${dataDir}/bookdrop 755 root root"
+            "d ${dataDir}/db 755 root root"
         ];
 
         virtualisation.oci-containers = {
@@ -62,8 +62,8 @@ in
 
             containers.booklore = {
                 environment = {
-                    USER_ID = "2003";
-                    GROUP_ID = "2003";
+                    USER_ID = "0";
+                    GROUP_ID = "0";
                     BOOKLORE_PORT = toString serviceCfg.port;
                 };
                 environmentFiles = [ config.age.secrets.booklore.path ];
@@ -80,12 +80,5 @@ in
                 ];
             };
         };
-
-        users.users.booklore = {
-            isSystemUser = true;
-            uid = 2003;
-            group = "booklore";
-        };
-        users.groups.booklore = { };
     };
 }
