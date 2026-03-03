@@ -86,5 +86,5 @@
     hardware.i2c.enable = true;
 
     # Auto timezone
-    modules.automatic-timezoned.enable = true;
+    modules.timezone.enable = true;
 }
