@@ -41,13 +41,18 @@ in
         # Enable nix-ld
         programs.nix-ld.enable = true;
 
-        # nix-community binary cache
-        nix.settings = {
-            substituters = [ "https://nix-community.cachix.org" ];
-            trusted-public-keys = [
-                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            ];
-        };
+        modules.binary-caches = [
+            {
+                url = "https://cache.nixos.org";
+                key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+                priority = 2;
+            }
+            {
+                url = "https://nix-community.cachix.org";
+                key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+                priority = 5;
+            }
+        ];
 
         # Trust all users in @wheel
         nix.settings.trusted-users = [ "@wheel" ];
