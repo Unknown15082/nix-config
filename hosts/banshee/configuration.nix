@@ -3,6 +3,7 @@
     imports = [
         ./hardware-configuration.nix
         ./disk-config.nix
+        ./digital-ocean.nix
     ];
 
     presets.server.enable = true;
