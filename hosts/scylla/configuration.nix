@@ -53,6 +53,7 @@
             pocket-id.enable = true;
             tinyauth.enable = true;
             booklore.enable = true;
+            shlink.enable = true;
         };
     };
 }
