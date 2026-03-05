@@ -3,7 +3,7 @@
     imports = [
         ./hardware-configuration.nix
         ./disk-config.nix
-        ./digital-ocean.nix
+        ./networking.nix
     ];
 
     presets.server.enable = true;
@@ -37,6 +37,7 @@
         btop
         ghostty.terminfo
     ];
+    services.do-agent.enable = true;
 
     modules.tailscale = {
         enable = true;
