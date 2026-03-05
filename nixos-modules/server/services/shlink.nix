@@ -30,7 +30,7 @@ in
             containers.shlink = {
                 environment = {
                     DEFAULT_DOMAIN = "url.${cfg.domainName}";
-                    IS_HTTPS_ENABLED = true;
+                    IS_HTTPS_ENABLED = "true";
                 };
 
                 image = "shlinkio/shlink:stable";
