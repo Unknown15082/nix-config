@@ -26,6 +26,9 @@
         };
     };
 
+    networking.useDHCP = lib.mkForce false;
+    systemd.network.enable = lib.mkForce false;
+
     modules.users.username = "root";
 
     environment.systemPackages = with pkgs; [
