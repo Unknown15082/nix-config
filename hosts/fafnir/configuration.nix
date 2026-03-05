@@ -87,4 +87,8 @@
 
     # Auto timezone
     modules.timezone.enable = true;
+
+    # Enable Cloudflare WARP
+    services.cloudflare-warp.enable = true;
+
 }
