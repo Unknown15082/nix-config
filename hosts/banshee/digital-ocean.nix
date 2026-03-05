@@ -4,8 +4,6 @@
         "${modulesPath}/virtualisation/digital-ocean-config.nix"
     ];
 
-    networking.useDHCP = false;
-
     services.do-agent.enable = true;
 
     services.cloud-init = {

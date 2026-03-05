@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
     imports = [
         ./hardware-configuration.nix
@@ -15,6 +15,16 @@
     users.users.root.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILeIOQzu+mY5V0Gll45muIwqjACIOdqNP2JuE5G8vyYM"
     ];
+    users.users.root.initialPassword = "";
+
+    boot.loader = {
+        systemd-boot.enable = lib.mkForce false;
+        grub = {
+            enable = true;
+            efiSupport = false;
+            devices = lib.mkForce [ "/dev/vda" ];
+        };
+    };
 
     modules.users.username = "root";
 
