@@ -67,7 +67,7 @@
 
     # Enable Docker & libvirtd
     modules.virtualisation.docker.enable = true;
-    modules.virtualisation.libvirtd.enable = true;
+    # modules.virtualisation.libvirtd.enable = true;
 
     # Enable keyboards modules
     modules.keyboards = {
