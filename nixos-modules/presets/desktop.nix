@@ -21,7 +21,7 @@ in
             bluetooth.enable = true;
             printing.enable = true;
             sound.enable = true;
-            # networking.nameservers.google = true;
+            networking.nameservers.google = true;
 
             sddm.enable = true;
             stylix.enable = true;
