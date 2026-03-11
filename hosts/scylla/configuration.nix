@@ -47,7 +47,7 @@
             paperless.enable = true;
             headscale = {
                 enable = true;
-                headplane.enable = true;
+                headplane.enable = false; # developer hard-coded hash inside package, so it can't pass any tests
             };
             silverbullet.enable = true;
             pocket-id.enable = true;

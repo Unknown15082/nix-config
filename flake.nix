@@ -35,7 +35,7 @@
         };
 
         headplane = {
-            url = "github:tale/headplane?tag=v0.6.0";
+            url = "github:tale/headplane?tag=v0.6.2";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
