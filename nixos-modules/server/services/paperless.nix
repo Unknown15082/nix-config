@@ -1,6 +1,7 @@
 {
     lib,
     config,
+    pkgs,
     secrets,
     username,
     ...
@@ -9,6 +10,10 @@ let
     cfg = config.modules.services;
     serviceCfg = cfg.apps.paperless;
     domainName = cfg.domainName;
+
+    paperless-no-check = pkgs.paperless-ngx.overrideAttrs (_: {
+        doCheck = false;
+    });
 in
 {
     options.modules.services.apps.paperless = {
@@ -35,6 +40,7 @@ in
 
         services.paperless = {
             enable = true;
+            package = paperless-no-check;
             address = "0.0.0.0";
             port = serviceCfg.port;
 
