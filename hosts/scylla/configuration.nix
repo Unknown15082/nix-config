@@ -54,6 +54,11 @@
             tinyauth.enable = true;
             booklore.enable = true;
             shlink.enable = true;
+
+            webpage = {
+                enable = true;
+                path = "/srv/blog";
+            };
         };
     };
 }
