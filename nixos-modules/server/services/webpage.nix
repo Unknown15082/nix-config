@@ -21,10 +21,16 @@ in
     config = lib.mkIf serviceCfg.enable {
         services.caddy = {
             virtualHosts."${cfg.domainName}".extraConfig = ''
-                				root * ${serviceCfg.path}
-                				encode zstd gzip
-                				file_server
-                			'';
+                                				root * ${serviceCfg.path}
+                                				encode zstd gzip
+
+                								@assets {
+                									path *.css *.js *.woff2 *.woff *.ttf *.png *.jpg *.jpeg *.gif *.svg *.ico
+                								}
+                								header @assets Cache-Control "public, max-age=31536000, immutable"
+
+                                				file_server
+                                			'';
         };
 
         users.users.deploy = {
