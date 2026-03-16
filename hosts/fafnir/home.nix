@@ -34,6 +34,7 @@
         gcalcli
         nchat
         anki-bin
+        fastmail-desktop
 
         # Coding stuff
         # TODO: Move to specific devshells
