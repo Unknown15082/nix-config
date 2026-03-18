@@ -51,6 +51,8 @@ in
                     PGID = toString config.users.groups.stump.gid;
                     STUMP_CONFIG_DIR = "/config";
 
+                    STUMP_MAX_FILE_UPLOAD_SIZE = "314572800";
+
                     ENABLE_KOREADER_SYNC = "true";
                     ENABLE_OPDS_PROGRESSION = "true";
                     STUMP_ENABLE_UPLOAD = "true";
