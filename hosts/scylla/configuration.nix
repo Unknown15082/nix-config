@@ -53,7 +53,7 @@
             pocket-id.enable = true;
             tinyauth.enable = true;
             booklore.enable = true;
-            stump.enable = true;
+            stump.enable = false;
             shlink.enable = true;
 
             webpage = {
