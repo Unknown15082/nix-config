@@ -68,7 +68,7 @@ in
                 };
                 environmentFiles = [ config.age.secrets.grimmory.path ];
 
-                image = "grimmory/grimmory:v2.2.6";
+                image = "ghcr.io/grimmory-tools/grimmory:latest";
                 pull = "newer";
                 dependsOn = [ "grimmory-db" ];
 
