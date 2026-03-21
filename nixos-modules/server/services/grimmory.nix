@@ -6,12 +6,12 @@
 }:
 let
     cfg = config.modules.services;
-    serviceCfg = cfg.apps.booklore;
+    serviceCfg = cfg.apps.grimmory;
     domainName = cfg.domainName;
 in
 {
-    options.modules.services.apps.booklore = {
-        enable = lib.mkEnableOption "service: booklore";
+    options.modules.services.apps.grimmory = {
+        enable = lib.mkEnableOption "service: grimmory";
         port = lib.mkOption {
             description = "The exposed port";
             type = lib.types.int;
@@ -21,7 +21,7 @@ in
         dataDir = lib.mkOption {
             description = "Data directory";
             type = lib.types.str;
-            default = "/var/lib/booklore";
+            default = "/var/lib/grimmory";
         };
     };
 
@@ -32,8 +32,8 @@ in
                 			'';
         };
 
-        age.secrets.booklore = {
-            file = "${secrets}/booklore.age";
+        age.secrets.grimmory = {
+            file = "${secrets}/grimmory.age";
             mode = "400";
             owner = "root";
         };
@@ -46,12 +46,12 @@ in
         ];
 
         virtualisation.oci-containers = {
-            containers.booklore-db = {
+            containers.grimmory-db = {
                 environment = {
                     PUID = "1000";
                     PGID = "1000";
                 };
-                environmentFiles = [ config.age.secrets.booklore.path ];
+                environmentFiles = [ config.age.secrets.grimmory.path ];
 
                 image = "lscr.io/linuxserver/mariadb:11.4.5";
 
@@ -60,17 +60,17 @@ in
                 ];
             };
 
-            containers.booklore = {
+            containers.grimmory = {
                 environment = {
                     USER_ID = "0";
                     GROUP_ID = "0";
                     BOOKLORE_PORT = toString serviceCfg.port;
                 };
-                environmentFiles = [ config.age.secrets.booklore.path ];
+                environmentFiles = [ config.age.secrets.grimmory.path ];
 
-                image = "booklore/booklore:latest";
+                image = "grimmory/grimmory:v2.2.6";
                 pull = "newer";
-                dependsOn = [ "booklore-db" ];
+                dependsOn = [ "grimmory-db" ];
 
                 ports = [ "${toString serviceCfg.port}:${toString serviceCfg.port}" ];
                 volumes = [

@@ -52,7 +52,7 @@
             silverbullet.enable = true;
             pocket-id.enable = true;
             tinyauth.enable = true;
-            booklore.enable = true;
+            grimmory.enable = true;
             stump.enable = false;
             shlink.enable = true;
 
