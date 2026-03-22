@@ -25,12 +25,6 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."wiki.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
-        };
-
         modules.services.caddyHosts."wiki" = {
             reverseProxyPort = serviceCfg.port;
             tailscaleOnly = true;
