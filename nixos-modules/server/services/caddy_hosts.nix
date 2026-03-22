@@ -46,35 +46,33 @@ in
     };
 
     config = lib.mkIf (cfg.caddyHosts != { }) {
-        services.caddy.virtualHosts = lib.mapAttrs (
-            _name: hostCfg: {
-                "${hostCfg.domain}".extraConfig =
-                    let
-                        mainBody = with hostCfg; ''
-                            ${(if proxyAuth then "import tinyauth" else "")}
-                            ${(if reverseProxyPort != null then "reverse_proxy :${toString reverseProxyPort}" else "")}
-                            ${hostCfg.extraConfig}
-                        '';
-                    in
-                    (
-                        if hostCfg.tailscaleOnly then
-                            ''
-                                @tailnet remote_ip 100.64.0.0/10
+        services.caddy.virtualHosts = lib.mapAttrs (_name: hostCfg: {
+            "${hostCfg.domain}".extraConfig =
+                let
+                    mainBody = with hostCfg; ''
+                        ${(if proxyAuth then "import tinyauth" else "")}
+                        ${(if reverseProxyPort != null then "reverse_proxy :${toString reverseProxyPort}" else "")}
+                        ${hostCfg.extraConfig}
+                    '';
+                in
+                (
+                    if hostCfg.tailscaleOnly then
+                        ''
+                            @tailnet remote_ip 100.64.0.0/10
 
-                                handle @tailnet {
-                                    ${mainBody}
-                                }
-
-                                handle {
-                                    respond 404
-                                }
-                            ''
-                        else
-                            ''
+                            handle @tailnet {
                                 ${mainBody}
-                            ''
-                    );
-            }
-        );
+                            }
+
+                            handle {
+                                respond 404
+                            }
+                        ''
+                    else
+                        ''
+                            ${mainBody}
+                        ''
+                );
+        }) cfg.caddyHosts;
     };
 }
