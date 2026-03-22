@@ -31,6 +31,11 @@ in
                 			'';
         };
 
+        modules.services.caddyHosts."wiki" = {
+            reverseProxyPort = serviceCfg.port;
+            tailscaleOnly = true;
+        };
+
         environment.etc."otterwiki/.env".text = ''
             			SITE_NAME=Otterwiki
             			SITE_DESCRIPTION=Unknown's personal wiki
