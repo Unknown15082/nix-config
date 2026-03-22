@@ -32,10 +32,9 @@ in
             owner = config.services.paperless.user;
         };
 
-        services.caddy = {
-            virtualHosts."paper.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."paper" = {
+            reverseProxyPort = serviceCfg.port;
+            tailscaleOnly = true;
         };
 
         services.paperless = {

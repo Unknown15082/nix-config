@@ -15,10 +15,9 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."notes.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."notes" = {
+            reverseProxyPort = serviceCfg.port;
+            tailscaleOnly = true;
         };
 
         services.silverbullet = {

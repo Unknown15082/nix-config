@@ -26,10 +26,8 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."stump.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."stump" = {
+            reverseProxyPort = serviceCfg.port;
         };
 
         age.secrets.stump = {

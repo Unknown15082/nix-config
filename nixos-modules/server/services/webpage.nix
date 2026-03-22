@@ -19,18 +19,22 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."${cfg.domainName}".extraConfig = ''
-                                				root * ${serviceCfg.path}
-                                				encode zstd gzip
+        modules.services.caddyHosts."webpage" = {
+            domain = cfg.domainName;
 
-                								@assets {
-                									path *.css *.js *.woff2 *.woff *.ttf *.png *.jpg *.jpeg *.gif *.svg *.ico
-                								}
-                								header @assets Cache-Control "public, max-age=31536000, immutable"
+            extraConfig = ''
+                root * ${serviceCfg.path}
+                encode zstd gzip
 
-                                				file_server
-                                			'';
+                @assets {
+                    path *.css *.js *.woff2 *.woff *.ttf *.png *.jpg *.jpeg *.gif *.svg *.ico
+                }
+                header @assets Cache-Control "public, max-age=31536000, immutable"
+
+                file_server
+            '';
+
+            tailscaleOnly = true; # Temporary, until blog is fully set up
         };
 
         users.users.deploy = {

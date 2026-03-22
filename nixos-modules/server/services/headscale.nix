@@ -64,11 +64,11 @@ in
             group = "headscale";
         };
 
-        services.caddy = {
-            virtualHosts."hs.${domainName}".extraConfig = ''
-                				${headplaneReverseProxy}
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."hs" = {
+            reverseProxyPort = serviceCfg.port;
+            extraConfig = ''
+                ${headplaneReverseProxy}
+            '';
         };
 
         modules.tailscale = {

@@ -21,18 +21,18 @@ in
 
     config = lib.mkIf serviceCfg.enable {
         services.caddy = {
-            virtualHosts."auth.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
-
             extraConfig = ''
-                                				(tinyauth) {
-                									forward_auth :${toString serviceCfg.port} {
-                                						uri /api/auth/caddy
-                                						copy_headers Remote-User Remote-Name Remote-Email Remote-Groups
-                                					}
-                                				}
-                                			'';
+                (tinyauth) {
+                    forward_auth :${toString serviceCfg.port} {
+                        uri /api/auth/caddy
+                        copy_headers Remote-User Remote-Name Remote-Email Remote-Groups
+                    }
+                }
+            '';
+        };
+
+        modules.services.caddyHosts."auth" = {
+            reverseProxyPort = serviceCfg.port;
         };
 
         age.secrets.tinyauth = {

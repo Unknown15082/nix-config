@@ -10,18 +10,12 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."test.${domainName}".extraConfig = ''
-                                				@tailnet remote_ip 100.64.0.0/10
+        modules.services.caddyHosts."test" = {
+            extraConfig = ''
+                respond "Testing"
+            '';
 
-                                				handle @tailnet {
-                                					respond "Hello from tailnet!"
-                                				}
-
-                                				handle {
-                									import tinyauth
-                                					respond "Testing"
-                                				}'';
+            proxyAuth = true;
         };
     };
 }

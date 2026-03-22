@@ -20,10 +20,8 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."url.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."url" = {
+            reverseProxyPort = serviceCfg.port;
         };
 
         virtualisation.oci-containers = {

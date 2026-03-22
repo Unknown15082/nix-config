@@ -15,10 +15,9 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."spdf.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."pdf" = {
+            reverseProxyPort = serviceCfg.port;
+            tailscaleOnly = true;
         };
 
         services.stirling-pdf = {

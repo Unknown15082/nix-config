@@ -20,10 +20,8 @@ in
     };
 
     config = lib.mkIf serviceCfg.enable {
-        services.caddy = {
-            virtualHosts."pocketid.${domainName}".extraConfig = ''
-                				reverse_proxy :${toString serviceCfg.port}
-                			'';
+        modules.services.caddyHosts."pocketid" = {
+            reverseProxyPort = serviceCfg.port;
         };
 
         age.secrets.pocket-id = {
