@@ -40,6 +40,7 @@
         enable = true;
         domainName = "huytran.me";
         reverseProxy = "caddy";
+        postgresql.enable = true;
 
         apps = {
             test.enable = true;
@@ -55,6 +56,8 @@
             grimmory.enable = true;
             stump.enable = false;
             shlink.enable = true;
+
+            miniflux.enable = true;
 
             webpage = {
                 enable = true;
