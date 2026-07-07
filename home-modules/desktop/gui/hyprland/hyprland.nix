@@ -63,7 +63,7 @@ in
 
         modules = {
             rofi.enable = true;
-            waybar.enable = true;
+            waybar.enable = false;
             osd.enable = true;
             mako.enable = true;
             hyprlock.enable = true;
