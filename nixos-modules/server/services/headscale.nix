@@ -10,15 +10,15 @@ let
     serviceCfg = cfg.apps.headscale;
     domainName = cfg.domainName;
 
-    format = pkgs.formats.yaml { };
-    fixedSettings = lib.recursiveUpdate config.services.headscale.settings {
-        acme_email = "/dev/null";
-        tls_cert_path = "/dev/null";
-        tls_key_path = "/dev/null";
-        policy.path = "/dev/null";
-        oidc.client_secret_path = "/dev/null";
-    };
-    headscaleConfig = format.generate "headscale.yml" fixedSettings;
+    # format = pkgs.formats.yaml { };
+    # fixedSettings = lib.recursiveUpdate config.services.headscale.settings {
+    #     acme_email = "/dev/null";
+    #     tls_cert_path = "/dev/null";
+    #     tls_key_path = "/dev/null";
+    #     policy.path = "/dev/null";
+    #     oidc.client_secret_path = "/dev/null";
+    # };
+    # headscaleConfig = format.generate "headscale.yml" fixedSettings;
 
     headplaneReverseProxy = lib.optionalString serviceCfg.headplane.enable ''
         		redir /admin /admin/
@@ -93,28 +93,29 @@ in
             };
         };
 
-        services.headplane =
-            with serviceCfg.headplane;
-            lib.mkIf enable {
-                enable = true;
-                settings = {
-                    server = {
-                        host = "0.0.0.0";
-                        port = port;
-                        cookie_secret_path = config.age.secrets.headplane_cookie.path;
-                        cookie_secure = true;
-                    };
-                    headscale = {
-                        url = config.services.headscale.settings.server_url;
-                        config_path = headscaleConfig;
-                        config_strict = true;
-                    };
-                    integration.proc.enabled = true;
-                    integration.agent = {
-                        enabled = true;
-                        pre_authkey_path = config.age.secrets.headplane_preauth.path;
-                    };
-                };
-            };
+        # TODO: Temporarily removed.
+        # services.headplane =
+        #     with serviceCfg.headplane;
+        #     lib.mkIf enable {
+        #         enable = true;
+        #         settings = {
+        #             server = {
+        #                 host = "0.0.0.0";
+        #                 port = port;
+        #                 cookie_secret_path = config.age.secrets.headplane_cookie.path;
+        #                 cookie_secure = true;
+        #             };
+        #             headscale = {
+        #                 url = config.services.headscale.settings.server_url;
+        #                 config_path = headscaleConfig;
+        #                 config_strict = true;
+        #             };
+        #             integration.proc.enabled = true;
+        #             integration.agent = {
+        #                 enabled = true;
+        #                 pre_authkey_path = config.age.secrets.headplane_preauth.path;
+        #             };
+        #         };
+        #     };
     };
 }
