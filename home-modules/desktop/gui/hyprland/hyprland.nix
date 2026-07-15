@@ -20,10 +20,14 @@ in
             grimblast
         ];
 
+        home.pointerCursor.enable = true; # fixes warning
+
         wayland.windowManager.hyprland = {
             enable = true;
             package = null;
             portalPackage = null;
+
+            configType = "hyprlang";
             extraConfig = builtins.readFile (libutils.relativeToRoot "configs/hypr/hyprland.conf");
 
             settings = {
