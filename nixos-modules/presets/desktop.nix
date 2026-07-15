@@ -13,7 +13,9 @@ in
         modules = {
             nvidia = {
                 enable = true;
-                beta = true;
+                # TODO: nvidia beta is currently not compatible with Linux 7.1
+                # beta = true;
+                beta = false;
                 offload = true;
                 sync = false;
             };
