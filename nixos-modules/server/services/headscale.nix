@@ -26,10 +26,10 @@ let
         	'';
 in
 {
-    imports = [
-        inputs.headplane.nixosModules.headplane
-        { nixpkgs.overlays = [ inputs.headplane.overlays.default ]; }
-    ];
+    # imports = [
+    #     inputs.headplane.nixosModules.headplane
+    #     { nixpkgs.overlays = [ inputs.headplane.overlays.default ]; }
+    # ];
 
     options.modules.services.apps.headscale = {
         enable = lib.mkEnableOption "service: headscale";
