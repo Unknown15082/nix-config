@@ -19,6 +19,7 @@ in
 
             fonts.all = true;
             locale.enable = true;
+            colorscheme.catppuccin = true;
         };
     };
 }
