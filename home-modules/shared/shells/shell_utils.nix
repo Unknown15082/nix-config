@@ -66,7 +66,7 @@ in
 
         catppuccin = {
             fish = {
-                enable = true;
+                enable = false;
                 flavor = "mocha";
             };
         };
