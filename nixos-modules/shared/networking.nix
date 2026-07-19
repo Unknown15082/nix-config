@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+    lib,
+    config,
+    pkgs,
+    ...
+}:
 let
     cfg = config.modules.networking;
 in
@@ -24,6 +29,10 @@ in
                     "1.1.1.1"
                     "1.0.0.1"
                 ]);
+
+            plugins = with pkgs; [
+                networkmanager-openvpn
+            ];
         };
 
         modules.users.extraGroups = [ "networkmanager" ];
