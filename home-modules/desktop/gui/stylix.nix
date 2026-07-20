@@ -13,6 +13,7 @@ in
             rofi.enable = false;
             gnome-text-editor.enable = false;
 			hyprland.enable = false;
+			hyprpaper.enable = false;
         };
     };
 }

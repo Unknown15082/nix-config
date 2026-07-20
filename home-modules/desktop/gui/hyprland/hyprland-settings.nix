@@ -314,18 +314,18 @@ in
         ];
 
         #--- AUTOSTART ---#
-        on = {
-            _args = [
-                "hyprland.start"
-                (lib.generators.mkLuaInline ''
-                    					function()
-                    						hl.exec_cmd("hyprpaper")
-                    						hl.exec_cmd("mako")
-                    						hl.exec_cmd("hyprpolkitagent")
-                    					end
-                    				'')
-            ];
-        };
+        # on = {
+        #     _args = [
+        #         "hyprland.start"
+        #         (lib.generators.mkLuaInline ''
+        #             					function()
+        #             						hl.exec_cmd("hyprpaper")
+        #             						hl.exec_cmd("mako")
+        #             						hl.exec_cmd("hyprpolkitagent")
+        #             					end
+        #             				'')
+        #     ];
+        # };
 
         #--- SMART GAPS ---#
         workspace_rule = [
