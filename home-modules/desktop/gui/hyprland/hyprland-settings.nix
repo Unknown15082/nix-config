@@ -472,8 +472,8 @@ in
             (bind "CTRL + ${mod} + Space" (exec runner))
             (bind "Print" (exec screenshot))
 
-            (bind "CTRL + left" "hl.dsp.workspace.move({ monitor = '-1' })")
-            (bind "CTRL + right" "hl.dsp.workspace.move({ monitor = '+1' })")
+            (bind "CTRL + SUPER + left" "hl.dsp.workspace.move({ monitor = '-1' })")
+            (bind "CTRL + SUPER + right" "hl.dsp.workspace.move({ monitor = '+1' })")
 
             (bind "${mod} + Q" "hl.dsp.window.close()")
             (bind "${mod} + F" "hl.dsp.window.fullscreen()")
