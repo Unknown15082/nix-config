@@ -12,8 +12,8 @@ in
             fish.enable = false;
             rofi.enable = false;
             gnome-text-editor.enable = false;
-			hyprland.enable = false;
-			hyprpaper.enable = false;
+            hyprland.enable = false;
+            hyprpaper.enable = false;
         };
     };
 }

@@ -1,6 +1,6 @@
 {
     lib,
-	libutils,
+    libutils,
     config,
     ...
 }:
@@ -17,12 +17,12 @@ in
             enable = true;
             settings = {
                 splash = false;
-				wallpaper = [
-					{
-						monitor = "";
-						path = toString (libutils.relativeToRoot "configs/wallpaper/wallpaper.png");
-					}
-				];
+                wallpaper = [
+                    {
+                        monitor = "";
+                        path = toString (libutils.relativeToRoot "configs/wallpaper/wallpaper.png");
+                    }
+                ];
             };
         };
     };

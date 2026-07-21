@@ -47,7 +47,7 @@ in
             mako.enable = true;
             hyprlock.enable = true;
             hypridle.enable = true;
-			hyprpaper.enable = true;
+            hyprpaper.enable = true;
         };
     };
 }

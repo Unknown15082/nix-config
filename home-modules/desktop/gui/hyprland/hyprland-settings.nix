@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
     exec = app: "hl.dsp.exec_cmd(\"${app}\")";
-	args = a1: a2: {
+    args = a1: a2: {
         _args = [
             a1
             a2
@@ -37,10 +37,16 @@ in
         config = {
             general = {
                 border_size = 2;
-				gaps_in = 3;
-				gaps_out = 5;
+                gaps_in = 3;
+                gaps_out = 5;
                 col = {
-                    active_border = { colors = [ "rgba(a6e3a1ee)" "rgba(89dcebee)" ]; angle = 45; };
+                    active_border = {
+                        colors = [
+                            "rgba(a6e3a1ee)"
+                            "rgba(89dcebee)"
+                        ];
+                        angle = 45;
+                    };
                     inactive_border = "rgba(6c7086aa)";
                 };
                 resize_on_border = false;
@@ -51,7 +57,7 @@ in
             decoration = {
                 active_opacity = 1;
 
-				rounding = 5;
+                rounding = 5;
 
                 shadow = {
                     enabled = true;
@@ -98,19 +104,19 @@ in
             misc = {
                 force_default_wallpaper = 0;
                 disable_hyprland_logo = true;
-				disable_splash_rendering = true;
+                disable_splash_rendering = true;
                 enable_anr_dialog = false;
                 close_special_on_empty = false;
             };
 
-			binds = {
-				hide_special_on_workspace_change = true;
-			};
+            binds = {
+                hide_special_on_workspace_change = true;
+            };
 
-			ecosystem = {
-				no_update_news = true;
-				no_donation_nag = true;
-			};
+            ecosystem = {
+                no_update_news = true;
+                no_donation_nag = true;
+            };
 
             dwindle = {
                 preserve_split = true;
@@ -368,16 +374,16 @@ in
         #     }
         # ];
 
-		#--- WINDOW RULES ---#
-		window_rule = [
-			{
-				match = {
-					class = "^vesktop$";
-				};
+        #--- WINDOW RULES ---#
+        window_rule = [
+            {
+                match = {
+                    class = "^vesktop$";
+                };
 
-				workspace = "special:magicS";
-			}
-		];
+                workspace = "special:magicS";
+            }
+        ];
 
         #--- ENVIRONMENT VARIABLES ---#
         env = [
