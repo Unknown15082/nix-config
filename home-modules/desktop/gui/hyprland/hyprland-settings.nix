@@ -51,7 +51,7 @@ in
                 };
                 resize_on_border = false;
                 allow_tearing = false;
-                layout = "dwindle";
+                layout = "scrolling";
             };
 
             decoration = {
@@ -129,6 +129,7 @@ in
 
             scrolling = {
                 fullscreen_on_one_column = true;
+				wrap_focus = false;
             };
         };
 
@@ -322,12 +323,12 @@ in
         #--- GESTURES ---#
         gesture = [
             {
-                fingers = 2;
+                fingers = 3;
                 direction = "horizontal";
                 action = "scroll_move";
             }
             {
-                fingers = 3;
+                fingers = 4;
                 direction = "horizontal";
                 action = "workspace";
             }
@@ -505,6 +506,13 @@ in
 
             (bind "CTRL + SUPER + left" "hl.dsp.workspace.move({ monitor = '-1' })")
             (bind "CTRL + SUPER + right" "hl.dsp.workspace.move({ monitor = '+1' })")
+
+			(bind "SUPER + left" "hl.dsp.layout('focus l')")
+			(bind "SUPER + right" "hl.dsp.layout('focus r')")
+			(bind "SUPER + up" "hl.dsp.layout('expel')")
+			(bind "SUPER + down" "hl.dsp.layout('consume_or_expel prev')")
+			(bind "SUPER + SHIFT + left" "hl.dsp.layout('swapcol l')")
+			(bind "SUPER + SHIFT + right" "hl.dsp.layout('swapcol r')")
 
             (bind "${mod} + Q" "hl.dsp.window.close()")
             (bind "${mod} + F" "hl.dsp.window.fullscreen()")
