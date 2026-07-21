@@ -368,6 +368,17 @@ in
         #     }
         # ];
 
+		#--- WINDOW RULES ---#
+		window_rule = [
+			{
+				match = {
+					class = "^vesktop$";
+				};
+
+				workspace = "special:magicS";
+			}
+		];
+
         #--- ENVIRONMENT VARIABLES ---#
         env = [
             {
