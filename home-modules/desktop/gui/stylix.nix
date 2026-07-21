@@ -14,6 +14,8 @@ in
             gnome-text-editor.enable = false;
             hyprland.enable = false;
             hyprpaper.enable = false;
+			vesktop.enable = false;
+			nixcord.enable = false;
         };
     };
 }

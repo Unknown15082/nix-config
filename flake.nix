@@ -49,6 +49,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+		nixcord = {
+			url = "github:4evy/nixcord";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
         hyprland.url = "github:hyprwm/Hyprland";
         catppuccin.url = "github:catppuccin/nix";
 
