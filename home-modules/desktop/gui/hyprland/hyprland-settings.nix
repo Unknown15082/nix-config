@@ -37,9 +37,11 @@ in
         config = {
             general = {
                 border_size = 2;
+				gaps_in = 3;
+				gaps_out = 5;
                 col = {
-                    active_border = "rgba(bac2deee)";
-                    inactive_border = "rgba(bac2deee)";
+                    active_border = { colors = [ "rgba(a6e3a1ee)" "rgba(89dcebee)" ]; angle = 45; };
+                    inactive_border = "rgba(6c7086aa)";
                 };
                 resize_on_border = false;
                 allow_tearing = false;
@@ -48,6 +50,8 @@ in
 
             decoration = {
                 active_opacity = 1;
+
+				rounding = 5;
 
                 shadow = {
                     enabled = true;
@@ -94,9 +98,19 @@ in
             misc = {
                 force_default_wallpaper = 0;
                 disable_hyprland_logo = true;
+				disable_splash_rendering = true;
                 enable_anr_dialog = false;
                 close_special_on_empty = false;
             };
+
+			binds = {
+				hide_special_on_workspace_change = true;
+			};
+
+			ecosystem = {
+				no_update_news = true;
+				no_donation_nag = true;
+			};
 
             dwindle = {
                 preserve_split = true;
@@ -326,33 +340,33 @@ in
         };
 
         #--- SMART GAPS ---#
-        workspace_rule = [
-            {
-                workspace = "f[1]";
-                gaps_out = 0;
-                gaps_in = 0;
-            }
-            {
-                workspace = "w[tv1]";
-                gaps_out = 0;
-                gaps_in = 0;
-            }
-        ];
-
-        window_rule = [
-            {
-                match.float = false;
-                match.workspace = "f[1]";
-                border_size = 0;
-                rounding = 0;
-            }
-            {
-                match.float = false;
-                match.workspace = "w[tv1]";
-                border_size = 0;
-                rounding = 0;
-            }
-        ];
+        # workspace_rule = [
+        #     {
+        #         workspace = "f[1]";
+        #         gaps_out = 0;
+        #         gaps_in = 0;
+        #     }
+        #     {
+        #         workspace = "w[tv1]";
+        #         gaps_out = 0;
+        #         gaps_in = 0;
+        #     }
+        # ];
+        #
+        # window_rule = [
+        #     {
+        #         match.float = false;
+        #         match.workspace = "f[1]";
+        #         border_size = 0;
+        #         rounding = 0;
+        #     }
+        #     {
+        #         match.float = false;
+        #         match.workspace = "w[tv1]";
+        #         border_size = 0;
+        #         rounding = 0;
+        #     }
+        # ];
 
         #--- ENVIRONMENT VARIABLES ---#
         env = [
