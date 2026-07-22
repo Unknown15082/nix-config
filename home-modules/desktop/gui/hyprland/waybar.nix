@@ -17,8 +17,17 @@ in
             enable = true;
             systemd.enable = true;
 
+			style = lib.concatStringsSep "\n" [
+				(lib.readFile ./colors.css)
+				(lib.readFile ./waybar.css)
+			];
+
             settings.mainBar = {
                 position = "top";
+
+				margin-top = 6;
+				margin-left = 8;
+				margin-right = 8;
 
                 modules-left = [
                     "hyprland/workspaces"
@@ -30,7 +39,6 @@ in
                 modules-right = [
 					"cpu"
 					"disk"
-					"bluetooth"
                     "battery"
 					"wireplumber"
 					"network"
@@ -42,8 +50,8 @@ in
 					on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1' })\"";
 					on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1' })\"";
 
-					show-special = true;
 					move-to-monitor = true;
+					show-special = true;
 
 					tooltip = true;
 					tooltips.default = "{name}: {windows}";
