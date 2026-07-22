@@ -16,6 +16,7 @@ in
             hyprpaper.enable = false;
 			vesktop.enable = false;
 			nixcord.enable = false;
+			waybar.enable = false;
         };
     };
 }

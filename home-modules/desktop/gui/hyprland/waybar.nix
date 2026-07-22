@@ -18,21 +18,43 @@ in
             systemd.enable = true;
 
             settings.mainBar = {
-                position = "left";
+                position = "top";
 
                 modules-left = [
                     "hyprland/workspaces"
+					"mpris"
                 ];
                 modules-center = [
                     "clock"
                 ];
                 modules-right = [
                     "battery"
+					"network"
                     "tray"
                 ];
 
+				"hyprland/workspaces" = {
+					format = "{name}";
+					cursor = true;
+					on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1' })\"";
+					on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1' })\"";
+				};
+
+				"battery" = {
+					interval = 20;
+					tooltip = true;
+					format = "{icon} {capacity}%";
+					format-time = "{H}:{M:02}";
+					format-charging = " {capacity}% ({time})";
+					format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂂" "󰁹"];
+					states = {
+						warning = 30;
+						critical = 10;
+					};
+				};
+
                 "clock" = {
-                    format = "{:%H%n%M}";
+                    format = "{:%H:%M}";
                     tooltip-format = "<tt>{calendar}</tt>";
                     locale = "en_GB.UTF-8";
                     calendar = {

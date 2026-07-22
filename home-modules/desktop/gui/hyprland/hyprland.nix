@@ -42,7 +42,7 @@ in
 
         modules = {
             rofi.enable = true;
-            waybar.enable = false;
+            waybar.enable = true;
             osd.enable = true;
             mako.enable = true;
             hyprlock.enable = true;
