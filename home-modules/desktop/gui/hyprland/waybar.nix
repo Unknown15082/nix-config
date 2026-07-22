@@ -1,7 +1,8 @@
 {
     lib,
-    libutils,
     config,
+	system,
+	waybar,
     ...
 }:
 let
@@ -16,6 +17,8 @@ in
         programs.waybar = {
             enable = true;
             systemd.enable = true;
+
+			package = waybar.packages.${system}.default;
 
 			style = lib.concatStringsSep "\n" [
 				(lib.readFile ./colors.css)
