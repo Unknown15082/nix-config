@@ -58,6 +58,7 @@ in
 
 					tooltip = true;
 					tooltips.default = "{name}: {windows}";
+					window-rewrite-default = "{icon}";
 				};
 
 				"battery" = {
