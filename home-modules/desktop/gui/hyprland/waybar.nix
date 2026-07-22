@@ -35,9 +35,14 @@ in
 
 				"hyprland/workspaces" = {
 					format = "{name}";
-					cursor = true;
 					on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1' })\"";
 					on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1' })\"";
+
+					show-special = true;
+					move-to-monitor = true;
+
+					tooltip = true;
+					tooltips.default = "{name}: {windows}";
 				};
 
 				"battery" = {
@@ -50,6 +55,22 @@ in
 					states = {
 						warning = 30;
 						critical = 10;
+					};
+				};
+
+				"mpris" = {
+					format = "{status_icon}  {title} [{position} / {length}]";
+					tooltip-format = "{album} :: {artist} - {title} [{position} / {length}]";
+
+					interval = 1;
+
+					on-click = "playerctl play-pause";
+					on-click-backward = "playerctl previous";
+					on-click-forward = "playerctl next";
+
+					status-icons = {
+						playing = "";
+						paused = "▶";
 					};
 				};
 

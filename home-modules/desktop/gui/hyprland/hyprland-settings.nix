@@ -382,7 +382,7 @@ in
                     class = "^vesktop$";
                 };
 
-                workspace = "special:magicS";
+                workspace = "special:S";
             }
         ];
 
@@ -564,8 +564,8 @@ in
         ) (lib.lists.range 1 10))
         ++ (lib.lists.concatMap
             (key: [
-                (bind "${mod} + ${key}" "hl.dsp.workspace.toggle_special('magic${key}')")
-                (bind "${mod} + SHIFT + ${key}" "hl.dsp.window.move({ workspace = 'special:magic${key}' })")
+                (bind "${mod} + ${key}" "hl.dsp.workspace.toggle_special('${key}')")
+                (bind "${mod} + SHIFT + ${key}" "hl.dsp.window.move({ workspace = 'special:${key}' })")
             ])
             [
                 "A"
