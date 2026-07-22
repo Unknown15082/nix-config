@@ -28,7 +28,11 @@ in
                     "clock"
                 ];
                 modules-right = [
+					"cpu"
+					"disk"
+					"bluetooth"
                     "battery"
+					"wireplumber"
 					"network"
                     "tray"
                 ];
