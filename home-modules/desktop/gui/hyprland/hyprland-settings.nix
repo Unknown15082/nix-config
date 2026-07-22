@@ -384,6 +384,13 @@ in
 
                 workspace = "special:S";
             }
+			{
+				match = {
+					workspace = "10";
+				};
+
+				scrolling_width = 1.0;
+			}
         ];
 
         #--- ENVIRONMENT VARIABLES ---#
@@ -506,6 +513,9 @@ in
 
             (bind "CTRL + SUPER + left" "hl.dsp.workspace.move({ monitor = '-1' })")
             (bind "CTRL + SUPER + right" "hl.dsp.workspace.move({ monitor = '+1' })")
+
+			(bind "SUPER + minus" "hl.dsp.layout('colresize -conf')")
+			(bind "SUPER + equal" "hl.dsp.layout('colresize +conf')")
 
 			(bind "SUPER + left" "hl.dsp.layout('focus l')")
 			(bind "SUPER + right" "hl.dsp.layout('focus r')")
