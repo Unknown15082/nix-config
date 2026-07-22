@@ -111,6 +111,7 @@ in
 
             binds = {
                 hide_special_on_workspace_change = true;
+				scroll_event_delay = 20;
             };
 
             ecosystem = {
@@ -528,8 +529,8 @@ in
             (bind "${mod} + F" "hl.dsp.window.fullscreen()")
             (bind "${mod} + Z" "hl.dsp.window.float({ action = \"toggle\"})")
 
-            (bind "${mod} + mouse_down" "hl.dsp.focus({ workspace = 'e+1' })")
-            (bind "${mod} + mouse_up" "hl.dsp.focus({ workspace = 'e-1' })")
+            (bind "${mod} + mouse_up" "hl.dsp.layout('focus l')")
+            (bind "${mod} + mouse_down" "hl.dsp.layout('focus r')")
             (bind3 "${mod} + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
             (bind3 "${mod} + mouse:273" "hl.dsp.window.resize()" { mouse = true; })
 
