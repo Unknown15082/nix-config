@@ -1,5 +1,5 @@
-{ self, pkgs, ... }: {
-	flake.modules.nixos.networkManager = {
+{ self, ... }: {
+	flake.modules.nixos.networkManager = { pkgs, ... }: {
 		imports = [
 			self.modules.nixos.userSettings
 		];
