@@ -3,3 +3,7 @@ images/
 
 # QMLLS
 .qmlls.ini
+
+# build-vm runs
+*.qcow2
+result
