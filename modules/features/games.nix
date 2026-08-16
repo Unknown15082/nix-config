@@ -56,7 +56,7 @@
 
 		programs.wine = {
 			enable = true;
-			package = pkgs.wine-discord-ipc-bridge;
+			package = pkgs.wine-ge;
 			ntsync = true;
 		};
 	};
