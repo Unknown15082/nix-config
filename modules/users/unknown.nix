@@ -19,5 +19,10 @@
 		];
 	};
 
-	flake.modules.homeManager.user-unknown = {};
+	flake.modules.homeManager.user-unknown = {
+		home.username = "unknown";
+		home.homeDirectory = "/home/unknown";
+
+		programs.home-manager.enable = true;
+	};
 }

@@ -43,6 +43,13 @@
 			presets-desktop
 			user-unknown
 		];
+
+		networking.hostName = "bahamut";
+		system.stateVersion = "26.05";
+
+		home-manager.sharedModules = [
+			{ home.stateVersion = "26.05"; }
+		];
 	};
 
 	flake.nixosConfigurations.bahamut = inputs.nixpkgs.lib.nixosSystem {
