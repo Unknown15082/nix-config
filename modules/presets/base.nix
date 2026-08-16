@@ -18,6 +18,7 @@
 			audio
 			bluetooth
 			catppuccin
+			keyd
 
 			sddm
 			sddmTheme

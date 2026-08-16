@@ -14,7 +14,6 @@
 			ime
 			imeJapanese
 			imeVietnamese
-			keyd
 
 			ghostty
 			discord
