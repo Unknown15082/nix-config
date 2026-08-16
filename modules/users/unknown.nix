@@ -11,7 +11,9 @@
 			isNormalUser = true;
 			createHome = true;
 			uid = 1000;
+
 			extraGroups = config.settings.userGroups;
+			initialHashedPassword = "";
 		};
 
 		home-manager.users.unknown.imports = [
