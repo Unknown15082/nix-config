@@ -39,15 +39,29 @@
 		swapDevices = [];
 	};
 
-	flake.modules.nixos.bahamut = { ... }: {
+	flake.modules.nixos.bahamut = {
 		imports = with self.modules.nixos; [
 			bahamutHardware
 			presets-desktop
 			user-unknown
+
+			presets-games
+			games-steam
+			games-osu
+		];
+
+		home-manager.sharedModules = [
+			self.modules.homeManager.bahamut
 		];
 
 		networking.hostName = "bahamut";
 		system.stateVersion = "26.05";
+	};
+
+	flake.modules.homeManager.bahamut = {
+		imports = with self.modules.homeManager; [
+			desktopUser
+		];
 	};
 
 	flake.nixosConfigurations.bahamut = inputs.nixpkgs.lib.nixosSystem {

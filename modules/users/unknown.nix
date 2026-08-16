@@ -26,5 +26,10 @@
 		home.homeDirectory = "/home/unknown";
 
 		programs.home-manager.enable = true;
+
+		programs.git.settings = {
+			user.name = "Unknown15082";
+			user.email = "trangiahuy15082006@gmail.com";
+		};
 	};
 }

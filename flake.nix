@@ -18,6 +18,11 @@
 			url = "github:fufexan/nix-gaming";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		nixcord = {
+			url = "github:4evy/nixcord";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
    };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ( inputs.import-tree ./modules );
