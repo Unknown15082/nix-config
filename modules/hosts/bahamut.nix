@@ -10,6 +10,8 @@
 		hardware.cpu.intel.npu.enable = true;
 		hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
+		settings.systemd-boot.windows = "HD0b";
+
 		fileSystems."/" = {
 			device = "/dev/disk/by-label/NIXOS";
 			fsType = "btrfs";
