@@ -25,23 +25,20 @@
 				settings = {
 					globalOptions = {};
 
-					inputMethod = lib.mkMerge [
-						{
-							"Groups/0" = {
-								Name = "Default";
-								DefaultIM = "keyboard-us-altgr-intl";
-								"Default Layout" = "us-altgr-intl";
-							};
-						}
-						(
-							lib.imap0
-							(i: name: {
-								name = "Groups/0/Items/${toString i}";
-								value.Name = name;
-							})
-							([ "keyboard-us-altgr-intl" ] ++ cfg.methods)
-						)
-					];
+					inputMethod = {
+						"Groups/0" = {
+							Name = "Default";
+							DefaultIM = "keyboard-us-altgr-intl";
+							"Default Layout" = "us-altgr-intl";
+						};
+					} // builtins.listToAttrs (
+						lib.imap0
+						(i: name: {
+							name = "Groups/0/Items/${toString i}";
+							value.Name = name;
+						})
+						([ "keyboard-us-altgr-intl" ] ++ cfg.methods)
+					);
 				};
 			};
 		};
