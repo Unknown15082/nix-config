@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.modules.nixos.hardware.bahamut = { config, ... }: {
+	flake.modules.nixos.bahamutHardware = { config, ... }: {
 		boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 		boot.initrd.kernelModules = [];
 		boot.kernelModules = [ "kvm-intel" ];
@@ -37,18 +37,17 @@
 		swapDevices = [];
 	};
 
-	flake.modules.nixos.hosts.bahamut = { ... }: {
-		imports = with self.flake.modules.nixos; [
-			hardware.bahamut
-			presets.desktop
-
-			users.unknown
+	flake.modules.nixos.bahamut = { ... }: {
+		imports = with self.modules.nixos; [
+			bahamutHardware
+			presets-desktop
+			user-unknown
 		];
 	};
 
 	flake.nixosConfigurations.bahamut = inputs.nixpkgs.lib.nixosSystem {
 		modules = [
-			self.modules.nixos.hosts.bahamut
+			self.modules.nixos.bahamut
 		];
 	};
 }

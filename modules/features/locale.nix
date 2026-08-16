@@ -6,18 +6,18 @@
 		};
 	};
 
-	flake.modules.nixos.fonts.all = {
-		imports = with self.modules.nixos.fonts; [ code cjk ];
+	flake.modules.nixos.allFonts = {
+		imports = with self.modules.nixos; [ codeFonts cjkFonts ];
 	};
 
-	flake.modules.nixos.fonts.code = {
+	flake.modules.nixos.codeFonts = {
 		fonts.packages = with pkgs; [
 			jetbrains-mono
 			nerd-fonts.jetbrains-mono
 		];
 	};
 
-	flake.modules.nixos.fonts.cjk = {
+	flake.modules.nixos.cjkFonts = {
 		fonts.packages = with pkgs; [
 			dejavu_fonts
 			noto-fonts-cjk-sans

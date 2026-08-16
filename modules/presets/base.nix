@@ -1,5 +1,5 @@
 { self, ... }: {
-	flake.modules.nixos.presets.base = {
+	flake.modules.nixos.presets-base = {
 		imports = with self.modules.nixos; [
 			kernel
 			systemd-boot
@@ -7,13 +7,13 @@
 
 			nixSettings
 			locale
-			fonts.all
+			allFonts
 		];
 	};
 
-	flake.modules.nixos.presets.desktop = {
+	flake.modules.nixos.presets-desktop = {
 		imports = with self.modules.nixos; [
-			presets.base
+			presets-base
 
 			audio
 			bluetooth
