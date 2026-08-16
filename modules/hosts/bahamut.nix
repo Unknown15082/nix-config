@@ -40,6 +40,9 @@
 	flake.modules.nixos.hosts.bahamut = { ... }: {
 		imports = with self.flake.modules.nixos; [
 			hardware.bahamut
+			presets.desktop
+
+			users.unknown
 		];
 	};
 

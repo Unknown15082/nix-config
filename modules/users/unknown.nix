@@ -9,6 +9,8 @@
 
 		users.users.unknown = {
 			isNormalUser = true;
+			createHome = true;
+			uid = 1000;
 			extraGroups = config.settings.userGroups;
 		};
 
