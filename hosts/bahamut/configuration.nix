@@ -20,5 +20,8 @@
 
 	services.openssh.enable = true;
 
+	modules.systemd-boot.windows_dual_boot = "HD0b";
+	boot.loader.systemd-boot.consoleMode = "max";
+
 	system.stateVersion = "26.05";
 }
