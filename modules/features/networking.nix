@@ -1,9 +1,5 @@
 { self, ... }: {
 	flake.modules.nixos.networkManager = { pkgs, ... }: {
-		imports = [
-			self.modules.nixos.userSettings
-		];
-
 		networking.networkmanager = {
 			enable = true;
 

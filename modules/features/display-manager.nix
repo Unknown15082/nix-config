@@ -46,7 +46,6 @@
 
 	flake.modules.nixos.gnomeKeyring = { pkgs, config, ... }: {
 		imports = [
-			self.modules.nixos.userSettings
 			self.modules.nixos.sddmGnomeKeyring
 		];
 

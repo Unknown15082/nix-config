@@ -1,18 +1,10 @@
 { self, ... }: {
 	flake.modules.nixos.docker = {
-		imports = [
-			self.modules.nixos.userSettings
-		];
-
 		virtualisation.docker.enable = true;
 		settings.userGroups = [ "docker" ];
 	};
 
 	flake.modules.nixos.libvirtd = { pkgs, ... }: {
-		imports = [
-			self.modules.nixos.userSettings
-		];
-
 		virtualisation.libvirtd = {
 			enable = true;
 			qemu = {
