@@ -36,7 +36,7 @@
 						(
 							lib.imap0
 							(i: name: {
-								name = "Groups/0/Items/${i}";
+								name = "Groups/0/Items/${toString i}";
 								value.Name = name;
 							})
 							([ "keyboard-us-altgr-intl" ] ++ cfg.methods)
