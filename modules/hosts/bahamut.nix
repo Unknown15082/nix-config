@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.modules.nixos.hosts.bahamutHardware = { config, ... }: {
+	flake.modules.nixos.hardware.bahamut = { config, ... }: {
 		boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 		boot.initrd.kernelModules = [];
 		boot.kernelModules = [ "kvm-intel" ];
@@ -39,7 +39,7 @@
 
 	flake.modules.nixos.hosts.bahamut = { ... }: {
 		imports = with self.flake.modules.nixos; [
-			bahamutHardware
+			hardware.bahamut
 		];
 	};
 
