@@ -18,5 +18,7 @@
 				rate = 48000;
 			};
 		};
+
+		security.rtkit.enable = true;
 	};
 }
