@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
+{ self, pkgs, ... }: {
 	flake.modules.nixos.networkManager = {
+		imports = [
+			self.modules.nixos.userSettings
+		];
+
 		networking.networkmanager = {
 			enable = true;
 
@@ -7,7 +11,7 @@
 				networkmanager-openvpn
 			];
 
-			# TODO: Add networkmanager to user's groups
+			settings.userGroups = [ "networkmanager" ];
 		};
 	};
 
