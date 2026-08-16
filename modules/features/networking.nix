@@ -10,9 +10,9 @@
 			plugins = with pkgs; [
 				networkmanager-openvpn
 			];
-
-			settings.userGroups = [ "networkmanager" ];
 		};
+
+		settings.userGroups = [ "networkmanager" ];
 	};
 
 	flake.modules.nixos.googleNameserver = {
