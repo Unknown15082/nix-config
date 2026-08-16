@@ -15,15 +15,15 @@ in {
 			enable = true;
 			autoEnable = false;
 			inherit accent flavor;
-
-			# Enable catppuccin's binary cache
-			settings.binaryCaches.caches = [
-				{
-					url = "https://catppuccin.cachix.org";
-					key = "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU=";
-				}
-			];
 		};
+
+		# Enable catppuccin's binary cache
+		settings.binaryCaches.caches = [
+			{
+				url = "https://catppuccin.cachix.org";
+				key = "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU=";
+			}
+		];
 	};
 
 	flake.modules.homeManager.catppuccin = {
