@@ -3,6 +3,7 @@
 		imports = with self.modules.homeManager; [
 			fish
 			modernUnix
+			tmux
 			nixtools
 			nh
 		];
