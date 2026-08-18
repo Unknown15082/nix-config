@@ -61,6 +61,7 @@
 	flake.modules.homeManager.bahamut = {
 		imports = with self.modules.homeManager; [
 			desktopUser
+			nixvim
 		];
 	};
 

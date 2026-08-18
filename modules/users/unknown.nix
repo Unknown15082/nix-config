@@ -22,6 +22,10 @@
 	};
 
 	flake.modules.homeManager.user-unknown = {
+		imports = [
+			self.modules.homeManager.gitSigning
+		];
+
 		home.username = "unknown";
 		home.homeDirectory = "/home/unknown";
 

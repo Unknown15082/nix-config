@@ -7,6 +7,7 @@
 
 			nixSettings
 			locale
+			timezone
 			allFonts
 		];
 	};

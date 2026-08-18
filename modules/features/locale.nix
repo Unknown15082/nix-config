@@ -6,6 +6,10 @@
 		};
 	};
 
+	flake.modules.nixos.timezone = {
+		services.automatic-timezoned.enable = true;
+	};
+
 	flake.modules.nixos.allFonts = {
 		imports = with self.modules.nixos; [ codeFonts cjkFonts ];
 	};

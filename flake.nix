@@ -13,6 +13,7 @@
 
 		#--- EXTRA INPUTS ---#
 		catppuccin.url = "github:catppuccin/nix";
+		nixvim-config.url = "github:Unknown15082/nixvim-config";
 
 		nix-gaming = {
 			url = "github:fufexan/nix-gaming";

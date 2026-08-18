@@ -4,6 +4,7 @@
 			fish
 			modernUnix
 			nixtools
+			nh
 		];
 	};
 
