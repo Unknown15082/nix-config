@@ -1,12 +1,12 @@
 { ... }: {
-	flake.modules.homeManager.rofi = { lib, pkgs, ... }: {
+	flake.modules.homeManager.rofi = { config, lib, pkgs, ... }: {
 		programs.rofi = {
 			enable = true;
 			# TODO: Use central settings value for terminal detection
 			terminal = lib.getExe pkgs.ghostty;
 
 			theme = let
-				inherit (lib.formats.rasi) mkLiteral;
+				inherit (config.lib.formats.rasi) mkLiteral;
 
 				mkColor = color: mkLiteral "@${color}";
 				mkPixel = length: mkLiteral "${length}px";
