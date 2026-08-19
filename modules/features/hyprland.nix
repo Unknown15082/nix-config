@@ -3,7 +3,6 @@
 		imports = with self.modules.nixos; [
 			hyprlandPortal
 			hyprlandPolkit
-			hyprlandAutoStart
 			hyprlock
 		];
 
@@ -13,7 +12,7 @@
 
 		programs.hyprland = {
 			enable = true;
-			package = inputs.hyprland.package.${pkgs.stdenv.hostPlatform.system}.hyprland;
+			package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 		};
 
 		settings.binaryCaches.caches = [
@@ -24,7 +23,7 @@
 		];
 	};
 
-	flake.modules.nixos.hyprlandAutoStart = { lib, config, ... }: {
+	flake.modules.homeManager.hyprlandAutoStart = { lib, config, ... }: {
 		options.settings.hyprland = {
 			autoStart = with lib; mkOption {
 				type = types.listOf types.str;
@@ -53,7 +52,7 @@
 
 	flake.modules.nixos.hyprlandPortal = { pkgs, ... }: {
 		programs.hyprland = {
-			portalPackage = inputs.hyprland.package.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+			portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 		};
 
 		xdg.portal = {
@@ -70,6 +69,7 @@
 
 	flake.modules.homeManager.hyprland = {
 		imports = with self.modules.homeManager; [
+			hyprlandAutoStart
 			hyprlandSettings
 			hypridle
 			hyprpaper
