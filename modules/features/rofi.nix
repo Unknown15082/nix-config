@@ -9,8 +9,8 @@
 				inherit (config.lib.formats.rasi) mkLiteral;
 
 				mkColor = color: mkLiteral "@${color}";
-				mkPixel = length: mkLiteral "${length}px";
-				mkPixel4 = l1: l2: l3: l4: mkLiteral "${l1}px ${l2}px ${l3}px ${l4}px";
+				mkPixel = length: mkLiteral "${toString length}px";
+				mkPixel4 = l1: l2: l3: l4: mkLiteral "${toString l1}px ${toString l2}px ${toString l3}px ${toString l4}px";
 			in {
 				configuration = {
 					show-icons = true;
