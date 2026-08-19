@@ -136,8 +136,8 @@
 				element-icon = {
 					background-color = mkLiteral "inherit";
 					text-color = mkLiteral "inherit";
-					horizontal-align = 0.5;
-					vertical-align = 0.5;
+					horizontal-align = mkLiteral "0.5";
+					vertical-align = mkLiteral "0.5";
 					size = mkPixel 24;
 					border = mkPixel 0;
 				};
@@ -147,7 +147,7 @@
 					text-color = mkLiteral "inherit";
 					expand = true;
 					horizontal-align = 0;
-					vertical-align = 0.5;
+					vertical-align = mkLiteral "0.5";
 					margin = mkPixel4 2 0 2 2;
 				};
 
