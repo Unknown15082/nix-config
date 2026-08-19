@@ -16,6 +16,8 @@
 		imports = with self.modules.nixos; [
 			presets-base
 
+			hyprland
+
 			audio
 			bluetooth
 			catppuccin
