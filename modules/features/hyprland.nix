@@ -3,6 +3,7 @@
 		imports = with self.modules.nixos; [
 			hyprlandPortal
 			hyprlandPolkit
+			hyprlandAutoStart
 			hyprlock
 		];
 
@@ -21,6 +22,33 @@
 				key = "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=";
 			}
 		];
+	};
+
+	flake.modules.nixos.hyprlandAutoStart = { lib, config, ... }: {
+		options.settings.hyprland = {
+			autoStart = with lib; mkOption {
+				type = types.listOf types.str;
+				description = "List of packages to auto-start";
+			};
+		};
+
+		config = let
+			autoStartList = config.settings.hyprland.autoStart;
+			autoStartCmds = builtins.concatStringsSep "\n" (builtins.map (cmd: "hl.exec_cmd('${cmd}')") autoStartList);
+		in {
+			wayland.windowManager.hyprland.settings = {
+				on = {
+					_args = [
+						"hyprland.start"
+						(lib.generators.mkLuaInline ''
+							function()
+								${autoStartCmds}
+							end
+						'')
+					];
+				};
+			};
+		};
 	};
 
 	flake.modules.nixos.hyprlandPortal = { pkgs, ... }: {
@@ -43,6 +71,10 @@
 	flake.modules.homeManager.hyprland = {
 		imports = with self.modules.homeManager; [
 			hyprlandSettings
+			hypridle
+			hyprpaper
+			mako
+			rofi
 		];
 
 		wayland.windowManager.hyprland = {

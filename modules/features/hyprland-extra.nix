@@ -47,6 +47,30 @@
 	};
 
 	flake.modules.homeManager.hyprpaper = {
+		services.hyprpaper = {
+			enable = true;
+			settings = {
+				splash = false;
+				wallpaper = [
+					{
+						monitor = "";
+						path = "${self}/assets/wallpapers";
+						timeout = 60;
+					}
+				];
+			};
+		};
 
+		settings.hyprland.autoStart = [ "hyprpaper" ];
+	};
+
+	flake.modules.homeManager.mako = {
+		services.mako = {
+			enable = true;
+			settings = {
+				layer = "overlay";
+				default-timeout = 10000; # 10000ms = 10s
+			};
+		};
 	};
 }
