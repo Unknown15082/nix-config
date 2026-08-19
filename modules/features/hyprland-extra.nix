@@ -45,4 +45,8 @@
 			};
 		};
 	};
+
+	flake.modules.homeManager.hyprpaper = {
+
+	};
 }
