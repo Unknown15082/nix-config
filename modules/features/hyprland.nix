@@ -75,6 +75,7 @@
 			hyprpaper
 			mako
 			rofi
+			waybar
 		];
 
 		wayland.windowManager.hyprland = {

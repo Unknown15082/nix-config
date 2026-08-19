@@ -12,6 +12,7 @@
 		};
 
 		#--- EXTRA INPUTS ---#
+		hyprland.url = "github:hyprwm/Hyprland";
 		catppuccin.url = "github:catppuccin/nix";
 		nixvim-config.url = "github:Unknown15082/nixvim-config";
 
@@ -22,6 +23,11 @@
 
 		nixcord = {
 			url = "github:4evy/nixcord";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		waybar = {
+			url = "github:Alexays/waybar";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
    };
