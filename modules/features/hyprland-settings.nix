@@ -1,4 +1,4 @@
-{ ... }: {
+{ self, ... }: {
 	flake.modules.homeManager.hyprlandSettings = { config, lib, pkgs, ... }: let
 		exec = app: "hl.dsp.exec_cmd(\"${app}\")";
 		args = a1: a2: {
@@ -27,6 +27,10 @@
 		playerctl = lib.getExe pkgs.playerctl;
 		wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 	in {
+		imports = [
+			self.modules.homeManager.nvidiaStatus
+		];
+
 		wayland.windowManager.hyprland.settings = {
 			#--- MONITORS ---#
 			monitor = {
@@ -478,7 +482,7 @@
 					];
 				}
 			]
-				++ (lib.optionals config.modules.hyprland.enableNvidia [
+				++ (lib.optionals config.settings.nvidia.isEnabled [
 					{
 						_args = [
 							"GBM_BACKEND"

@@ -1,5 +1,10 @@
-{ ... }: {
+{ self, ... }: {
 	flake.modules.nixos.nvidia = { ... }: {
+		home-manager.sharedModules = [
+			self.modules.homeManager.nvidiaStatus
+			{ settings.nvidia.isEnabled = true; }
+		];
+
 		hardware.graphics.enable = true;
 
 		services.xserver.videoDrivers = [
@@ -25,6 +30,16 @@
 			enableOffloadCmd = true;
 			offloadCmdMainProgram = "offload";
 			kernelSuspendNotifier = true;
+		};
+	};
+
+	flake.modules.homeManager.nvidiaStatus = { lib, ... }: {
+		options.settings.nvidia = {
+			isEnabled = with lib; mkOption {
+				type = types.bool;
+				default = false;
+				description = "Whether Nvidia module is enabled";
+			};
 		};
 	};
 }
