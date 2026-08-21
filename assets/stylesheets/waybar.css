@@ -58,12 +58,16 @@ window#waybar {
 }
 
 #workspaces button {
+	background: transparent;
+	color: @text;
 	border-radius: 100%;
 	padding: 2px 4px;
 	margin: 2px 2px;
 }
 
 #workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
 	background: @overlay1;
 }
 
