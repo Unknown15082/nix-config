@@ -17,7 +17,6 @@
 			boot.loader = {
 				efi.canTouchEfiVariables = true;
 				timeout = 60;
-				consoleMode = "max";
 
 				systemd-boot = {
 					enable = true;
@@ -29,7 +28,7 @@
 					bootCounting.enable = true;
 					bootCounting.tries = 3;
 
-					consoleMode = "auto";
+					consoleMode = "max";
 
 					windows."11" = lib.mkIf (cfg.windows != null) {
 						title = "Windows 11";
