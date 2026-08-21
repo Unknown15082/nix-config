@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
-	flake.modules.homeManager.waybar = { pkgs, ... }: {
+	flake.modules.homeManager.waybar = { lib, pkgs, ... }: {
 		programs.waybar = {
 			enable = true;
 			systemd.enable = true;
 
 			package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-			style = "${self}/assets/stylesheets/waybar.css";
+			style = lib.readFile "${self}/assets/stylesheets/waybar.css";
 
 			settings.mainBar = {
                 position = "top";
