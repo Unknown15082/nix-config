@@ -40,10 +40,10 @@
 					_args = [
 						"hyprland.start"
 						(lib.generators.mkLuaInline ''
-							function()
-								${autoStartCmds}
-							end
-						'')
+                            function()
+                                ${autoStartCmds}
+                            end
+                        '')
 					];
 				};
 			};
@@ -76,6 +76,7 @@
 			mako
 			rofi
 			waybar
+			hyprcursor
 		];
 
 		wayland.windowManager.hyprland = {
