@@ -14,13 +14,21 @@
 
 			enableFishIntegration = true;
 			installBatSyntax = true;
+			systemd.enable = true;
 
 			settings = {
+				font-family = [
+					"JetBrainsMono Nerd Font Mono"
+					"Noto Color Emoji"
+				];
 				font-feature = [
 					"-calt"
 					"-liga"
 					"-dlig"
 				];
+				font-size = 14;
+
+				background-opacity = 0.8;
 
 				cursor-style = "bar";
 				cursor-style-blink = false;
@@ -32,5 +40,7 @@
 				shell-integration-features = "no-cursor,sudo,title,ssh-env";
 			};
 		};
+
+		catppuccin.ghostty.enable = true;
 	};
 }

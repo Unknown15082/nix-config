@@ -11,7 +11,7 @@
 	};
 
 	flake.modules.nixos.allFonts = {
-		imports = with self.modules.nixos; [ codeFonts cjkFonts ];
+		imports = with self.modules.nixos; [ codeFonts cjkFonts emojiFonts ];
 	};
 
 	flake.modules.nixos.codeFonts = { pkgs, ... }: {
@@ -26,6 +26,12 @@
 			dejavu_fonts
 			noto-fonts-cjk-sans
 			noto-fonts-cjk-serif
+		];
+	};
+
+	flake.modules.nixos.emojiFonts = { pkgs, ... }: {
+		fonts.packages = with pkgs; [
+			noto-fonts-color-emoji
 		];
 	};
 }

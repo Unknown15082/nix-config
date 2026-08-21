@@ -1,5 +1,5 @@
 { self, ... }: {
-	flake.modules.nixos.user-unknown = { config, ... }: {
+	flake.modules.nixos.user-unknown = { config, pkgs, ... }: {
 		imports = [
 			self.modules.nixos.userSettings
 			self.modules.nixos.homeManagerUser
@@ -11,6 +11,8 @@
 			isNormalUser = true;
 			createHome = true;
 			uid = 1000;
+
+			shell = pkgs.fish;
 
 			extraGroups = config.settings.userGroups;
 			initialHashedPassword = "";
