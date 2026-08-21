@@ -62,6 +62,16 @@
 		};
 
 		settings.hyprland.autoStart = [ "hyprpaper" ];
+
+		wayland.windowManager.hyprland.settings = {
+			layer_rule = [
+				{
+					name = "wallpaper-fade";
+					match = { namespace = "^hyprpaper$"; };
+					animation = "fade";
+				}
+			];
+		};
 	};
 
 	flake.modules.homeManager.mako = {

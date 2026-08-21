@@ -288,6 +288,12 @@
 					style = "fade";
 				}
 				{
+					leaf = "fadeLayers";
+					enabled = true;
+					speed = 1.5;
+					bezier = "almostLinear";
+				}
+				{
 					leaf = "fadeLayersIn";
 					enabled = true;
 					speed = 1.79;
