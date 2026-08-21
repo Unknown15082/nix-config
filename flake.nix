@@ -30,6 +30,17 @@
 			url = "github:Alexays/waybar";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		agenix = {
+			url = "github:yaxitech/ragenix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		#--- SECRETS ---#
+		secrets = {
+			url = "git+ssh://git@github.com/Unknown15082/nix-secrets.git?shallow=1";
+			flake = false;
+		};
    };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ( inputs.import-tree ./modules );

@@ -904,7 +904,25 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "nixvim-config": "nixvim-config",
+        "secrets": "secrets",
         "waybar": "waybar"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787291133,
+        "narHash": "sha256-Z8lZbW+7LeBzBh2H+VlyxUYYoHz21zyw7FrHvH3DlwE=",
+        "ref": "refs/heads/dendritic",
+        "rev": "b0477e9d40e087ddc15318731cde98271adfe046",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/Unknown15082/nix-secrets.git"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/Unknown15082/nix-secrets.git"
       }
     },
     "systems": {

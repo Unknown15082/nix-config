@@ -5,6 +5,7 @@
 			tmux
 			nixtools
 			nh
+			agenix
 		];
 	};
 
