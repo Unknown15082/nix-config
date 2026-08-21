@@ -17,6 +17,7 @@
 			boot.loader = {
 				efi.canTouchEfiVariables = true;
 				timeout = 60;
+				consoleMode = "max";
 
 				systemd-boot = {
 					enable = true;
