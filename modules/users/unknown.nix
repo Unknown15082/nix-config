@@ -12,8 +12,6 @@
 			createHome = true;
 			uid = 1000;
 
-			shell = pkgs.fish;
-
 			extraGroups = config.settings.userGroups;
 			initialHashedPassword = "";
 		};

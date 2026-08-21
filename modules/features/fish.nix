@@ -1,4 +1,13 @@
 { self, ... }: {
+	flake.modules.nixos.fish = { pkgs, ... }: {
+		programs.fish.enable = true;
+		users.defaultUserShell = pkgs.fish;
+
+		home-manager.sharedModules = [
+			self.modules.homeManager.fish
+		];
+	};
+
 	flake.modules.homeManager.fish = { pkgs, ... }: {
 		imports = [
 			self.modules.homeManager.fishFunctions

@@ -9,6 +9,7 @@
 			locale
 			timezone
 			allFonts
+			fish
 		];
 	};
 

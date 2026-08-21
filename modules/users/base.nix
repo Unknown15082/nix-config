@@ -1,7 +1,6 @@
 { self, ... }: {
 	flake.modules.homeManager.baseUser = {
 		imports = with self.modules.homeManager; [
-			fish
 			modernUnix
 			tmux
 			nixtools
