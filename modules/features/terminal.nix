@@ -29,6 +29,7 @@
 				font-size = 14;
 
 				background-opacity = 0.8;
+				background = "000000";
 
 				cursor-style = "bar";
 				cursor-style-blink = false;
