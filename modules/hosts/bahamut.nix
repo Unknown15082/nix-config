@@ -27,7 +27,7 @@
 		fileSystems."/nix" = {
 			device = "/dev/disk/by-label/NIXOS";
 			fsType = "btrfs";
-			options = [ "subvol=home" "compress=zstd" "noatime" "space_cache=v2" "ssd" ];
+			options = [ "subvol=nix" "compress=zstd" "noatime" "space_cache=v2" "ssd" ];
 		};
 
 		fileSystems."/boot" = {
