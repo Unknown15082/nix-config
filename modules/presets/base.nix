@@ -4,6 +4,8 @@
 			kernel
 			systemd-boot
 			networkManager
+			openssh
+			agenix
 
 			nixSettings
 			locale
@@ -26,6 +28,8 @@
 
 			sddm
 			sddmTheme
+
+			protonvpn
 		];
 	};
 }
