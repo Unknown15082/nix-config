@@ -16,7 +16,16 @@
                     blur_passes = 3;
                 };
 
-                input-field = { };
+                input-field = {
+                    size = "20%, 5%";
+                    outline_thickness = 2;
+
+                    inner_color = "rgba(0, 0, 0, 0.0)";
+                    outer_color = "rgba(a6e3a1ee) rgba(89dcebee) 45deg";
+                    check_color = "rgba(f9e2afee)";
+                    fail_color = "rgba(f38ba8ee)";
+                    font_color = "rgba(cdd6f4ff)";
+                };
             };
         };
     };
