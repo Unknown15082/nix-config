@@ -34,9 +34,9 @@ in
 
         # Save outputs and derivations for nix-direnv
         nix.extraOptions = ''
-                        keep-outputs = true
-                        keep-derivations = true
-                    '';
+            keep-outputs = true
+            keep-derivations = true
+        '';
 
         # Enable nix-ld
         programs.nix-ld.enable = true;

@@ -30,10 +30,10 @@ let
     };
 
     bt-sync = pkgs.writeShellScriptBin "bt-sync" ''
-                mount --mkdir /dev/${cfg.bt-sync.windows_partition} /mnt/win
-                ${bt-dualboot}/bin/bt-dualboot --win /mnt/win --sync-all --no-backup
-                umount -R /mnt/win
-            '';
+        mount --mkdir /dev/${cfg.bt-sync.windows_partition} /mnt/win
+        ${bt-dualboot}/bin/bt-dualboot --win /mnt/win --sync-all --no-backup
+        umount -R /mnt/win
+    '';
 in
 {
     options.modules.bluetooth = {

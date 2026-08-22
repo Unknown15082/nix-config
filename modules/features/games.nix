@@ -18,21 +18,24 @@
         environment.systemPackages = [ pkgs.xivlauncher ];
     };
 
-    flake.modules.nixos.games-gamemode = { lib, pkgs, ... }: let
-        notify-send = lib.getExe pkgs.libnotify;
-    in {
-        programs.gamemode = {
-            enable = true;
-            enableRenice = true;
+    flake.modules.nixos.games-gamemode =
+        { lib, pkgs, ... }:
+        let
+            notify-send = lib.getExe pkgs.libnotify;
+        in
+        {
+            programs.gamemode = {
+                enable = true;
+                enableRenice = true;
 
-            settings = {
-                custom = {
-                    start = "${notify-send} 'GameMode started'";
-                    end = "${notify-send} 'GameMode ended'";
+                settings = {
+                    custom = {
+                        start = "${notify-send} 'GameMode started'";
+                        end = "${notify-send} 'GameMode ended'";
+                    };
                 };
             };
         };
-    };
 
     flake.modules.nixos.games-nix-gaming = {
         nixpkgs.overlays = [ inputs.nix-gaming.overlays.default ];

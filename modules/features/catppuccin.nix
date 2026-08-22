@@ -1,7 +1,9 @@
-{ self, inputs, ... }: let
+{ self, inputs, ... }:
+let
     accent = "sapphire";
     flavor = "mocha";
-in {
+in
+{
     flake.modules.nixos.catppuccin = {
         imports = [
             inputs.catppuccin.nixosModules.catppuccin

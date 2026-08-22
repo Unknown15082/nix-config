@@ -20,7 +20,7 @@
 
             settings = {
                 core.excludesFile = "${config.home.homeDirectory}/.gitignore";
-                
+
                 alias = {
                     aliases = "config --get-regexp alias";
                     amend = "commit --amend --no-edit";

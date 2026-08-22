@@ -13,7 +13,7 @@
 
         hardware.nvidia = {
             branch = "stable";
-            
+
             modesetting.enable = true;
             open = true;
             powerManagement = {
@@ -35,11 +35,13 @@
 
     flake.modules.homeManager.nvidiaStatus = { lib, ... }: {
         options.settings.nvidia = {
-            isEnabled = with lib; mkOption {
-                type = types.bool;
-                default = false;
-                description = "Whether Nvidia module is enabled";
-            };
+            isEnabled =
+                with lib;
+                mkOption {
+                    type = types.bool;
+                    default = false;
+                    description = "Whether Nvidia module is enabled";
+                };
         };
     };
 }

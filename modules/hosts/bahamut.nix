@@ -1,9 +1,16 @@
 { self, inputs, ... }: {
     flake.modules.nixos.bahamutHardware = { config, ... }: {
-        boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-        boot.initrd.kernelModules = [];
+        boot.initrd.availableKernelModules = [
+            "xhci_pci"
+            "thunderbolt"
+            "nvme"
+            "usbhid"
+            "usb_storage"
+            "sd_mod"
+        ];
+        boot.initrd.kernelModules = [ ];
         boot.kernelModules = [ "kvm-intel" ];
-        boot.extraModulePackages = [];
+        boot.extraModulePackages = [ ];
 
         nixpkgs.hostPlatform = "x86_64-linux";
         hardware.enableRedistributableFirmware = true;
@@ -15,28 +22,47 @@
         fileSystems."/" = {
             device = "/dev/disk/by-label/NIXOS";
             fsType = "btrfs";
-            options = [ "subvol=root" "compress=zstd" "space_cache=v2" "ssd" ];
+            options = [
+                "subvol=root"
+                "compress=zstd"
+                "space_cache=v2"
+                "ssd"
+            ];
         };
 
         fileSystems."/home" = {
             device = "/dev/disk/by-label/NIXOS";
             fsType = "btrfs";
-            options = [ "subvol=home" "compress=zstd" "space_cache=v2" "ssd" ];
+            options = [
+                "subvol=home"
+                "compress=zstd"
+                "space_cache=v2"
+                "ssd"
+            ];
         };
 
         fileSystems."/nix" = {
             device = "/dev/disk/by-label/NIXOS";
             fsType = "btrfs";
-            options = [ "subvol=nix" "compress=zstd" "noatime" "space_cache=v2" "ssd" ];
+            options = [
+                "subvol=nix"
+                "compress=zstd"
+                "noatime"
+                "space_cache=v2"
+                "ssd"
+            ];
         };
 
         fileSystems."/boot" = {
             device = "/dev/disk/by-label/NIXBOOT";
             fsType = "vfat";
-            options = [ "fmask=0022" "dmask=0022" ];
+            options = [
+                "fmask=0022"
+                "dmask=0022"
+            ];
         };
 
-        swapDevices = [];
+        swapDevices = [ ];
     };
 
     flake.modules.nixos.bahamut = {

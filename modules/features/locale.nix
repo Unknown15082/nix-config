@@ -11,7 +11,11 @@
     };
 
     flake.modules.nixos.allFonts = {
-        imports = with self.modules.nixos; [ codeFonts cjkFonts emojiFonts ];
+        imports = with self.modules.nixos; [
+            codeFonts
+            cjkFonts
+            emojiFonts
+        ];
     };
 
     flake.modules.nixos.codeFonts = { pkgs, ... }: {

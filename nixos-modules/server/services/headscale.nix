@@ -21,9 +21,9 @@ let
     # headscaleConfig = format.generate "headscale.yml" fixedSettings;
 
     headplaneReverseProxy = lib.optionalString serviceCfg.headplane.enable ''
-                redir /admin /admin/
-                reverse_proxy /admin/* :${toString serviceCfg.headplane.port}
-            '';
+        redir /admin /admin/
+        reverse_proxy /admin/* :${toString serviceCfg.headplane.port}
+    '';
 in
 {
     # imports = [

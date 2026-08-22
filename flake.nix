@@ -41,7 +41,7 @@
             url = "git+ssh://git@github.com/Unknown15082/nix-secrets.git?shallow=1";
             flake = false;
         };
-   };
+    };
 
-    outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ( inputs.import-tree ./modules );
+    outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

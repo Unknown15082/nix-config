@@ -54,11 +54,11 @@
                 bind f resize-pane -Z
 
                 # Enable 24-bit color
-                
+
                 set-option -sa terminal-overrides ",xterm-256color:Tc"
 
                 # Enable vi-mode copy
-                
+
                 setw -g mode-keys vi
             '';
         };

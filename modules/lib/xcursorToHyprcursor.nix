@@ -1,10 +1,10 @@
 { lib, ... }: {
     flake.lib.xcursorToHyprcursor =
         {
-        pkgs
-        , xcursorPackage
-        , themeName
-        , ...
+            pkgs,
+            xcursorPackage,
+            themeName,
+            ...
         }:
         pkgs.stdenvNoCC.mkDerivation {
             pname = "${lib.toLower themeName}-hyprcursor";

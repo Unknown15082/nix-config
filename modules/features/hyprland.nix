@@ -25,34 +25,41 @@
 
     flake.modules.homeManager.hyprlandAutoStart = { lib, config, ... }: {
         options.settings.hyprland = {
-            autoStart = with lib; mkOption {
-                type = types.listOf types.str;
-                description = "List of packages to auto-start";
-            };
+            autoStart =
+                with lib;
+                mkOption {
+                    type = types.listOf types.str;
+                    description = "List of packages to auto-start";
+                };
         };
 
-        config = let
-            autoStartList = config.settings.hyprland.autoStart;
-            autoStartCmds = builtins.concatStringsSep "\n" (builtins.map (cmd: "hl.exec_cmd('${cmd}')") autoStartList);
-        in {
-            wayland.windowManager.hyprland.settings = {
-                on = {
-                    _args = [
-                        "hyprland.start"
-                        (lib.generators.mkLuaInline ''
-                            function()
-                                ${autoStartCmds}
-                            end
-                        '')
-                    ];
+        config =
+            let
+                autoStartList = config.settings.hyprland.autoStart;
+                autoStartCmds = builtins.concatStringsSep "\n" (
+                    builtins.map (cmd: "hl.exec_cmd('${cmd}')") autoStartList
+                );
+            in
+            {
+                wayland.windowManager.hyprland.settings = {
+                    on = {
+                        _args = [
+                            "hyprland.start"
+                            (lib.generators.mkLuaInline ''
+                                function()
+                                    ${autoStartCmds}
+                                end
+                            '')
+                        ];
+                    };
                 };
             };
-        };
     };
 
     flake.modules.nixos.hyprlandPortal = { pkgs, ... }: {
         programs.hyprland = {
-            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+            portalPackage =
+                inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
         };
 
         xdg.portal = {

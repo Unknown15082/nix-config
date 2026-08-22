@@ -91,7 +91,7 @@
 
     # Enable spotify-player
     modules.spotify-player.enable = true;
-    
+
     # Enable playerctl
     modules.playerctl.enable = true;
 

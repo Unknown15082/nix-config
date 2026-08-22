@@ -67,7 +67,17 @@ in
                     format = "{icon} {capacity}%";
                     format-time = "{H}:{M:02}";
                     format-charging = " {capacity}% ({time})";
-                    format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂂" "󰁹"];
+                    format-icons = [
+                        "󰁺"
+                        "󰁻"
+                        "󰁼"
+                        "󰁽"
+                        "󰁾"
+                        "󰁿"
+                        "󰂀"
+                        "󰂂"
+                        "󰁹"
+                    ];
                     states = {
                         warning = 30;
                         critical = 10;

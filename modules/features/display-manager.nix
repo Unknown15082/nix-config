@@ -7,18 +7,20 @@
 
             settings.General.InputMethod = "qtvirtualkeyboard";
 
-            extraPackages = (with pkgs.kdePackages; [
-                qtsvg
-                qtmultimedia
-                qtvirtualkeyboard
-                qtdeclarative
-            ]) ++ (with pkgs.gst_all_1; [
-                gstreamer
-                gst-plugins-base
-                gst-plugins-good
-                gst-plugins-bad
-                gst-libav
-            ]);
+            extraPackages =
+                (with pkgs.kdePackages; [
+                    qtsvg
+                    qtmultimedia
+                    qtvirtualkeyboard
+                    qtdeclarative
+                ])
+                ++ (with pkgs.gst_all_1; [
+                    gstreamer
+                    gst-plugins-base
+                    gst-plugins-good
+                    gst-plugins-bad
+                    gst-libav
+                ]);
         };
 
         systemd.services.display-manager.environment = {
@@ -58,11 +60,13 @@
         services.dbus.packages = [ pkgs.seahorse ];
         programs.seahorse.enable = true;
 
-        environment.sessionVariables = let
-            uid = config.users.users.${config.settings.primaryUser}.uid;
-        in {
-            SSH_AUTH_SOCK = "/run/user/${toString uid}/keyring/ssh";
-        };
+        environment.sessionVariables =
+            let
+                uid = config.users.users.${config.settings.primaryUser}.uid;
+            in
+            {
+                SSH_AUTH_SOCK = "/run/user/${toString uid}/keyring/ssh";
+            };
     };
 
     flake.modules.homeManager.gnomeKeyring = { pkgs, ... }: {
