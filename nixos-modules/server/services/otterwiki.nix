@@ -31,14 +31,14 @@ in
         };
 
         environment.etc."otterwiki/.env".text = ''
-            			SITE_NAME=Otterwiki
-            			SITE_DESCRIPTION=Unknown's personal wiki
+                        SITE_NAME=Otterwiki
+                        SITE_DESCRIPTION=Unknown's personal wiki
 
-            			WRITE_ACCESS=APPROVED
-            			ATTACHMENT_ACCESS=APPROVED
+                        WRITE_ACCESS=APPROVED
+                        ATTACHMENT_ACCESS=APPROVED
 
-            			COMMIT_MESSAGE=OPTIONAL
-            		'';
+                        COMMIT_MESSAGE=OPTIONAL
+                    '';
 
         systemd.tmpfiles.rules = [
             "d /etc/otterwiki/data 755 otterwiki otterwiki"

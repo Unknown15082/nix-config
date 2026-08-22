@@ -1,27 +1,27 @@
 {
-	inputs,
-	libutils,
-	...
+    inputs,
+    libutils,
+    ...
 }@args:
 let
-	inherit (libutils) relativeToRoot;
-	name = "bahamut";
+    inherit (libutils) relativeToRoot;
+    name = "bahamut";
 
-	nixos-modules = map relativeToRoot [
-		"nixos-modules"
-		"hosts/${name}/configuration.nix"
-	];
+    nixos-modules = map relativeToRoot [
+        "nixos-modules"
+        "hosts/${name}/configuration.nix"
+    ];
 
-	home-modules = map relativeToRoot [
-		"home-modules"
-		"hosts/${name}/home.nix"
-	];
+    home-modules = map relativeToRoot [
+        "home-modules"
+        "hosts/${name}/home.nix"
+    ];
 in
 {
-	nixosConfigurations = libutils.nixosSystem (
-		args
-		// {
-			inherit nixos-modules home-modules;
-		}
-	);
+    nixosConfigurations = libutils.nixosSystem (
+        args
+        // {
+            inherit nixos-modules home-modules;
+        }
+    );
 }

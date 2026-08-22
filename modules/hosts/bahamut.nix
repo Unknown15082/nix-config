@@ -1,73 +1,73 @@
 { self, inputs, ... }: {
-	flake.modules.nixos.bahamutHardware = { config, ... }: {
-		boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-		boot.initrd.kernelModules = [];
-		boot.kernelModules = [ "kvm-intel" ];
-		boot.extraModulePackages = [];
+    flake.modules.nixos.bahamutHardware = { config, ... }: {
+        boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+        boot.initrd.kernelModules = [];
+        boot.kernelModules = [ "kvm-intel" ];
+        boot.extraModulePackages = [];
 
-		nixpkgs.hostPlatform = "x86_64-linux";
-		hardware.enableRedistributableFirmware = true;
-		hardware.cpu.intel.npu.enable = true;
-		hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
+        nixpkgs.hostPlatform = "x86_64-linux";
+        hardware.enableRedistributableFirmware = true;
+        hardware.cpu.intel.npu.enable = true;
+        hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
-		settings.systemd-boot.windows = "HD0b";
+        settings.systemd-boot.windows = "HD0b";
 
-		fileSystems."/" = {
-			device = "/dev/disk/by-label/NIXOS";
-			fsType = "btrfs";
-			options = [ "subvol=root" "compress=zstd" "space_cache=v2" "ssd" ];
-		};
+        fileSystems."/" = {
+            device = "/dev/disk/by-label/NIXOS";
+            fsType = "btrfs";
+            options = [ "subvol=root" "compress=zstd" "space_cache=v2" "ssd" ];
+        };
 
-		fileSystems."/home" = {
-			device = "/dev/disk/by-label/NIXOS";
-			fsType = "btrfs";
-			options = [ "subvol=home" "compress=zstd" "space_cache=v2" "ssd" ];
-		};
+        fileSystems."/home" = {
+            device = "/dev/disk/by-label/NIXOS";
+            fsType = "btrfs";
+            options = [ "subvol=home" "compress=zstd" "space_cache=v2" "ssd" ];
+        };
 
-		fileSystems."/nix" = {
-			device = "/dev/disk/by-label/NIXOS";
-			fsType = "btrfs";
-			options = [ "subvol=nix" "compress=zstd" "noatime" "space_cache=v2" "ssd" ];
-		};
+        fileSystems."/nix" = {
+            device = "/dev/disk/by-label/NIXOS";
+            fsType = "btrfs";
+            options = [ "subvol=nix" "compress=zstd" "noatime" "space_cache=v2" "ssd" ];
+        };
 
-		fileSystems."/boot" = {
-			device = "/dev/disk/by-label/NIXBOOT";
-			fsType = "vfat";
-			options = [ "fmask=0022" "dmask=0022" ];
-		};
+        fileSystems."/boot" = {
+            device = "/dev/disk/by-label/NIXBOOT";
+            fsType = "vfat";
+            options = [ "fmask=0022" "dmask=0022" ];
+        };
 
-		swapDevices = [];
-	};
+        swapDevices = [];
+    };
 
-	flake.modules.nixos.bahamut = {
-		imports = with self.modules.nixos; [
-			bahamutHardware
-			presets-desktop
-			user-unknown
+    flake.modules.nixos.bahamut = {
+        imports = with self.modules.nixos; [
+            bahamutHardware
+            presets-desktop
+            user-unknown
 
-			presets-games
-			games-steam
-			games-osu
-		];
+            presets-games
+            games-steam
+            games-osu
+        ];
 
-		home-manager.sharedModules = [
-			self.modules.homeManager.bahamut
-		];
+        home-manager.sharedModules = [
+            self.modules.homeManager.bahamut
+        ];
 
-		networking.hostName = "bahamut";
-		system.stateVersion = "26.05";
-	};
+        networking.hostName = "bahamut";
+        system.stateVersion = "26.05";
+    };
 
-	flake.modules.homeManager.bahamut = {
-		imports = with self.modules.homeManager; [
-			desktopUser
-			nixvim
-		];
-	};
+    flake.modules.homeManager.bahamut = {
+        imports = with self.modules.homeManager; [
+            desktopUser
+            nixvim
+        ];
+    };
 
-	flake.nixosConfigurations.bahamut = inputs.nixpkgs.lib.nixosSystem {
-		modules = [
-			self.modules.nixos.bahamut
-		];
-	};
+    flake.nixosConfigurations.bahamut = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+            self.modules.nixos.bahamut
+        ];
+    };
 }

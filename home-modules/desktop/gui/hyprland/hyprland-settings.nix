@@ -111,7 +111,7 @@ in
 
             binds = {
                 hide_special_on_workspace_change = true;
-				scroll_event_delay = 20;
+                scroll_event_delay = 20;
             };
 
             ecosystem = {
@@ -130,7 +130,7 @@ in
 
             scrolling = {
                 fullscreen_on_one_column = true;
-				wrap_focus = false;
+                wrap_focus = false;
             };
         };
 
@@ -385,13 +385,13 @@ in
 
                 workspace = "special:S";
             }
-			{
-				match = {
-					workspace = "10";
-				};
+            {
+                match = {
+                    workspace = "10";
+                };
 
-				scrolling_width = 1.0;
-			}
+                scrolling_width = 1.0;
+            }
         ];
 
         #--- ENVIRONMENT VARIABLES ---#
@@ -515,15 +515,15 @@ in
             (bind "CTRL + SUPER + left" "hl.dsp.workspace.move({ monitor = '-1' })")
             (bind "CTRL + SUPER + right" "hl.dsp.workspace.move({ monitor = '+1' })")
 
-			(bind "SUPER + minus" "hl.dsp.layout('colresize -conf')")
-			(bind "SUPER + equal" "hl.dsp.layout('colresize +conf')")
+            (bind "SUPER + minus" "hl.dsp.layout('colresize -conf')")
+            (bind "SUPER + equal" "hl.dsp.layout('colresize +conf')")
 
-			(bind "SUPER + left" "hl.dsp.layout('focus l')")
-			(bind "SUPER + right" "hl.dsp.layout('focus r')")
-			(bind "SUPER + up" "hl.dsp.layout('expel')")
-			(bind "SUPER + down" "hl.dsp.layout('consume_or_expel prev')")
-			(bind "SUPER + SHIFT + left" "hl.dsp.layout('swapcol l')")
-			(bind "SUPER + SHIFT + right" "hl.dsp.layout('swapcol r')")
+            (bind "SUPER + left" "hl.dsp.layout('focus l')")
+            (bind "SUPER + right" "hl.dsp.layout('focus r')")
+            (bind "SUPER + up" "hl.dsp.layout('expel')")
+            (bind "SUPER + down" "hl.dsp.layout('consume_or_expel prev')")
+            (bind "SUPER + SHIFT + left" "hl.dsp.layout('swapcol l')")
+            (bind "SUPER + SHIFT + right" "hl.dsp.layout('swapcol r')")
 
             (bind "${mod} + Q" "hl.dsp.window.close()")
             (bind "${mod} + F" "hl.dsp.window.fullscreen()")

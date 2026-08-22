@@ -1,8 +1,8 @@
 {
     lib,
     config,
-	system,
-	waybar,
+    system,
+    waybar,
     ...
 }:
 let
@@ -18,77 +18,77 @@ in
             enable = true;
             systemd.enable = true;
 
-			package = waybar.packages.${system}.default;
+            package = waybar.packages.${system}.default;
 
-			style = lib.concatStringsSep "\n" [
-				(lib.readFile ./colors.css)
-				(lib.readFile ./waybar.css)
-			];
+            style = lib.concatStringsSep "\n" [
+                (lib.readFile ./colors.css)
+                (lib.readFile ./waybar.css)
+            ];
 
             settings.mainBar = {
                 position = "top";
 
-				margin-top = 6;
-				margin-left = 8;
-				margin-right = 8;
+                margin-top = 6;
+                margin-left = 8;
+                margin-right = 8;
 
                 modules-left = [
                     "hyprland/workspaces"
-					"mpris"
+                    "mpris"
                 ];
                 modules-center = [
                     "clock"
                 ];
                 modules-right = [
-					"cpu"
-					"disk"
+                    "cpu"
+                    "disk"
                     "battery"
-					"wireplumber"
-					"network"
+                    "wireplumber"
+                    "network"
                     "tray"
                 ];
 
-				"hyprland/workspaces" = {
-					format = "{name}";
-					on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1' })\"";
-					on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1' })\"";
+                "hyprland/workspaces" = {
+                    format = "{name}";
+                    on-scroll-down = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e-1' })\"";
+                    on-scroll-up = "hyprctl dispatch \"hl.dsp.focus({ workspace = 'e+1' })\"";
 
-					move-to-monitor = true;
-					show-special = true;
+                    move-to-monitor = true;
+                    show-special = true;
 
-					tooltip = true;
-					tooltips.default = "{name}: {windows}";
-					window-rewrite-default = "{icon}";
-				};
+                    tooltip = true;
+                    tooltips.default = "{name}: {windows}";
+                    window-rewrite-default = "{icon}";
+                };
 
-				"battery" = {
-					interval = 20;
-					tooltip = true;
-					format = "{icon} {capacity}%";
-					format-time = "{H}:{M:02}";
-					format-charging = " {capacity}% ({time})";
-					format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂂" "󰁹"];
-					states = {
-						warning = 30;
-						critical = 10;
-					};
-				};
+                "battery" = {
+                    interval = 20;
+                    tooltip = true;
+                    format = "{icon} {capacity}%";
+                    format-time = "{H}:{M:02}";
+                    format-charging = " {capacity}% ({time})";
+                    format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂂" "󰁹"];
+                    states = {
+                        warning = 30;
+                        critical = 10;
+                    };
+                };
 
-				"mpris" = {
-					format = "{status_icon}  {title} [{position} / {length}]";
-					tooltip-format = "{album} :: {artist} - {title} [{position} / {length}]";
+                "mpris" = {
+                    format = "{status_icon}  {title} [{position} / {length}]";
+                    tooltip-format = "{album} :: {artist} - {title} [{position} / {length}]";
 
-					interval = 1;
+                    interval = 1;
 
-					on-click = "playerctl play-pause";
-					on-click-backward = "playerctl previous";
-					on-click-forward = "playerctl next";
+                    on-click = "playerctl play-pause";
+                    on-click-backward = "playerctl previous";
+                    on-click-forward = "playerctl next";
 
-					status-icons = {
-						playing = "";
-						paused = "▶";
-					};
-				};
+                    status-icons = {
+                        playing = "";
+                        paused = "▶";
+                    };
+                };
 
                 "clock" = {
                     format = "{:%H:%M}";

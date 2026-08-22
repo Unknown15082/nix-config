@@ -1,63 +1,63 @@
 { inputs, ... }: {
-	flake.modules.nixos.games-steam = {
-		programs.steam = {
-			enable = true;
-			protontricks.enable = true;
+    flake.modules.nixos.games-steam = {
+        programs.steam = {
+            enable = true;
+            protontricks.enable = true;
 
-			remotePlay.openFirewall = true;
-			dedicatedServer.openFirewall = true;
-			localNetworkGameTransfers.openFirewall = true;
-		};
-	};
+            remotePlay.openFirewall = true;
+            dedicatedServer.openFirewall = true;
+            localNetworkGameTransfers.openFirewall = true;
+        };
+    };
 
-	flake.modules.nixos.games-osu = { pkgs, ... }: {
-		environment.systemPackages = [ pkgs.osu-lazer-tachyon-bin ];
-	};
+    flake.modules.nixos.games-osu = { pkgs, ... }: {
+        environment.systemPackages = [ pkgs.osu-lazer-tachyon-bin ];
+    };
 
-	flake.modules.nixos.games-ffxiv = { pkgs, ... }: {
-		environment.systemPackages = [ pkgs.xivlauncher ];
-	};
+    flake.modules.nixos.games-ffxiv = { pkgs, ... }: {
+        environment.systemPackages = [ pkgs.xivlauncher ];
+    };
 
-	flake.modules.nixos.games-gamemode = { lib, pkgs, ... }: let
-		notify-send = lib.getExe pkgs.libnotify;
-	in {
-		programs.gamemode = {
-			enable = true;
-			enableRenice = true;
+    flake.modules.nixos.games-gamemode = { lib, pkgs, ... }: let
+        notify-send = lib.getExe pkgs.libnotify;
+    in {
+        programs.gamemode = {
+            enable = true;
+            enableRenice = true;
 
-			settings = {
-				custom = {
-					start = "${notify-send} 'GameMode started'";
-					end = "${notify-send} 'GameMode ended'";
-				};
-			};
-		};
-	};
+            settings = {
+                custom = {
+                    start = "${notify-send} 'GameMode started'";
+                    end = "${notify-send} 'GameMode ended'";
+                };
+            };
+        };
+    };
 
-	flake.modules.nixos.games-nix-gaming = {
-		nixpkgs.overlays = [ inputs.nix-gaming.overlays.default ];
+    flake.modules.nixos.games-nix-gaming = {
+        nixpkgs.overlays = [ inputs.nix-gaming.overlays.default ];
 
-		settings.binaryCaches.caches = [
-			{
-				url = "https://nix-gaming.cachix.org";
-				key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
-			}
-		];
-	};
+        settings.binaryCaches.caches = [
+            {
+                url = "https://nix-gaming.cachix.org";
+                key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
+            }
+        ];
+    };
 
-	flake.modules.nixos.games-ntsync = { pkgs, ... }: {
-		imports = [
-			inputs.nix-gaming.nixosModules.wine
-		];
+    flake.modules.nixos.games-ntsync = { pkgs, ... }: {
+        imports = [
+            inputs.nix-gaming.nixosModules.wine
+        ];
 
-		nixpkgs.overlays = [
-			inputs.nix-gaming.overlays.default
-		];
+        nixpkgs.overlays = [
+            inputs.nix-gaming.overlays.default
+        ];
 
-		programs.wine = {
-			enable = true;
-			package = pkgs.wine-ge;
-			ntsync = true;
-		};
-	};
+        programs.wine = {
+            enable = true;
+            package = pkgs.wine-ge;
+            ntsync = true;
+        };
+    };
 }

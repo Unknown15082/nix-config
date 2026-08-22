@@ -1,36 +1,36 @@
 { self, ... }: {
-	flake.modules.nixos.presets-base = {
-		imports = with self.modules.nixos; [
-			kernel
-			systemd-boot
-			networkManager
-			openssh
-			agenix
+    flake.modules.nixos.presets-base = {
+        imports = with self.modules.nixos; [
+            kernel
+            systemd-boot
+            networkManager
+            openssh
+            agenix
 
-			nixSettings
-			locale
-			timezone
-			allFonts
-			iconTheme
-			fish
-		];
-	};
+            nixSettings
+            locale
+            timezone
+            allFonts
+            iconTheme
+            fish
+        ];
+    };
 
-	flake.modules.nixos.presets-desktop = {
-		imports = with self.modules.nixos; [
-			presets-base
+    flake.modules.nixos.presets-desktop = {
+        imports = with self.modules.nixos; [
+            presets-base
 
-			hyprland
+            hyprland
 
-			audio
-			bluetooth
-			catppuccin
-			keyd
+            audio
+            bluetooth
+            catppuccin
+            keyd
 
-			sddm
-			sddmTheme
+            sddm
+            sddmTheme
 
-			protonvpn
-		];
-	};
+            protonvpn
+        ];
+    };
 }

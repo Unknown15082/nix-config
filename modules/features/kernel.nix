@@ -1,5 +1,5 @@
 { ... }: {
-	flake.modules.nixos.kernel = { pkgs, ... }: {
-		boot.kernelPackages = pkgs.linuxPackages_zen;
-	};
+    flake.modules.nixos.kernel = { pkgs, ... }: {
+        boot.kernelPackages = pkgs.linuxPackages_zen;
+    };
 }

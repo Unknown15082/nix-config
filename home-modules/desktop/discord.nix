@@ -2,16 +2,16 @@
     lib,
     config,
     pkgs,
-	nixcord,
+    nixcord,
     ...
 }:
 let
     cfg = config.modules.discord;
 in
 {
-	imports = [
-		nixcord.homeModules.nixcord
-	];
+    imports = [
+        nixcord.homeModules.nixcord
+    ];
 
     options.modules.discord = {
         enable = lib.mkEnableOption "Discord";
@@ -20,12 +20,12 @@ in
 
     config = lib.mkIf cfg.enable {
         programs.nixcord = {
-			enable = true;
-			discord.enable = false;
-			vesktop.enable = cfg.addons;
+            enable = true;
+            discord.enable = false;
+            vesktop.enable = cfg.addons;
 
-			discord.silenceNoModClientWarning = true;
-			discord.krisp.enable = true;
-		};
+            discord.silenceNoModClientWarning = true;
+            discord.krisp.enable = true;
+        };
     };
 }

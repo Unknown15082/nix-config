@@ -65,7 +65,7 @@
         };
     };
     services.udev.extraRules = ''
-        	ATTR{address}=="4e:9c:69:00:9b:6c", NAME="eth0"
-        	ATTR{address}=="d6:ca:1c:d8:39:d2", NAME="eth1"
-        	'';
+            ATTR{address}=="4e:9c:69:00:9b:6c", NAME="eth0"
+            ATTR{address}=="d6:ca:1c:d8:39:d2", NAME="eth1"
+            '';
 }

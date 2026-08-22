@@ -1,20 +1,20 @@
 {
-	lib,
-	config,
-	pkgs,
-	...
+    lib,
+    config,
+    pkgs,
+    ...
 }:
 let
-	cfg = config.modules.playerctl;
+    cfg = config.modules.playerctl;
 in
 {
-	options.modules.playerctl = {
-		enable = lib.mkEnableOption "playerctl";
-	};
+    options.modules.playerctl = {
+        enable = lib.mkEnableOption "playerctl";
+    };
 
-	config = lib.mkIf cfg.enable {
-		home.packages = [ pkgs.playerctl ];
+    config = lib.mkIf cfg.enable {
+        home.packages = [ pkgs.playerctl ];
 
-		services.playerctld.enable = true;
-	};
+        services.playerctld.enable = true;
+    };
 }

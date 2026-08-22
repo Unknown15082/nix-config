@@ -31,12 +31,12 @@ in
             environmentFile = config.age.secrets.caddy_env.path;
 
             globalConfig = ''
-                                				acme_dns cloudflare {env.CF_API_TOKEN}
+                                                acme_dns cloudflare {env.CF_API_TOKEN}
 
-                								servers {
-                									trusted_proxies cloudflare
-                								}
-                                			'';
+                                                servers {
+                                                    trusted_proxies cloudflare
+                                                }
+                                            '';
         };
     };
 }

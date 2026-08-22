@@ -1,24 +1,24 @@
 { pkgs, lib, myvars, ... }:
 {
-	imports = [
-		./hardware-configuration.nix
-	];
+    imports = [
+        ./hardware-configuration.nix
+    ];
 
-	networking.hostName = "bahamut";
+    networking.hostName = "bahamut";
 
-	presets.desktop.enable = true;
-	modules.nvidia.enable = lib.mkForce false;
+    presets.desktop.enable = true;
+    modules.nvidia.enable = lib.mkForce false;
 
-	modules.users.username = myvars.username;
+    modules.users.username = myvars.username;
 
-	programs.fish.enable = true;
-	users.defaultUserShell = pkgs.fish;
+    programs.fish.enable = true;
+    users.defaultUserShell = pkgs.fish;
 
-	modules.hyprland.enable = true;
+    modules.hyprland.enable = true;
 
-	modules.bluetooth.bt-sync.enable = false;
+    modules.bluetooth.bt-sync.enable = false;
 
-	services.openssh.enable = true;
+    services.openssh.enable = true;
 
-	system.stateVersion = "26.05";
+    system.stateVersion = "26.05";
 }

@@ -17,9 +17,9 @@ in
         nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
         # Enable experimental features
-        #	nix-command: modern Nix CLI
-        #	flakes: flake system
-        #	pipe-operators: |>
+        #    nix-command: modern Nix CLI
+        #    flakes: flake system
+        #    pipe-operators: |>
         nix.settings.experimental-features = [
             "nix-command"
             "flakes"
@@ -34,9 +34,9 @@ in
 
         # Save outputs and derivations for nix-direnv
         nix.extraOptions = ''
-            			keep-outputs = true
-            			keep-derivations = true
-            		'';
+                        keep-outputs = true
+                        keep-derivations = true
+                    '';
 
         # Enable nix-ld
         programs.nix-ld.enable = true;
