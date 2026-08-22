@@ -1,4 +1,0 @@
-{ libutils, ... }:
-{
-    imports = libutils.scanPaths ./.;
-}
