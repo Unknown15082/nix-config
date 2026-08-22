@@ -22,12 +22,5 @@
                 start_hidden = true;
             };
         };
-
-        programs.hyprlock = {
-            settings = {
-                path = "screenshot";
-                blur_passes = 3;
-            };
-        };
     };
 }

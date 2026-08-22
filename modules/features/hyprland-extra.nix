@@ -10,7 +10,14 @@
     flake.modules.homeManager.hyprlock = {
         programs.hyprlock = {
             enable = true;
-            settings = { };
+            settings = {
+                background = {
+                    path = "screenshot";
+                    blur_passes = 3;
+                };
+
+                input-field = { };
+            };
         };
     };
 
