@@ -25,7 +25,7 @@
 		];
 	};
 
-	flake.modules.nixos.protonvpn = { config, ... }: {
+	flake.modules.nixos.protonvpn = { lib, config, pkgs, ... }: {
 		age.secrets.protonvpn = {
 			file = "${inputs.secrets}/proton.age";
 			mode = "770";
@@ -47,5 +47,18 @@
 				}
 			];
 		};
+
+		environment.systemPackages = [
+			(let
+				systemctl = lib.getExe' pkgs.systemd "systemctl";
+				vpnName = "wg-quick-protonvpn";
+			in pkgs.writeShellScriptBin "protonvpn" ''
+				if ${systemctl} is-active --quiet ${vpnName}; then
+					sudo systemctl stop ${vpnName}
+				else
+					sudo systemctl start ${vpnName}
+				fi
+			'')
+		];
 	};
 }
