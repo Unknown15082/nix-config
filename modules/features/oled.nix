@@ -5,11 +5,11 @@
         ];
     };
 
-    flake.modules.homeManager.oled = {
+    flake.modules.homeManager.oled = { lib, ... }: {
         wayland.windowManager.hyprland.settings = {
             config = {
                 general = {
-                    col.active_border.colors = [
+                    col.active_border.colors = lib.mkForce [
                         "rgba(a6e3a166)"
                         "rgba(89dceb66)"
                     ];
