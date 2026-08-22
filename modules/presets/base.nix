@@ -11,6 +11,7 @@
 			locale
 			timezone
 			allFonts
+			iconTheme
 			fish
 		];
 	};

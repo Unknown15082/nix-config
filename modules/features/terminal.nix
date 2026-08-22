@@ -19,7 +19,6 @@
 			settings = {
 				font-family = [
 					"JetBrainsMono Nerd Font Mono"
-					"Noto Color Emoji"
 				];
 				font-feature = [
 					"-calt"

@@ -34,4 +34,10 @@
 			noto-fonts-color-emoji
 		];
 	};
+
+	flake.modules.nixos.iconTheme = { pkgs, ... }: {
+		environment.systemPackages = with pkgs; [
+			adwaita-icon-theme
+		];
+	};
 }
