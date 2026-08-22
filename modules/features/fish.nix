@@ -55,7 +55,7 @@
 						return 1
 					end
 
-					if test $argv[1] == --impure
+					if test $argv[1] = --impure
 						set impure --impure
 						set argv $argv[2..]
 					end
