@@ -58,7 +58,7 @@
                     {
                         monitor = "";
                         path = "${self}/assets/wallpapers";
-                        timeout = 60;
+                        timeout = 600;
                     }
                 ];
             };
