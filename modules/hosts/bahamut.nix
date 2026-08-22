@@ -1,5 +1,9 @@
 { self, inputs, ... }: {
     flake.modules.nixos.bahamutHardware = { config, ... }: {
+        imports = [
+            self.modules.nixos.oled
+        ];
+
         boot.initrd.availableKernelModules = [
             "xhci_pci"
             "thunderbolt"
