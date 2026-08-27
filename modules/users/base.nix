@@ -22,6 +22,7 @@
             spotifyPlayer
             playerctl
             firefox
+            mailClient
         ];
     };
 }
