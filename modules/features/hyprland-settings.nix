@@ -29,6 +29,7 @@
             launcher = "rofi -show drun";
             runner = "$SHELL -c \\\"$(rofi -dmenu -p '' -l 0)\\\"";
             screenshot = "grimblast copysave area";
+            toggle_waybar = "pkill -SIGUSR1 waybar";
 
             brightnessctl = lib.getExe pkgs.brightnessctl;
             playerctl = lib.getExe pkgs.playerctl;
@@ -532,6 +533,7 @@
                     (bind "${mod} + Space" (exec launcher))
                     (bind "CTRL + ${mod} + Space" (exec runner))
                     (bind "Print" (exec screenshot))
+                    (bind "${mod} + B" (exec toggle_waybar))
 
                     (bind "CTRL + SUPER + left" "hl.dsp.workspace.move({ monitor = '-1' })")
                     (bind "CTRL + SUPER + right" "hl.dsp.workspace.move({ monitor = '+1' })")
