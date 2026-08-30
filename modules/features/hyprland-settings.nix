@@ -42,12 +42,14 @@
 
             wayland.windowManager.hyprland.settings = {
                 #--- MONITORS ---#
-                monitor = {
-                    output = "";
-                    mode = "highrr";
-                    position = "auto";
-                    scale = 1;
-                };
+                monitor = [
+                    {
+                        output = "";
+                        mode = "preferred";
+                        position = "auto";
+                        scale = 1;
+                    }
+                ];
 
                 #--- CONFIG ---#
                 config = {
