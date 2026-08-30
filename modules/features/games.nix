@@ -1,5 +1,5 @@
 { inputs, ... }: {
-    flake.modules.nixos.games-steam = {
+    flake.modules.nixos.games-steam = { pkgs, ... }: {
         programs.steam = {
             enable = true;
             protontricks.enable = true;
@@ -8,6 +8,20 @@
             dedicatedServer.openFirewall = true;
             localNetworkGameTransfers.openFirewall = true;
         };
+
+        environment.systemPackages = [
+            pkgs.protonup-qt
+            (pkgs.appimage-run.override {
+                extraPkgs = pkgs: with pkgs; [
+                    libxcrypt-legacy
+                    libffi
+                    libyaml
+                    openssl
+                    zlib
+                    wayland
+                ];
+            })
+        ];
     };
 
     flake.modules.nixos.games-osu = { pkgs, ... }: {
