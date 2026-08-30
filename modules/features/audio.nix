@@ -21,4 +21,12 @@
 
         security.rtkit.enable = true;
     };
+
+    flake.modules.nixos.zenbookAudioFixes = {
+        boot.extraModprobeConfig = ''
+            install snd_hda_codec_hdmi /bin/true
+        '';
+
+        boot.blacklistedKernelModules = [ "snd_hda_codec_hdmi" ];
+    };
 }

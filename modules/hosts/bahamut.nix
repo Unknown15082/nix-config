@@ -2,6 +2,7 @@
     flake.modules.nixos.bahamutHardware = { config, ... }: {
         imports = [
             self.modules.nixos.oled
+            self.modules.nixos.zenbookAudioFixes
         ];
 
         boot.initrd.availableKernelModules = [
