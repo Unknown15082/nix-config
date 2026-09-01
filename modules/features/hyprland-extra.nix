@@ -104,4 +104,11 @@
             };
         };
     };
+
+    flake.modules.homeManager.clipboard = { pkgs, ... }: {
+        home.packages = [
+            pkgs.wl-clipboard
+            # TODO: cliphist or other clipboard manager
+        ];
+    };
 }

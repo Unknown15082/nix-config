@@ -23,17 +23,18 @@
                 ];
             };
 
+            brightnessctl = lib.getExe pkgs.brightnessctl;
+            playerctl = lib.getExe pkgs.playerctl;
+            wpctl = lib.getExe' pkgs.wireplumber "wpctl";
+            grimblast = lib.getExe pkgs.grimblast;
+
             mod = "SUPER";
             terminal = "ghostty";
             browser = "firefox";
             launcher = "rofi -show drun";
             runner = "$SHELL -c \\\"$(rofi -dmenu -p '' -l 0)\\\"";
-            screenshot = "grimblast copysave area";
+            screenshot = "${grimblast} copysave area";
             toggle_waybar = "pkill -SIGUSR1 waybar";
-
-            brightnessctl = lib.getExe pkgs.brightnessctl;
-            playerctl = lib.getExe pkgs.playerctl;
-            wpctl = lib.getExe' pkgs.wireplumber "wpctl";
         in
         {
             imports = [

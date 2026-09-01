@@ -16,6 +16,7 @@
             ime
             imeJapanese
             imeVietnamese
+            clipboard
 
             ghostty
             discord
