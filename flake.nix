@@ -36,6 +36,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        asus-numberpad-driver = {
+            url = "github:asus-linux-drivers/asus-numberpad-driver";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         #--- SECRETS ---#
         secrets = {
             url = "git+ssh://git@github.com/Unknown15082/nix-secrets.git?shallow=1";

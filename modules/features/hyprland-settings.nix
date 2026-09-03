@@ -27,6 +27,7 @@
             playerctl = lib.getExe pkgs.playerctl;
             wpctl = lib.getExe' pkgs.wireplumber "wpctl";
             grimblast = lib.getExe pkgs.grimblast;
+            calculator = lib.getExe pkgs.qalculate-gtk;
 
             mod = "SUPER";
             terminal = "ghostty";
@@ -588,6 +589,8 @@
                     (bind "XF86AudioPause" (exec "${playerctl} play-pause"))
                     (bind "XF86AudioPlay" (exec "${playerctl} play-pause"))
                     (bind "XF86AudioPrev" (exec "${playerctl} previous"))
+
+                    (bind "XF86Calculator" (exec calculator))
                 ]
                 ++ (lib.lists.concatMap (
                     id:

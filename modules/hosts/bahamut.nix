@@ -4,6 +4,7 @@
             self.modules.nixos.oled
             self.modules.nixos.zenbookAudioFixes
             self.modules.nixos.asusd
+            self.modules.nixos.asusNumberPad
         ];
 
         boot.initrd.availableKernelModules = [
