@@ -3,6 +3,7 @@
         imports = with self.modules.nixos; [
             kernel
             systemd-boot
+            # limine
             networkManager
             openssh
             agenix
