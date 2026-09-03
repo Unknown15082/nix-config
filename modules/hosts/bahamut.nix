@@ -3,6 +3,7 @@
         imports = [
             self.modules.nixos.oled
             self.modules.nixos.zenbookAudioFixes
+            self.modules.nixos.asusd
         ];
 
         boot.initrd.availableKernelModules = [
