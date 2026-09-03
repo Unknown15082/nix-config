@@ -79,6 +79,8 @@
             presets-games
             games-steam
             games-osu
+
+            specialization-presenting
         ];
 
         home-manager.sharedModules = [
